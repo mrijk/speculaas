@@ -108,6 +108,23 @@ describe('Test node.spec functions', function() {
         });
     });
 
+    describe('Test the question (?) function', () => {
+        s.def('::odd?', s.and(isInteger, isOdd));
+        const odds = s.question('::odd?');
+        
+        it('it should return the value', () => {
+            expect(s.conform(odds, [1])).to.deep.equal([1]);
+        });
+        
+        it('it should accept an empty value sequence', () => {
+            expect(s.conform(odds, [])).to.deep.equal([]);
+        });
+
+        it('it should not allow 2 or more values', () => {
+            expect(s.isValid(odds, [1, 3])).to.be.false;
+        });
+    });
+
     describe('Test the star (*) function', () => {
         s.def('::odd?', s.and(isInteger, isOdd));
         const odds = s.star('::odd?');
@@ -116,7 +133,7 @@ describe('Test node.spec functions', function() {
             expect(s.conform(odds, [1, 3])).to.deep.equal([1, 3]);
         });
 
-        it('it should return the invalid string when value sequence is empty', () => {
+        it('it should accept an empty value sequence', () => {
             expect(s.conform(odds, [])).to.deep.equal([]);
         });
     });

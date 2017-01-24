@@ -48,6 +48,11 @@ function plus(spec) {
     return values => values.length > 0 && _.every(values, value => predicate(value));
 }
 
+function question(spec) {
+    const predicate = defs[spec];
+    return values => values.length === 0 || (values.length == 1 && predicate(values[0]));
+}
+
 function star(spec) {
     const predicate = defs[spec];
     return values => _.every(values, value => predicate(value));
@@ -61,5 +66,6 @@ module.exports = {
     isValid,
     or,
     plus,
+    question,
     star
 };
