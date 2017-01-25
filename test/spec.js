@@ -27,15 +27,18 @@ describe('Test node.spec functions', function() {
     });
 
     describe('Test the conform function', () => {
+        s.def('::a', isInteger);
+
         it('should return value when value is conform spec', () => {
-            s.def('::a', isInteger);
             expect(s.conform('::a', 12)).to.equal(12);
         });
         
         it('should return invalid string', () => {
-            s.def('::a', isInteger);
             expect(s.conform('::a', 'foobar')).to.equal(invalidString);
         });
+    });
+
+    describe('Test the alt function', () => {
     });
 
     describe('Test the and function', () => {
@@ -181,6 +184,22 @@ describe('Test node.spec functions', function() {
 
         it('should fail on invalid data', () => {
             expect(s.isValid('::vnum3', [1, 2, 'foo'])).to.be.false;
+        });
+
+        it('should fail on invalid length', () => {
+            expect(s.isValid('::vnum3', [1, 2, 3, 4])).to.be.false;
+        });
+    });
+
+    describe('Test the mapOf function', () => {
+        s.def('::scores', s.mapOf(isString, isInteger, {}));
+
+        it('should return a spec for a map', () => {
+            expect(s.isValid('::scores', {'Sally': 1000, 'Joe': 500})).to.be.true;
+        });
+
+        it('should fail on invalid data', () => {
+            expect(s.isValid('::scores', {'Sally': 1000, 'Joe': '500'})).to.be.false;
         });
     });
 });

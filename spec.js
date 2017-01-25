@@ -2,6 +2,10 @@ const _ = require('lodash');
 
 const defs = {};
 
+function alt(...predicates) {
+    return value => true;
+}
+
 function and(...predicates) {
     return value => _.every(predicates, predicate => predicate(value));
 }
@@ -11,9 +15,14 @@ function or(...predicates) {
 }
 
 function collOf(predicate, {kind, count, distinct = false, into}) {
-    const uniq = value => !distinct || isUnique(value); 
-    
-    return value => kind(value) && uniq(value) && _.every(value, value => predicate(value));
+    const uniq = value => !distinct || isUnique(value);
+    const checkCount = value => !count || value.length === count;
+
+    return value => kind(value) && uniq(value) && checkCount(value) && _.every(value, value => predicate(value));
+}
+
+function mapOf(kpred, vpred, {count}) {
+    return value => _.every(value, (v, k) => vpred(v) && kpred(k));
 }
 
 function isUnique(value) {
@@ -53,6 +62,9 @@ function explain(spec, value) {
     }
 }
 
+function gen(spec) {
+}
+
 function nilable(predicate) {
     return value => (value !== null) ? predicate(value) : true;
 }
@@ -78,12 +90,15 @@ function tuple(...predicates) {
 }
 
 module.exports = {
+    alt,
     and,
     collOf,
     conform,
     def,
     explain,
+    gen,
     isValid,
+    mapOf,
     nilable,
     or,
     plus,
