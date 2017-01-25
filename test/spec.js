@@ -137,4 +137,11 @@ describe('Test node.spec functions', function() {
             expect(s.conform(odds, [])).to.deep.equal([]);
         });
     });
+
+    describe('Test the nilable function', () => {
+        it('it should create a spec that allows null as a valid value', () => {
+            expect(s.isValid(isString, null)).to.be.false;
+            expect(s.isValid(s.nilable(isString), null)).to.be.true;            
+        });
+    });
 });

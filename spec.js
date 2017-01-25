@@ -43,6 +43,10 @@ function explain(spec, value) {
     }
 }
 
+function nilable(predicate) {
+    return value => (value !== null) ? predicate(value) : true;
+}
+
 function plus(spec) {
     const predicate = defs[spec];
     return values => values.length > 0 && _.every(values, value => predicate(value));
@@ -64,6 +68,7 @@ module.exports = {
     def,
     explain,
     isValid,
+    nilable,
     or,
     plus,
     question,
