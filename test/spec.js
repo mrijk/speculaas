@@ -13,6 +13,7 @@ describe('Test node.spec functions', function() {
     const isOdd = x => !isEven(x);
     const isInteger = _.isInteger;
     const isString = _.isString;
+    const isDouble = x => _.isNumber(x) && !_.isInteger(x);
 
     const invalidString = ':node.spec/invalid';
 
@@ -95,15 +96,15 @@ describe('Test node.spec functions', function() {
         s.def('::odd?', s.and(isInteger, isOdd));
         const odds = s.plus('::odd?');
 
-        it('it should return the value', () => {
+        it('should return the value', () => {
             expect(s.conform(odds, [1, 3])).to.deep.equal([1, 3]);
         });
 
-        it('it should return the invalid string when value sequence is empty', () => {
+        it('should return the invalid string when value sequence is empty', () => {
             expect(s.conform(odds, [])).to.equal(invalidString);
         });
 
-        it('it should return the invalid string', () => {
+        it('should return the invalid string', () => {
             expect(s.conform(odds, [1, 3, 6])).to.equal(invalidString);
         });
     });
@@ -112,15 +113,15 @@ describe('Test node.spec functions', function() {
         s.def('::odd?', s.and(isInteger, isOdd));
         const odds = s.question('::odd?');
         
-        it('it should return the value', () => {
+        it('should return the value', () => {
             expect(s.conform(odds, [1])).to.deep.equal([1]);
         });
         
-        it('it should accept an empty value sequence', () => {
+        it('should accept an empty value sequence', () => {
             expect(s.conform(odds, [])).to.deep.equal([]);
         });
 
-        it('it should not allow 2 or more values', () => {
+        it('should not allow 2 or more values', () => {
             expect(s.isValid(odds, [1, 3])).to.be.false;
         });
     });
@@ -129,19 +130,35 @@ describe('Test node.spec functions', function() {
         s.def('::odd?', s.and(isInteger, isOdd));
         const odds = s.star('::odd?');
 
-        it('it should return the value', () => {
+        it('should return the value', () => {
             expect(s.conform(odds, [1, 3])).to.deep.equal([1, 3]);
         });
 
-        it('it should accept an empty value sequence', () => {
+        it('should accept an empty value sequence', () => {
             expect(s.conform(odds, [])).to.deep.equal([]);
         });
     });
 
     describe('Test the nilable function', () => {
-        it('it should create a spec that allows null as a valid value', () => {
+        it('should create a spec that allows null as a valid value', () => {
             expect(s.isValid(isString, null)).to.be.false;
             expect(s.isValid(s.nilable(isString), null)).to.be.true;            
+        });
+    });
+
+    describe('Test the tuple function', () => {
+        s.def('::point', s.tuple(isDouble, isDouble, isDouble));
+
+        it('should return a spec for a tuple', () => {
+            expect(s.isValid('::point', [1.5, 2.5, -0.5])).to.be.true;
+        });
+
+        it('should fail on invalid data', () => {
+            expect(s.isValid('::point', [1.5, 2.5, 'foo'])).to.be.false;
+        });
+
+        it('should fail on invalid data length', () => {
+            expect(s.isValid('::point', [1.5, 2.5, -0.5, 3.0])).to.be.false;
         });
     });
 });

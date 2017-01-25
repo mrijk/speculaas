@@ -10,6 +10,10 @@ function or(...predicates) {
     return value => _.some(predicates, predicate => predicate(value));
 }
 
+function collOf(predicate, value) {
+    return value => value;
+}
+
 function conform(spec, value) {
     return isValid(spec, value) ? value : ':node.spec/invalid';
 }
@@ -62,8 +66,14 @@ function star(spec) {
     return values => _.every(values, value => predicate(value));
 }
 
+function tuple(...predicates) {
+    return values => values.length === predicates.length &&
+        _.zip(predicates, values).every(([p, v]) => p(v));
+}
+
 module.exports = {
     and,
+    collOf,
     conform,
     def,
     explain,
@@ -72,5 +82,6 @@ module.exports = {
     or,
     plus,
     question,
-    star
+    star,
+    tuple
 };
