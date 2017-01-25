@@ -10,8 +10,14 @@ function or(...predicates) {
     return value => _.some(predicates, predicate => predicate(value));
 }
 
-function collOf(predicate, value) {
-    return value => value;
+function collOf(predicate, {kind, count, distinct = false, into}) {
+    const uniq = value => !distinct || isUnique(value); 
+    
+    return value => kind(value) && uniq(value) && _.every(value, value => predicate(value));
+}
+
+function isUnique(value) {
+    return _.uniq(value).length === value.length;
 }
 
 function conform(spec, value) {
