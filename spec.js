@@ -69,6 +69,10 @@ function getSpec(k) {
     return defs[k];
 }
 
+function intIn(start, end) {
+    return value => isIntInRange(start, end, value);
+}
+
 function isIntInRange(start, end, val) {
     return _.inRange(val, start, end);
 }
@@ -106,6 +110,7 @@ module.exports = {
     explain,
     gen,
     getSpec,
+    intIn,
     isIntInRange,
     isValid,
     mapOf,
