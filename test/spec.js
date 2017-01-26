@@ -4,19 +4,12 @@ const _ = require('lodash');
 
 const expect = require('chai').expect;
 
+const {isEven, isOdd, isInteger, isNumber, isString, isVector} = require('./utils');
+
 describe('Test node.spec functions', function() {
     const s = require('../spec');
 
     const suit = [':club', ':diamond', ':heart', ':spade'];
-
-    const isEven = x => !(x % 2);
-    const isOdd = x => !isEven(x);
-    const isDouble = x => _.isNumber(x) && !_.isInteger(x);
-    const isInteger = _.isInteger;
-    const isNumber = _.isNumber;
-    const isString = _.isString;
-    const isVector = _.isArray;
-
     const invalidString = ':node.spec/invalid';
 
     describe('Test the define function', () => {
@@ -148,22 +141,6 @@ describe('Test node.spec functions', function() {
         it('should create a spec that allows null as a valid value', () => {
             expect(s.isValid(isString, null)).to.be.false;
             expect(s.isValid(s.nilable(isString), null)).to.be.true;            
-        });
-    });
-
-    describe('Test the tuple function', () => {
-        s.def('::point', s.tuple(isDouble, isDouble, isDouble));
-
-        it('should return a spec for a tuple', () => {
-            expect(s.isValid('::point', [1.5, 2.5, -0.5])).to.be.true;
-        });
-
-        it('should fail on invalid data', () => {
-            expect(s.isValid('::point', [1.5, 2.5, 'foo'])).to.be.false;
-        });
-
-        it('should fail on invalid data length', () => {
-            expect(s.isValid('::point', [1.5, 2.5, -0.5, 3.0])).to.be.false;
         });
     });
 

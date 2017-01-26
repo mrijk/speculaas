@@ -65,6 +65,10 @@ function explain(spec, value) {
 function gen(spec) {
 }
 
+function getSpec(k) {
+    return defs[k];
+}
+
 function nilable(predicate) {
     return value => (value !== null) ? predicate(value) : true;
 }
@@ -97,6 +101,7 @@ module.exports = {
     def,
     explain,
     gen,
+    getSpec,
     isValid,
     mapOf,
     nilable,
