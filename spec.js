@@ -69,6 +69,10 @@ function getSpec(k) {
     return defs[k];
 }
 
+function isIntInRange(start, end, val) {
+    return _.inRange(val, start, end);
+}
+
 function nilable(predicate) {
     return value => (value !== null) ? predicate(value) : true;
 }
@@ -102,6 +106,7 @@ module.exports = {
     explain,
     gen,
     getSpec,
+    isIntInRange,
     isValid,
     mapOf,
     nilable,

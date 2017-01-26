@@ -4,7 +4,7 @@ const _ = require('lodash');
 
 const expect = require('chai').expect;
 
-const {isEven, isOdd, isInteger, isNumber, isString, isVector} = require('./utils');
+const {isEven, isOdd, isInteger, isString} = require('./utils');
 
 describe('Test node.spec functions', function() {
     const s = require('../spec');
@@ -144,39 +144,14 @@ describe('Test node.spec functions', function() {
         });
     });
 
-    describe('Test the collOf function', () => {
-        s.def('::vnum3', s.collOf(isNumber, {kind: isVector, count: 3, distinct: true, into: {}}));
-
-        it('should return a spec for a collection', () => {
-            expect(s.isValid('::vnum3', [1, 2, 3])).to.be.true;
+    describe('Test the getSpec function', () => {
+        it('should return an existing spec', () => {
+            s.def('::odd?', s.and(isInteger, isOdd));
+            expect(s.getSpec('::odd?')).to.exist;
         });
 
-        it('should fail on invalid type (not a vector)', () => {
-            expect(s.isValid('::vnum3', {x: 1, y: 2, z: 3})).to.be.false;
-        });
-
-        it('should fail on non-distinct data', () => {
-            expect(s.isValid('::vnum3', [1, 1, 1])).to.be.false;
-        });
-
-        it('should fail on invalid data', () => {
-            expect(s.isValid('::vnum3', [1, 2, 'foo'])).to.be.false;
-        });
-
-        it('should fail on invalid length', () => {
-            expect(s.isValid('::vnum3', [1, 2, 3, 4])).to.be.false;
-        });
-    });
-
-    describe('Test the mapOf function', () => {
-        s.def('::scores', s.mapOf(isString, isInteger, {}));
-
-        it('should return a spec for a map', () => {
-            expect(s.isValid('::scores', {'Sally': 1000, 'Joe': 500})).to.be.true;
-        });
-
-        it('should fail on invalid data', () => {
-            expect(s.isValid('::scores', {'Sally': 1000, 'Joe': '500'})).to.be.false;
+        it('should return null on an non-existing spec', () => {
+            expect(s.getSpec('::foobar?')).to.be.undefined;
         });
     });
 });
