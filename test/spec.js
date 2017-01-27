@@ -1,10 +1,8 @@
 'use strict';
 
-const _ = require('lodash');
+const {expect} = require('chai');
 
-const expect = require('chai').expect;
-
-const {isEven, isOdd, isInteger, isString, invalidString} = require('./utils');
+const {isOdd, isInteger, isString, invalidString} = require('./utils');
 
 describe('Test node.spec functions', function() {
     const s = require('../spec');

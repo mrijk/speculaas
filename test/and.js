@@ -14,8 +14,7 @@ describe('Test the and function', () => {
     });
     
     it('should test the and of 2 specs', () => {
-        s.def('::even?', s.and(isInteger, isEven));
-        
+        s.def('::even?', s.and(isInteger, isEven));        
         expect(s.conform('::even?', 12)).to.equal(12);
         expect(s.conform('::even?', 13)).to.equal(invalidString);
     });

@@ -7,7 +7,7 @@ function alt(...predicates) {
 }
 
 function and(...predicates) {
-    return value => _.every(predicates, predicate => predicate(value));
+    return value => _.every(predicates, predicate => predicate(value)) ? value : null;
 }
 
 function cat(...predicates) {
@@ -16,7 +16,10 @@ function cat(...predicates) {
 }
 
 function or(...predicates) {
-    return value => _.some(_.chunk(predicates, 2), ([_, predicate]) => predicate(value));
+    return value => {
+        const found = _.find(_.chunk(predicates, 2), ([_, predicate]) => predicate(value));
+        return _.isUndefined(found) ? null : [found[0], value];
+    };
 }
 
 function collOf(predicate, {kind, count, distinct = false, into}) {
@@ -30,12 +33,23 @@ function isUnique(value) {
     return _.uniq(value).length === value.length;
 }
 
-function mapOf(kpred, vpred, {count}) {
-    return value => _.every(value, (v, k) => vpred(v) && kpred(k));
+function conform(spec, value) {
+    if (_.isFunction(spec)) {
+        const result = spec(value);
+        return result ? value : ':node.spec/invalid';
+    } else {
+        const predicate = defs[spec];
+        const result = predicate(value);
+        if (_.isBoolean(result)) {
+            return result ? value : ':node.spec/invalid';
+        } else {
+            return result ? result : ':node.spec/invalid';
+        }
+    }
 }
 
-function conform(spec, value) {
-    return isValid(spec, value) ? value : ':node.spec/invalid';
+function mapOf(kpred, vpred, {count}) {
+    return value => _.every(value, (v, k) => vpred(v) && kpred(k));
 }
 
 function isValid(spec, value) {
@@ -47,7 +61,8 @@ function isValid(spec, value) {
     } else {
         predicate = defs[spec];
     }
-    return predicate(value);
+    const result = predicate(value);
+    return _.isBoolean(result) ? result : result !== null;
 }
 
 function keys({req = [], opt = []}) {
@@ -106,17 +121,17 @@ function nilable(predicate) {
 
 function plus(spec) {
     const predicate = defs[spec];
-    return values => values.length > 0 && _.every(values, value => predicate(value));
+    return values => (values.length > 0 && _.every(values, value => predicate(value))) ? values : null;
 }
 
 function question(spec) {
     const predicate = defs[spec];
-    return values => values.length === 0 || (values.length == 1 && predicate(values[0]));
+    return values => (values.length === 0 || (values.length == 1 && predicate(values[0]))) ? values : null;
 }
 
 function star(spec) {
     const predicate = defs[spec];
-    return values => _.every(values, value => predicate(value));
+    return values => _.every(values, value => predicate(value)) ? values : null;
 }
 
 function tuple(...predicates) {

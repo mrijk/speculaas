@@ -11,7 +11,7 @@ describe('Test the plus (+) function', () => {
     const odds = s.plus('::odd?');
     
     it('should return the value', () => {
-        expect(s.conform(odds, [1, 3])).to.deep.equal([1, 3]);
+        expect(s.conform(odds, [1, 3])).to.eql([1, 3]);
     });
     
     it('should return the invalid string when value sequence is empty', () => {

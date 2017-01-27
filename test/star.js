@@ -1,6 +1,6 @@
 'use strict';
 
-const expect = require('chai').expect;
+const {expect} = require('chai');
 
 const s = require('../spec');
 
@@ -11,11 +11,11 @@ describe('Test the star (*) function', () => {
     const odds = s.star('::odd?');
     
     it('should return the value', () => {
-        expect(s.conform(odds, [1, 3])).to.deep.equal([1, 3]);
+        expect(s.conform(odds, [1, 3])).to.eql([1, 3]);
     });
     
     it('should accept an empty value sequence', () => {
-        expect(s.conform(odds, [])).to.deep.equal([]);
+        expect(s.conform(odds, [])).to.eql([]);
     });
 });
 
