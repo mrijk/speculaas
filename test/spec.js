@@ -16,18 +16,6 @@ describe('Test node.spec functions', function() {
         });
     });
 
-    describe('Test the conform function', () => {
-        s.def('::a', isInteger);
-
-        it('should return value when value is conform spec', () => {
-            expect(s.conform('::a', 12)).to.equal(12);
-        });
-        
-        it('should return invalid string', () => {
-            expect(s.conform('::a', 'foobar')).to.equal(invalidString);
-        });
-    });
-
     describe('Test the alt function', () => {
     });
 

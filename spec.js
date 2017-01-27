@@ -2,6 +2,8 @@ const _ = require('lodash');
 
 const defs = {};
 
+const invalidString = ':node.spec/invalid';
+
 function alt(...predicates) {
     return value => true;
 }
@@ -150,6 +152,7 @@ module.exports = {
     gen,
     getSpec,
     intIn,
+    invalidString,
     isIntInRange,
     isValid,
     keys,
