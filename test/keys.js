@@ -7,7 +7,9 @@ const s = require('../spec');
 const {isString} = require('./utils');
 
 describe('Test the keys function', () => {
-    s.def('::email-type', s.and(isString));
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/
+
+    s.def('::email-type', s.and(isString, s => emailRegex.test(s)));
     
     s.def('::first-name', isString);
     s.def('::last-name', isString);
@@ -27,6 +29,15 @@ describe('Test the keys function', () => {
         expect(s.isValid('::person',
                          {
                              '::first-name': 'Elon'
+                         })).to.be.false;
+    });
+
+    it('should fail if attribute doesn\'t conform', () => {
+        expect(s.isValid('::person',
+                         {
+                             '::first-name': 'Elon',
+                             '::last-name': 'Musk',
+                             '::email': 'n/a'
                          })).to.be.false;
     });
 });
