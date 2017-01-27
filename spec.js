@@ -50,10 +50,6 @@ function conform(spec, value) {
     }
 }
 
-function mapOf(kpred, vpred, {count}) {
-    return value => _.every(value, (v, k) => vpred(v) && kpred(k));
-}
-
 function isValid(spec, value) {
     let predicate;
     if (_.isFunction(spec)) {
@@ -61,16 +57,20 @@ function isValid(spec, value) {
     } else if (_.isArray(spec)) {
         predicate = value => _.includes(spec, value);
     } else {
-        predicate = defs[spec];
+        const def = defs[spec];
+        predicate = def.conform ? def.conform : def;
     }
     const result = predicate(value);
     return _.isBoolean(result) ? result : result !== null;
 }
 
 function keys({req = [], opt = []}) {
-    return value => {
-        return _.every(req, key => isValidRequiredKey(value, key)) &&
-            _.every(opt, key => isValidOptionalKey(value, key));
+    return {
+        req,
+        opt,
+        conform: value =>
+            _.every(req, key => isValidRequiredKey(value, key)) &&
+            _.every(opt, key => isValidOptionalKey(value, key))
     };
 }
 
@@ -80,6 +80,33 @@ function isValidOptionalKey(value, key) {
 
 function isValidRequiredKey(value, key) {
     return _.has(value, key) && isValid(key, value[key]);
+}
+
+function mapOf(kpred, vpred, {count}) {
+    return value => _.every(value, (v, k) => vpred(v) && kpred(k));
+}
+
+function merge(...predicates) {
+    const {req, opt} = _.reduce(predicates,
+                                ({req, opt}, p) => {
+                                    const spec = _getSpec(p);
+                                    return {
+                                        req: _.concat(req, spec.req),
+                                        opt: _.concat(opt, spec.opt)
+                                    };
+                                },
+                                {req: [], opt: []});
+    return keys({req, opt});
+}
+
+function _getSpec(p) {
+    if (_.isString(p)) {
+        return defs[p];
+    } else if (_.isObject(p)) {
+        return p;
+    } else {
+        return null;
+    }
 }
 
 function def(spec, predicate) {
@@ -157,6 +184,7 @@ module.exports = {
     isValid,
     keys,
     mapOf,
+    merge,
     nilable,
     or,
     plus,
