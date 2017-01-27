@@ -1,5 +1,6 @@
 Still to implement:
 
+- add annotation for s/or
 - unqualified keys (:req-un and :opt-un)
 - alt
 - generators

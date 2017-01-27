@@ -15,6 +15,7 @@ module.exports = {
     isEven,
     isOdd,
     isDouble,
+    isInt: isInteger,
     isInteger,
     isNumber,
     isString,

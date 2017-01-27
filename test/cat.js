@@ -7,7 +7,7 @@ const s = require('../spec');
 const {isNumber, isString} = require('./utils');
 
 describe('Test the cat function', () => {
-    s.def('::ingredient', s.cat(isNumber, isString));
+    s.def('::ingredient', s.cat(':quantity', isNumber, ':unit', isString));
    
     it('should match a concatenation', () => {
         expect(s.isValid('::ingredient', [2, ':teaspoon'])).to.be.true;

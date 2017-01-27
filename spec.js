@@ -11,12 +11,12 @@ function and(...predicates) {
 }
 
 function cat(...predicates) {
-    return values => values.length === predicates.length &&
-        _.zip(predicates, values).every(([p, v]) => p(v));
+    return values => values.length === predicates.length / 2 &&
+        _.zip(_.chunk(predicates, 2), values).every(([[_, p], v]) => p(v));
 }
 
 function or(...predicates) {
-    return value => _.some(predicates, predicate => predicate(value));
+    return value => _.some(_.chunk(predicates, 2), ([_, predicate]) => predicate(value));
 }
 
 function collOf(predicate, {kind, count, distinct = false, into}) {

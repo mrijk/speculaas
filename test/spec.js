@@ -33,36 +33,6 @@ describe('Test node.spec functions', function() {
     describe('Test the alt function', () => {
     });
 
-    describe('Test the and function', () => {
-        it('should test the and of 1 spec', () => {
-            s.def('::integer?', s.and(isInteger));
-            expect(s.isValid('::integer?', 12)).to.be.true;
-            expect(s.isValid('::integer?', 'foobar')).to.be.false;
-        });
-
-        it('should test the and of 2 specs', () => {
-            s.def('::even?', s.and(isInteger, isEven));
-    
-            expect(s.conform('::even?', 12)).to.equal(12);
-            expect(s.conform('::even?', 13)).to.equal(invalidString);
-        });
-    });
-
-    describe('Test the or function', () => {
-        it('should test the or of 1 spec', () => {
-            s.def('::integer?', s.or(isInteger));
-            expect(s.isValid('::integer?', 12)).to.be.true;
-            expect(s.isValid('::integer?', 'foobar')).to.be.false;
-        });
-
-        it('should test the or of 2 specs', () => {
-            s.def('::name-or-id', s.or(isInteger, isString));
-            expect(s.isValid('::name-or-id', 'abc')).to.be.true;
-            expect(s.isValid('::name-or-id', 100)).to.be.true;
-            expect(s.isValid('::name-or-id', 3.14)).to.be.false;
-        });
-    });
-
     describe('Test the isValid function', () => {
             
         it('should return true when a value meets a spec', () => {
