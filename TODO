@@ -1,6 +1,6 @@
 Still to implement:
 
-- keys
+- unqualified keys (:req-un and :opt-un)
 - alt
 - generators
 - cat

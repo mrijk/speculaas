@@ -10,6 +10,11 @@ function and(...predicates) {
     return value => _.every(predicates, predicate => predicate(value));
 }
 
+function cat(...predicates) {
+    return values => values.length === predicates.length &&
+        _.zip(predicates, values).every(([p, v]) => p(v));
+}
+
 function or(...predicates) {
     return value => _.some(predicates, predicate => predicate(value));
 }
@@ -21,12 +26,12 @@ function collOf(predicate, {kind, count, distinct = false, into}) {
     return value => kind(value) && uniq(value) && checkCount(value) && _.every(value, value => predicate(value));
 }
 
-function mapOf(kpred, vpred, {count}) {
-    return value => _.every(value, (v, k) => vpred(v) && kpred(k));
-}
-
 function isUnique(value) {
     return _.uniq(value).length === value.length;
+}
+
+function mapOf(kpred, vpred, {count}) {
+    return value => _.every(value, (v, k) => vpred(v) && kpred(k));
 }
 
 function conform(spec, value) {
@@ -122,6 +127,7 @@ function tuple(...predicates) {
 module.exports = {
     alt,
     and,
+    cat,
     collOf,
     conform,
     def,
