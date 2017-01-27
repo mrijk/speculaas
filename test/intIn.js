@@ -1,10 +1,8 @@
 'use strict';
 
-const expect = require('chai').expect;
+const {expect} = require('chai');
 
 const s = require('../spec');
-
-const {} = require('./utils');
 
 describe('Test isIntInRange? function', () => {
     it('should return true if value is with range', () => {

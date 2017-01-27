@@ -45,14 +45,28 @@ function isValid(spec, value) {
     return predicate(value);
 }
 
-function keys() {
-    return value => true;
+function keys({req = [], opt = []}) {
+    return value => {
+        return _.every(req, key => isValidRequiredKey(value, key)) &&
+            _.every(opt, key => isValidOptionalKey(value, key));
+    };
+}
+
+function isValidOptionalKey(value, key) {
+    return !_.has(value, key) || isValid(key, value[key]);
+}
+
+function isValidRequiredKey(value, key) {
+    return _.has(value, key) && isValid(key, value[key]);
 }
 
 function def(spec, predicate) {
     let entry = predicate;
     if (_.isArray(predicate)) {
         entry = value => _.includes(predicate, value);
+    } else if (_.isString(predicate)) {
+        // Reference to another existing spec
+        entry = getSpec(predicate);
     }
     defs[spec] = entry;
 }
