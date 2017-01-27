@@ -45,6 +45,10 @@ function isValid(spec, value) {
     return predicate(value);
 }
 
+function keys() {
+    return value => true;
+}
+
 function def(spec, predicate) {
     let entry = predicate;
     if (_.isArray(predicate)) {
@@ -113,6 +117,7 @@ module.exports = {
     intIn,
     isIntInRange,
     isValid,
+    keys,
     mapOf,
     nilable,
     or,
