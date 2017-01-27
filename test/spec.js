@@ -4,13 +4,12 @@ const _ = require('lodash');
 
 const expect = require('chai').expect;
 
-const {isEven, isOdd, isInteger, isString} = require('./utils');
+const {isEven, isOdd, isInteger, isString, invalidString} = require('./utils');
 
 describe('Test node.spec functions', function() {
     const s = require('../spec');
 
     const suit = [':club', ':diamond', ':heart', ':spade'];
-    const invalidString = ':node.spec/invalid';
 
     describe('Test the define function', () => {
         it('should allow an array as predicate', () => {
@@ -87,53 +86,6 @@ describe('Test node.spec functions', function() {
         it('should accept an array', () => {
             expect(s.isValid(suit, ':club')).to.be.true;
             expect(s.isValid(suit, 42)).to.be.false;
-        });
-    });
-
-    describe('Test the plus (+) function', () => {
-        s.def('::odd?', s.and(isInteger, isOdd));
-        const odds = s.plus('::odd?');
-
-        it('should return the value', () => {
-            expect(s.conform(odds, [1, 3])).to.deep.equal([1, 3]);
-        });
-
-        it('should return the invalid string when value sequence is empty', () => {
-            expect(s.conform(odds, [])).to.equal(invalidString);
-        });
-
-        it('should return the invalid string', () => {
-            expect(s.conform(odds, [1, 3, 6])).to.equal(invalidString);
-        });
-    });
-
-    describe('Test the question (?) function', () => {
-        s.def('::odd?', s.and(isInteger, isOdd));
-        const odds = s.question('::odd?');
-        
-        it('should return the value', () => {
-            expect(s.conform(odds, [1])).to.deep.equal([1]);
-        });
-        
-        it('should accept an empty value sequence', () => {
-            expect(s.conform(odds, [])).to.deep.equal([]);
-        });
-
-        it('should not allow 2 or more values', () => {
-            expect(s.isValid(odds, [1, 3])).to.be.false;
-        });
-    });
-
-    describe('Test the star (*) function', () => {
-        s.def('::odd?', s.and(isInteger, isOdd));
-        const odds = s.star('::odd?');
-
-        it('should return the value', () => {
-            expect(s.conform(odds, [1, 3])).to.deep.equal([1, 3]);
-        });
-
-        it('should accept an empty value sequence', () => {
-            expect(s.conform(odds, [])).to.deep.equal([]);
         });
     });
 

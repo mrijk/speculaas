@@ -11,6 +11,7 @@ const isString = _.isString;
 const isVector = _.isArray;
 
 module.exports = {
+    invalidString: ':node.spec/invalid',
     isEven,
     isOdd,
     isDouble,
