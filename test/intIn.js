@@ -2,7 +2,7 @@
 
 const {expect} = require('chai');
 
-const s = require('../spec');
+const s = require('../lib/spec');
 
 describe('Test isIntInRange? function', () => {
     it('should return true if value is with range', () => {

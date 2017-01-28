@@ -4,8 +4,8 @@ const {expect} = require('chai')
 
 const {isInteger} = require('./utils');
 
-const s = require('../spec');
-const gen = require('../gen');
+const s = require('../lib/spec');
+const gen = require('../lib/gen');
 
 describe('Test node.spec.gen functions', () => {
 

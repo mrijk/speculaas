@@ -2,7 +2,7 @@
 
 const {expect} = require('chai');
 
-const s = require('../spec');
+const s = require('../lib/spec');
 
 const {isString} = require('./utils');
 

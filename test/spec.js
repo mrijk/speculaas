@@ -5,7 +5,7 @@ const {expect} = require('chai');
 const {isOdd, isInteger, isString, invalidString} = require('./utils');
 
 describe('Test node.spec functions', function() {
-    const s = require('../spec');
+    const s = require('../lib/spec');
 
     const suit = [':club', ':diamond', ':heart', ':spade'];
 
