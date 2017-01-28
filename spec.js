@@ -8,6 +8,15 @@ function alt(...predicates) {
     return value => true;
 }
 
+function amp(re, ...preds) {
+    return {
+        conform: value => {
+            const result = conform(re, value);
+            return result !== invalidString && _.every(preds, p => p(result)) ? result : null;
+        }
+    };
+}
+
 function and(...predicates) {
     return value => _.every(predicates, predicate => predicate(value)) ? value : null;
 }
@@ -40,7 +49,8 @@ function conform(spec, value) {
         const result = spec(value);
         return result ? value : ':node.spec/invalid';
     } else {
-        const predicate = defs[spec];
+        const def = defs[spec];
+        const predicate = def.conform ? def.conform : def;
         const result = predicate(value);
         if (_.isBoolean(result)) {
             return result ? value : ':node.spec/invalid';
@@ -148,8 +158,7 @@ function nilable(predicate) {
 }
 
 function plus(spec) {
-    const predicate = defs[spec];
-    return values => (values.length > 0 && _.every(values, value => predicate(value))) ? values : null;
+    return values => (values.length > 0 && _.every(values, value => isValid(spec, value))) ? values : null;
 }
 
 function question(spec) {
@@ -158,8 +167,7 @@ function question(spec) {
 }
 
 function star(spec) {
-    const predicate = defs[spec];
-    return values => _.every(values, value => predicate(value)) ? values : null;
+    return values => _.every(values, value => isValid(spec, value)) ? values : null;
 }
 
 function tuple(...predicates) {
@@ -169,6 +177,7 @@ function tuple(...predicates) {
 
 module.exports = {
     alt,
+    amp,
     and,
     cat,
     collOf,
