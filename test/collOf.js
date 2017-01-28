@@ -28,4 +28,8 @@ describe('Test the collOf function', () => {
     it('should fail on invalid length', () => {
         expect(s.isValid('::vnum3', [1, 2, 3, 4])).to.be.false;
     });
+
+    it('should conform to a valid value',  () => {
+        expect(s.conform(s.collOf(isNumber), [5, 10, 2])).to.eql([5, 10, 2]);
+    });
 });

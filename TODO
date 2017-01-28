@@ -1,6 +1,7 @@
 Still to implement:
 
-- explain
+- min-count and max-count for collOf
+- amp (&) operator
 - unqualified keys (:req-un and :opt-un)
 - alt
 - generators

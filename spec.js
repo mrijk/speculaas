@@ -24,7 +24,7 @@ function or(...predicates) {
     };
 }
 
-function collOf(predicate, {kind, count, distinct = false, into}) {
+function collOf(predicate, {kind = _ => true, count, distinct = false, into} = {}) {
     const uniq = value => !distinct || isUnique(value);
     const checkCount = value => !count || value.length === count;
 
