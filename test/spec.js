@@ -4,7 +4,7 @@ const {expect} = require('chai');
 
 const {isOdd, isInteger, isString, invalidString} = require('./utils');
 
-describe('Test node.spec functions', function() {
+describe('Test node.spec functions', () => {
     const s = require('../lib/spec');
 
     const suit = [':club', ':diamond', ':heart', ':spade'];
@@ -42,13 +42,6 @@ describe('Test node.spec functions', function() {
         it('should accept an array', () => {
             expect(s.isValid(suit, ':club')).to.be.true;
             expect(s.isValid(suit, 42)).to.be.false;
-        });
-    });
-
-    describe('Test the nilable function', () => {
-        it('should create a spec that allows null as a valid value', () => {
-            expect(s.isValid(isString, null)).to.be.false;
-            expect(s.isValid(s.nilable(isString), null)).to.be.true;            
         });
     });
 
