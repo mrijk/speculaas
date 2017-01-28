@@ -1,5 +1,6 @@
 const _ = require('lodash');
 
+let _checkAsserts = false;
 const defs = {};
 
 const invalidString = ':node.spec/invalid';
@@ -21,16 +22,25 @@ function and(...predicates) {
     return value => _.every(predicates, predicate => predicate(value)) ? value : null;
 }
 
+function assert(spec, value) {
+    if (_checkAsserts) {
+        if (isValid(spec, value)) {
+            return value;
+        } else {
+            throw new Error('Spec assertion failed');
+        }
+    } else {
+        return value;
+    }
+}
+
 function cat(...predicates) {
     return values => values.length === predicates.length / 2 &&
         _.zip(_.chunk(predicates, 2), values).every(([[_, p], v]) => p(v));
 }
 
-function or(...predicates) {
-    return value => {
-        const found = _.find(_.chunk(predicates, 2), ([_, predicate]) => predicate(value));
-        return _.isUndefined(found) ? null : [found[0], value];
-    };
+function checkAsserts(check) {
+    return _checkAsserts = check;
 }
 
 function collOf(predicate, {kind = _ => true, count, distinct = false, into} = {}) {
@@ -38,6 +48,10 @@ function collOf(predicate, {kind = _ => true, count, distinct = false, into} = {
     const checkCount = value => !count || value.length === count;
 
     return value => kind(value) && uniq(value) && checkCount(value) && _.every(value, value => predicate(value));
+}
+
+function isCheckAsserts() {
+    return _checkAsserts;
 }
 
 function isUnique(value) {
@@ -157,6 +171,13 @@ function nilable(predicate) {
     return value => (value !== null) ? predicate(value) : true;
 }
 
+function or(...predicates) {
+    return value => {
+        const found = _.find(_.chunk(predicates, 2), ([_, predicate]) => predicate(value));
+        return _.isUndefined(found) ? null : [found[0], value];
+    };
+}
+
 function plus(spec) {
     return values => (values.length > 0 && _.every(values, value => isValid(spec, value))) ? values : null;
 }
@@ -179,7 +200,9 @@ module.exports = {
     alt,
     amp,
     and,
+    assert,
     cat,
+    checkAsserts,
     collOf,
     conform,
     def,
@@ -188,6 +211,7 @@ module.exports = {
     getSpec,
     intIn,
     invalidString,
+    isCheckAsserts,
     isIntInRange,
     isValid,
     keys,
