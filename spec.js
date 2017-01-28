@@ -120,12 +120,11 @@ function def(spec, predicate) {
     defs[spec] = entry;
 }
 
-function explain(spec, value) {
-    const predicate = defs[spec];
-    if (predicate(value)) {
-        return 'Success!'
+function explainStr(spec, value) {
+    if (isValid(spec, value)) {
+        return 'Success!\n'
     } else {
-        return `val: ${value} fails spec: :even? predicate: ${spec}`;
+        return `val: ${value} fails predicate: :even? predicate: ${spec}\n`;
     }
 }
 
@@ -175,7 +174,7 @@ module.exports = {
     collOf,
     conform,
     def,
-    explain,
+    explainStr,
     gen,
     getSpec,
     intIn,

@@ -6,7 +6,7 @@ const s = require('../spec');
 
 const {isBoolean, isString} = require('./utils');
 
-describe.only('Test the merge function', () => {
+describe('Test the merge function', () => {
     it('should merge a spec', () => {
         s.def(':animal/kind', isString);
         s.def(':animal/says', isString);
