@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
       "test": "mocha -R spec",
-      "lint": "eslint lib *.js"
+      "lint": "eslint lib samples"
   },
   "author": "",
   "license": "ISC",
