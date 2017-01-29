@@ -28,3 +28,26 @@ s.def('::player', s.keys({req: ['::name', '::score', '::hand']}));
 s.def('::players', s.star('::player'));
 s.def('::deck', s.star('::card'));
 s.def('::game', s.keys({req: ['::players', '::deck']}));
+
+// We can validate a piece of this data against the schema:
+
+const kenny = {
+    '::name': 'Kenny Rogers',
+    '::score': 100,
+    '::hand': []
+};
+
+console.log(s.isValid('::player', kenny));
+
+s.isValid('::game', {
+    '::deck': [], // deck,
+    '::players': []
+    /*
+        {
+            '::name': 'Kenny Rogers',
+            '::score': 100,
+            '::hand': [[2, ':banana']]
+        }
+    ]
+    */
+});

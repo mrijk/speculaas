@@ -3,5 +3,6 @@ Still to implement:
 - min-count and max-count for collOf
 - double-in
 - unqualified keys (:req-un and :opt-un)
+- fdef
 - alt
 - cat
