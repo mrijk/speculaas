@@ -24,3 +24,11 @@ s.def('::first-line', s.cat(':n1', '::fish-number', ':n2', '::fish-number', 'c1'
 s.explain('::first-line', [1, 2, 'Red', 'Black']);
 
 const isOneBigger = ({n1, n2}) => n2 === n1 + 1;
+
+s.def('::first-line', s.and(s.cat(':n1', '::fish-number', ':n2', '::fish-number', 'c1', '::color', 'c2', '::color'),
+                            isOneBigger,
+                            ({c1, c2}) => c1 !== c2));
+
+// Doesn't work yet since s.and should promote the output of the first s.cat to the next spec (isOneBigger).
+
+// s.isValid('::first-line', [1, 2, 'Red', 'Blue']);
