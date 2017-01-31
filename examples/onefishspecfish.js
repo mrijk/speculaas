@@ -22,3 +22,5 @@ s.def('::color', ['Red', 'Blue', 'Dun']);
 s.def('::first-line', s.cat(':n1', '::fish-number', ':n2', '::fish-number', 'c1', '::color', 'c2', '::color'));
 
 s.explain('::first-line', [1, 2, 'Red', 'Black']);
+
+const isOneBigger = ({n1, n2}) => n2 === n1 + 1;
