@@ -6,3 +6,5 @@ Still to implement:
 - fdef
 - alt
 - cat
+
+throw exception when spec doens't exist
