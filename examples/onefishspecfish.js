@@ -5,3 +5,10 @@
 const _ = require('lodash');
 
 const s = require('../lib/spec');
+
+const fishNumbers = {0: 'Zero', 1: 'One', 2: 'Two'};
+
+s.def('::fish-number', _.keys(fishNumbers));
+
+console.log(s.isValid('::fish-number', 1));
+s.isValid('::fish-number', 5);
