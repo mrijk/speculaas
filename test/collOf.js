@@ -4,10 +4,10 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {isNumber, isVector} = require('./utils');
+const {isNumber, isSet, isVector} = require('./utils');
 
 describe('Test the collOf function', () => {
-    s.def('::vnum3', s.collOf(isNumber, {kind: isVector, count: 3, distinct: true, into: {}}));
+    s.def('::vnum3', s.collOf(isNumber, {kind: isVector, count: 3, distinct: true}));
     
     it('should return a spec for a collection', () => {
         expect(s.isValid('::vnum3', [1, 2, 3])).to.be.true;
@@ -43,5 +43,10 @@ describe('Test the collOf function', () => {
         s.def('::vnum', s.collOf(isNumber, {maxCount: 3}));
         expect(s.isValid('::vnum', [1, 2, 3, 4])).to.be.false;
         expect(s.isValid('::vnum', [1, 2, 3])).to.be.true;
+    });
+
+    it('should accept an object of type Set as input', () => {
+        s.def('::vset3', s.collOf(isNumber, {kind: isSet, count: 3}));
+        expect(s.isValid('::vset3', new Set([1, 2, 3]))).to.be.true;        
     });
 });
