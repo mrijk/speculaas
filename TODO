@@ -1,8 +1,14 @@
 Still to implement:
 
-- min-count and max-count for collOf
 - double-in
 - unqualified keys (:req-un and :opt-un)
 - fdef
 - alt
 - cat
+
+Other TODO:
+
+- split lib/spec.js in single modules
+- create an npm out of this lib
+- add documentation
+- support native NodeJS types (e.g. Set, Map)

@@ -32,4 +32,16 @@ describe('Test the collOf function', () => {
     it('should conform to a valid value',  () => {
         expect(s.conform(s.collOf(isNumber), [5, 10, 2])).to.eql([5, 10, 2]);
     });
+
+    it('should have a minCount of 3', () => {
+        s.def('::vnum', s.collOf(isNumber, {minCount: 3}));
+        expect(s.isValid('::vnum', [])).to.be.false;
+        expect(s.isValid('::vnum', [1, 2, 3])).to.be.true;
+    });
+
+    it('should have a maxCount of 3', () => {
+        s.def('::vnum', s.collOf(isNumber, {maxCount: 3}));
+        expect(s.isValid('::vnum', [1, 2, 3, 4])).to.be.false;
+        expect(s.isValid('::vnum', [1, 2, 3])).to.be.true;
+    });
 });
