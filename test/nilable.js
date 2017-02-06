@@ -11,4 +11,15 @@ describe('Test the nilable function', () => {
         expect(s.isValid(isString, null)).to.be.false;
         expect(s.isValid(s.nilable(isString), null)).to.be.true;            
     });
+
+    it('should create a named spec that allows null as a valid value', () => {
+        s.def('::string?', isString);
+        expect(s.isValid(s.nilable('::string?'), 'foobar')).to.be.true;
+        expect(s.isValid(s.nilable('::string?'), null)).to.be.true;
+    });
+
+    it('should test the conform', () => {
+        expect(s.conform(s.nilable(isString), null)).to.be.null;
+        expect(s.conform(s.nilable(isString), 'foobar')).to.equal('foobar');
+    });
 });
