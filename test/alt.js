@@ -26,7 +26,7 @@ describe('Test the alt function', () => {
     it('should handle list of values', () => {
         s.def('::opt', s.cat(':prop', isString,
                              ':val', s.alt(':s', isString, ':b', isBoolean)));
-        expect(s.conform('::opt', ['-verbose', true])).to.eql([]);
+        expect(s.conform('::opt', ['-verbose', true])).to.eql({':prop': '-verbose'});
     });
 
     xit('should handle list of values', () => {
