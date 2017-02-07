@@ -8,7 +8,6 @@ Still to implement:
 
 Other TODO:
 
-- split lib/spec.js in single modules
 - create an npm out of this lib
 - add documentation
 - support native NodeJS types (e.g. Set, Map)
