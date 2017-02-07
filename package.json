@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "testcheck": "^0.1.4"
   },
   "devDependencies": {
     "chai": "^3.5.0",
