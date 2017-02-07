@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-      "test": "mocha -R spec",
-      "lint": "eslint lib samples"
+    "test": "mocha -R spec",
+    "lint": "eslint lib samples"
   },
   "author": "",
   "license": "ISC",
@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "eslint": "^3.14.1",
+    "eslint": "^3.15.0",
     "mocha": "^3.2.0"
   }
 }

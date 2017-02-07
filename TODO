@@ -1,6 +1,6 @@
 Still to implement:
 
-- double-in
+- describe
 - unqualified keys (:req-un and :opt-un)
 - fdef
 - alt
