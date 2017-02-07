@@ -22,5 +22,17 @@ describe('Test the alt function', () => {
         expect(s.conform('::bool-or-string', [true])).to.eql([':b', true]);
         expect(s.conform('::bool-or-string', ['foo'])).to.eql([':s', 'foo']);
     });
+
+    it('should handle list of values', () => {
+        s.def('::opt', s.cat(':prop', isString,
+                             ':val', s.alt(':s', isString, ':b', isBoolean)));
+        expect(s.conform('::opt', ['-verbose', true])).to.eql([]);
+    });
+
+    xit('should handle list of values', () => {
+        s.def('::config', s.star(s.cat(':prop', isString,
+                                       ':val', s.alt(':s', isString, ':b', isBoolean))));
+        expect(s.conform('::config', ['-server', 'foo', '-verbose', true, 'user', 'joe'])).to.eql([]);
+    });
 });
 

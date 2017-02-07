@@ -16,5 +16,9 @@ describe('Test the cat function', () => {
     it('should fail if concatenation doesn\'t match', () => {
         expect(s.isValid('::ingredient', [2, 13])).to.be.false;
     });
+
+    it.only('should conform to a value', () => {
+        expect(s.conform('::ingredient', [2, ':teaspoon'])).to.eql([]);
+    });
 });
 
