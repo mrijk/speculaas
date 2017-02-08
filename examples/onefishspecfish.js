@@ -36,3 +36,5 @@ s.conform('::first-line', [1, 2, 'Red', 'Blue']);
 s.isValid('::first-line', [2, 1, 'Red', 'Blue']);
 
 s.explain('::first-line', [2, 1, 'Red', 'Blue']);
+
+s.exercise('::first-line', 5);
