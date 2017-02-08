@@ -16,23 +16,23 @@ describe('Test the doubleIn function', () => {
     });
 
     it('should refuse infinite numbers', () => {
-        s.def('::no-inf', s.doubleIn({}));
-        expect(s.isValid('::no-inf', Number.POSITIVE_INFINITY)).to.be.false;
+        s.def('::no-inf', s.doubleIn());
+        expect(s.isValid('::no-inf', Infinity)).to.be.false;
     });
 
     it('should accept infinite numbers', () => {
         s.def('::inf', s.doubleIn({isInfinite: true}));
-        expect(s.isValid('::inf', Number.POSITIVE_INFINITY)).to.be.true;
+        expect(s.isValid('::inf', Infinity)).to.be.true;
     });
 
     it('should refuse NaN', () => {
-        s.def('::no-nan', s.doubleIn({}));
+        s.def('::no-nan', s.doubleIn());
         expect(s.isValid('::no-nan', 3.14)).to.be.true;
-        expect(s.isValid('::no-nan', Number.NaN)).to.be.false;
+        expect(s.isValid('::no-nan', NaN)).to.be.false;
     });
 
     it('should accept NaN', () => {
         s.def('::nan', s.doubleIn({isNaN: true}));
-        expect(s.isValid('::nan', Number.NaN)).to.be.true;
+        expect(s.isValid('::nan', NaN)).to.be.true;
     });    
 });
