@@ -1,9 +1,10 @@
 Still to implement:
 
+- into parameter for collOf
+- conformKeys for mapOf
 - describe
 - unqualified keys (:req-un and :opt-un)
 - fdef
-- alt
 - cat
 
 Other TODO:

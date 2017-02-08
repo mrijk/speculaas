@@ -18,5 +18,10 @@ describe('Test the and function', () => {
         expect(s.conform('::even?', 12)).to.equal(12);
         expect(s.conform('::even?', 13)).to.equal(invalidString);
     });
+
+    it('should promote the conform return value', () => {
+        s.def('::one-bigger', ({n1}) => {console.log(n1); return n1;});
+        expect(s.conform(s.and(s.cat('n1', isInteger), '::one-bigger'), [13])).to.eql({n1: 13});
+    });
 });
 
