@@ -1,5 +1,7 @@
 'use strict';
 
+const _ = require('lodash');
+
 const {expect} = require('chai');
 
 const s = require('../lib/spec');
@@ -21,8 +23,13 @@ describe('Test the mapOf function', () => {
     it('should fail if less than minCount', () => {
         expect(s.isValid('::scores2to3', {'Sally': 1000})).to.be.false;
     });
-    
+
     it('should fail if greater than minCount', () => {
         expect(s.isValid('::scores2to3', {'Sally': 1000, 'Joe': 1000, 'Susan': 1000, 'Mike': 1000})).to.be.false;
+    });
+
+    it('should accept an object of type Map as input', () => {
+        const map = new Map(_.toPairs({'Sally': '1000', 'Joe': 500}));
+        expect(s.isValid('::scores', map)).to.be.false;
     });
 });
