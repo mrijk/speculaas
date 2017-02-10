@@ -8,6 +8,11 @@ const {isInteger} = require('./utils');
 
 describe('Test the exercise function', () => {
     it('should generate 10 integers', () => {
-        console.log(s.exercise(isInteger));
+        expect(s.exercise(isInteger)).to.have.length(10);
     });
+
+    it('should generate 10 random values from a set', () => {
+        s.def('::color', ['Red', 'Blue', 'Dun']);
+        console.log(s.exercise('::color'));
+    });    
 });

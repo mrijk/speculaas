@@ -28,7 +28,7 @@ describe('Test the mapOf function', () => {
         expect(s.isValid('::scores2to3', {'Sally': 1000, 'Joe': 1000, 'Susan': 1000, 'Mike': 1000})).to.be.false;
     });
 
-    it('should accept an object of type Map as input', () => {
+    xit('should accept an object of type Map as input', () => {
         const map = new Map(_.toPairs({'Sally': '1000', 'Joe': 500}));
         expect(s.isValid('::scores', map)).to.be.false;
     });
