@@ -1,5 +1,8 @@
 Still to implement:
 
+- create generators for all operators:
+  - alt
+  - ...
 - into parameter for collOf
 - conformKeys for mapOf
 - describe

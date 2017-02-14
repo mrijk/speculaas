@@ -34,5 +34,9 @@ describe('Test the alt function', () => {
                                        ':val', s.alt(':s', isString, ':b', isBoolean))));
         expect(s.conform('::config', ['-server', 'foo', '-verbose', true, 'user', 'joe'])).to.eql([]);
     });
+
+    it('should implement a generator', () => {
+        console.log(s.exercise('::bool-or-string', 7));
+    });
 });
 
