@@ -1,5 +1,7 @@
 'use strict';
 
+const _ = require('lodash');
+
 const {expect} = require('chai');;
 
 const s = require('../lib/spec');
@@ -36,7 +38,8 @@ describe('Test the alt function', () => {
     });
 
     it('should implement a generator', () => {
-        console.log(s.exercise('::bool-or-string', 7));
+        expect(s.exercise('::bool-or-string', 7)).to.have.length(7)
+            .to.satisfy(sample => _.every(sample, ([[v]]) => isBoolean(v) || isString(v)));
     });
 });
 

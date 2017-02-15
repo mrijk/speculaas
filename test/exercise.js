@@ -13,7 +13,7 @@ describe('Test the exercise function', () => {
         expect(s.exercise(isInteger)).to.have.length(10);
     });
 
-    it.only('should generate 10 booleans', () => {
+    it('should generate 10 booleans', () => {
         expect(s.exercise(isBoolean)).to.have.length(10).to.satisfy(sample => _.every(sample, ([b]) => isBoolean(b)));
     });
 
