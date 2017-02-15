@@ -1,10 +1,12 @@
 'use strict';
 
-const {expect} = require('chai');;
+const _ = require('lodash');
+
+const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {isString} = require('./utils');
+const {isNull, isString} = require('./utils');
 
 describe('Test the nilable function', () => {
     it('should create a spec that allows null as a valid value', () => {
@@ -23,10 +25,9 @@ describe('Test the nilable function', () => {
         expect(s.conform(s.nilable(isString), 'foobar')).to.equal('foobar');
     });
 
-    it.only('should implement a generator', () => {
+    it('should implement a generator', () => {
         s.def('::nilable', s.nilable(isString));
-        console.log(s.exercise('::nilable'));
-//        expect(s.exercise(s.nilable(isString))).to.have.length(10)
-//            .to.satisfy(sample => _.every(sample, ([[v]]) => isBoolean(v) || isString(v)));
+        expect(s.exercise('::nilable')).to.have.length(10)
+            .to.satisfy(sample => _.every(sample, ([v]) => isNull(v) || isString(v)));
     });
 });

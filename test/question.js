@@ -1,10 +1,12 @@
 'use strict';
 
+const _ = require('lodash');
+
 const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
-const {isInteger, isOdd} = require('./utils');
+const {isInteger, isNull, isOdd, isString} = require('./utils');
 
 describe('Test the question (?) function', () => {
     s.def('::odd?', s.and(isInteger, isOdd));
@@ -20,6 +22,11 @@ describe('Test the question (?) function', () => {
     
     it('should not allow 2 or more values', () => {
         expect(s.isValid(odds, [1, 3])).to.be.false;
+    });
+
+    it('should implement a generator', () => {
+        expect(s.exercise(s.question(isString))).to.have.length(10)
+            .to.satisfy(sample => _.every(sample, ([[v]]) => _.isUndefined(v) || isString(v)));
     });
 });
 

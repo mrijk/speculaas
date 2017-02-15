@@ -2,7 +2,8 @@ Still to implement:
 
 - create generators for all operators:
   - or
-  - nilable
+  - star
+  - plus
   - ...
 - into parameter for collOf
 - conformKeys for mapOf
@@ -10,6 +11,7 @@ Still to implement:
 - unqualified keys (:req-un and :opt-un)
 - fdef
 - cat
+- exercise-fn
 
 Other TODO:
 

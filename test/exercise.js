@@ -6,7 +6,7 @@ const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
-const {isInteger, isString, isBoolean} = require('./utils');
+const {isInteger, isNull, isString, isBoolean} = require('./utils');
 
 describe('Test the exercise function', () => {
     it('should generate 10 integers', () => {
@@ -22,8 +22,12 @@ describe('Test the exercise function', () => {
         expect(s.exercise('::color', 5)).to.have.length(5);
     });
 
-    it('should generate 7 random values from a spec', () => {
+    it('should generate 7 random values from a named spec', () => {
         s.def('::pairs', s.cat(':n', isInteger, ':s', isString));
         console.log(s.exercise('::pairs', 7));
+    });
+
+    it('should generate 10 random values from a spec object', () => {
+        expect(s.exercise(s.nilable(isString))).to.have.length(10).to.satisfy(sample => _.every(sample, ([s]) => isNull(s) || isString(s)));
     });
 });
