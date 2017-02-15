@@ -22,4 +22,11 @@ describe('Test the nilable function', () => {
         expect(s.conform(s.nilable(isString), null)).to.be.null;
         expect(s.conform(s.nilable(isString), 'foobar')).to.equal('foobar');
     });
+
+    it.only('should implement a generator', () => {
+        s.def('::nilable', s.nilable(isString));
+        console.log(s.exercise('::nilable'));
+//        expect(s.exercise(s.nilable(isString))).to.have.length(10)
+//            .to.satisfy(sample => _.every(sample, ([[v]]) => isBoolean(v) || isString(v)));
+    });
 });
