@@ -1,5 +1,7 @@
 'use strict';
 
+const _ = require('lodash');
+
 const {expect} = require('chai');
 
 const s = require('../lib/spec');
@@ -16,6 +18,11 @@ describe('Test the star (*) function', () => {
     
     it('should accept an empty value sequence', () => {
         expect(s.conform(odds, [])).to.eql([]);
+    });
+
+    it('should implement a generator', () => {
+        expect(s.exercise(s.star(isInteger))).to.have.length(10)
+            .to.satisfy(sample => _.every(sample, ([v]) => _.isArray(v) && v.length >= 0));
     });
 });
 

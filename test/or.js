@@ -1,5 +1,7 @@
 'use strict';
 
+const _ = require('lodash');
+
 const {expect} = require('chai');;
 
 const s = require('../lib/spec');
@@ -27,9 +29,8 @@ describe('Test the or function', () => {
         expect(s.conform('::name-or-id', 13)).to.eql([':id', 13]);
     });
 
-    it.only('should implement a generator', () => {
-        console.log(s.exercise('::name-or-id', 7));
-//        expect(s.exercise('::name-or-id', 7)).to.have.length(7)
-//            .to.satisfy(sample => _.every(sample, ([[v]]) => isBoolean(v) || isString(v)));
+    it('should implement a generator', () => {
+        expect(s.exercise('::name-or-id', 7)).to.have.length(7)
+            .to.satisfy(sample => _.every(sample, ([v]) => isInteger(v) || isString(v)));
     });
 });

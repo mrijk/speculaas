@@ -1,5 +1,7 @@
 'use strict';
 
+const _ = require('lodash');
+
 const {expect} = require('chai');
 
 const s = require('../lib/spec');
@@ -20,6 +22,11 @@ describe('Test the plus (+) function', () => {
     
     it('should return the invalid string', () => {
         expect(s.conform(odds, [1, 3, 6])).to.equal(invalidString);
+    });
+
+    it('should implement a generator', () => {
+        expect(s.exercise(s.plus(isInteger))).to.have.length(10)
+            .to.satisfy(sample => _.every(sample, ([v]) => _.isArray(v) && v.length > 0));
     });
 });
 

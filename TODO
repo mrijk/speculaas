@@ -1,8 +1,9 @@
 Still to implement:
 
 - create generators for all operators:
-  - star
-  - plus
+  - collOf,
+  - mapOf,
+  - tuple
   - ...
 - into parameter for collOf
 - conformKeys for mapOf
