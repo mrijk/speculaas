@@ -32,4 +32,10 @@ describe('Test the mapOf function', () => {
         const map = new Map(_.toPairs({'Sally': '1000', 'Joe': 500}));
         expect(s.isValid('::scores', map)).to.be.false;
     });
+
+    it.only('should implement a generator', () => {
+        console.log(s.exercise('::scores'));
+//        expect(s.exercise(s.collOf(isString))).to.have.length(10)
+//            .to.satisfy(sample => _.every(sample, ([v]) => _.isArray(v) && v.length === 2));
+    });
 });

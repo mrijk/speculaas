@@ -1,10 +1,12 @@
 'use strict';
 
+const _ = require('lodash');
+
 const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {isDouble} = require('./utils');
+const {isDouble, isInteger, isString} = require('./utils');
 
 describe('Test the tuple function', () => {
     s.def('::point', s.tuple(isDouble, isDouble, isDouble));
@@ -19,5 +21,10 @@ describe('Test the tuple function', () => {
     
     it('should fail on invalid data length', () => {
         expect(s.isValid('::point', [1.5, 2.5, -0.5, 3.0])).to.be.false;
+    });
+
+    it('should implement a generator', () => {
+        expect(s.exercise(s.tuple(isInteger, isString))).to.have.length(10)
+            .to.satisfy(sample => _.every(sample, ([v]) => _.isArray(v) && v.length === 2));
     });
 });

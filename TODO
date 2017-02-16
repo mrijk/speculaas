@@ -1,9 +1,8 @@
 Still to implement:
 
+- create generator for double (?)
 - create generators for all operators:
-  - collOf,
   - mapOf,
-  - tuple
   - ...
 - into parameter for collOf
 - conformKeys for mapOf

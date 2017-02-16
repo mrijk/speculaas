@@ -1,10 +1,12 @@
 'use strict';
 
+const _ = require('lodash');
+
 const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {isNumber, isSet, isVector} = require('./utils');
+const {isInteger, isNumber, isSet, isString, isVector} = require('./utils');
 
 describe('Test the collOf function', () => {
     s.def('::vnum3', s.collOf(isNumber, {kind: isVector, count: 3, distinct: true}));
@@ -48,5 +50,10 @@ describe('Test the collOf function', () => {
     it('should accept an object of type Set as input', () => {
         s.def('::vset3', s.collOf(isNumber, {kind: isSet, count: 3}));
         expect(s.isValid('::vset3', new Set([1, 2, 3]))).to.be.true;        
+    });
+
+    it('should implement a generator', () => {
+        expect(s.exercise(s.collOf(isInteger))).to.have.length(10)
+            .to.satisfy(sample => _.every(sample, ([v]) => _.isArray(v)));
     });
 });
