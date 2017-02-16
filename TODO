@@ -1,7 +1,6 @@
 Still to implement:
 
 - create generators for all operators:
-  - or
   - star
   - plus
   - ...
