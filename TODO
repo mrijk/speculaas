@@ -2,6 +2,7 @@ Still to implement:
 
 - create generator for double (?)
 - create generators for all operators:
+  - keys
   - doubleIn
   - mapOf,
   - ...

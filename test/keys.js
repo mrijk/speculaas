@@ -42,5 +42,11 @@ describe('Test the keys function', () => {
                              '::email': 'n/a'
                          })).to.be.false;
     });
+
+    it('should implement a generator', () => {
+       //  console.log(s.exercise('::person'));
+//        expect(s.exercise(s.question(isString))).to.have.length(10)
+//            .to.satisfy(sample => _.every(sample, ([[v]]) => _.isUndefined(v) || isString(v)));
+    });
 });
 

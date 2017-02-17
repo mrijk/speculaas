@@ -1,5 +1,7 @@
 'use strict';
 
+const _ = require('lodash');
+
 const {expect} = require('chai');
 
 const s = require('../lib/spec');
@@ -22,6 +24,11 @@ describe('Test the amp (&) function', () => {
 
     it('should return even-sized array of strings', () => {
         expect(s.conform('::even-strings', ['a', 'b'])).to.eql(['a', 'b']);
+    });
+
+    it.only('should implement a generator', () => {
+        expect(s.exercise('::even-strings')).to.have.length(10)
+            .to.satisfy(sample => _.every(sample, ([v]) => isEven(v.length)));
     });
 });
 

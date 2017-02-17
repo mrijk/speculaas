@@ -2,6 +2,7 @@
 
 const _ = require('lodash');
 
+const gen = require('../lib/gen');
 const s = require('../lib/spec');
 
 const {isInt, isString} = require('../test/utils');
@@ -51,3 +52,5 @@ s.isValid('::game', {
     ]
     */
 });
+
+gen.generate(s.gen('::player'));
