@@ -26,7 +26,7 @@ describe('Test the amp (&) function', () => {
         expect(s.conform('::even-strings', ['a', 'b'])).to.eql(['a', 'b']);
     });
 
-    it.only('should implement a generator', () => {
+    it('should implement a generator', () => {
         expect(s.exercise('::even-strings')).to.have.length(10)
             .to.satisfy(sample => _.every(sample, ([v]) => isEven(v.length)));
     });

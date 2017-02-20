@@ -24,7 +24,8 @@ describe('Test the exercise function', () => {
 
     it('should generate 7 random values from a named spec', () => {
         s.def('::pairs', s.cat(':n', isInteger, ':s', isString));
-        console.log(s.exercise('::pairs', 7));
+        expect(s.exercise('::pairs', 7)).to.have.length(7).to.satisfy(sample => _.every(sample, ([[n, s]]) =>
+                                                                                        isInteger(n) && isString(s)));
     });
 
     it('should generate 10 random values from a spec object', () => {
