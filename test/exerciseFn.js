@@ -10,7 +10,8 @@ describe('Test the exerciseFn function', () => {
     it.only('call function', () => {
         const square = x => x * x;
         s.fdef(square, {
-            args: s.cat(':x', isInteger)
+            args: s.cat(':x', isInteger),
+            ret: isInteger
         });
 
         console.log(s.exerciseFn(square));
