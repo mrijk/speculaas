@@ -7,7 +7,7 @@ const s = require('../lib/spec');
 const {isInteger} = require('./utils');
 
 describe('Test the exerciseFn function', () => {
-    it.only('call function', () => {
+    it('call function', () => {
         const square = x => x * x;
         s.fdef(square, {
             args: s.cat(':x', isInteger),

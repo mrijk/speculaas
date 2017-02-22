@@ -10,9 +10,10 @@ Still to implement:
 - conformKeys for mapOf
 - describe
 - unqualified keys (:req-un and :opt-un)
-- fdef
-- cat
-- exercise-fn
+- implement clojure.spec.test
+  - check
+  - ...
+- 'Real' parsing
 
 Other TODO:
 

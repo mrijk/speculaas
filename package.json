@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -R spec",
+    "test": "mocha --recursive -R spec",
     "lint": "eslint lib samples"
   },
   "author": "",
