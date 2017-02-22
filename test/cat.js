@@ -1,10 +1,12 @@
 'use strict';
 
+const _ = require('lodash');
+
 const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
-const {isNumber, isString} = require('./utils');
+const {isInteger, isNumber, isString} = require('./utils');
 
 describe('Test the cat function', () => {
     s.def('::ingredient', s.cat(':quantity', isNumber, ':unit', isString));
@@ -19,6 +21,13 @@ describe('Test the cat function', () => {
 
     it('should conform to a value', () => {
         expect(s.conform('::ingredient', [2, ':teaspoon'])).to.eql({':quantity': 2, ':unit': ':teaspoon'});
+    });
+
+    it('should implement a generator', () => {
+        s.def('::ingredient', s.cat(':quantity', isInteger, ':unit', isString));
+
+        expect(s.exercise('::ingredient', 7)).to.have.length(7)
+            .to.satisfy(sample => _.every(sample, ([[v1, v2]]) => isInteger(v1) || isString(v2)));
     });
 });
 

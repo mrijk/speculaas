@@ -3,8 +3,9 @@
 const _ = require('lodash');
 
 const s = require('../lib/spec');
+const stest = require('../lib/test');
 
-const {isInt} = require('../test/utils');
+const {isInt, isString} = require('../test/utils');
 
 // Returns random int in range start <= rand < end
 
@@ -17,7 +18,9 @@ function rangedRand(start, end) {
 s.fdef(rangedRand, {
     args: s.and(s.cat('start', isInt, 'end', isInt),
                 args => args.start < args.end),
-    ret: isInt,
+    ret: isString,
     fn: s.and(x => x.ret >= x.start,
               x => x.ret < x.end)
 });
+
+console.log(stest.check(rangedRand));

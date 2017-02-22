@@ -2,6 +2,7 @@ Still to implement:
 
 - create generator for double (?)
 - create generators for all operators:
+  - and
   - keys
   - doubleIn
   - mapOf,
@@ -12,11 +13,14 @@ Still to implement:
 - unqualified keys (:req-un and :opt-un)
 - implement clojure.spec.test
   - check
+  - instrument
   - ...
 - 'Real' parsing
+- Implement :fn in s.fdef
 
 Other TODO:
 
 - create an npm out of this lib
 - add documentation
 - support native NodeJS types (e.g. Set, Map)
+- Use nodespec to test nodespec!
