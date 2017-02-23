@@ -18,14 +18,14 @@ describe('Test check function', () => {
         expect(stest.check(square)).to.have.property('result').to.equal(true);
     });
 
-    it.only('should test the :fn option', () => {
+    it('should test the :fn option', () => {
         const inc = x => x + 1;
         s.fdef(inc, {
             args: s.cat(':x', isInteger),
             ret: isInteger,
-            fn: f => f.ret > f.args['x']
+            fn: f => f.ret > f.args[':x']
         });
 
-        console.log(stest.check(inc));
+        expect(stest.check(inc)).to.have.property('result').to.equal(true);
     });
 });
