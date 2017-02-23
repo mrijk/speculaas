@@ -58,7 +58,7 @@ describe('Test the collOf function', () => {
         expect(s.conform('::vset3', new Set([1, 2, 3]))).to.be.an.instanceof(Set);
     });
 
-    it.only('should output to an Array if :into param is array', () => {
+    it('should output to an Array if :into param is array', () => {
         s.def('::vset3', s.collOf(isNumber, {into: []}));
         expect(s.conform('::vset3', new Set([1, 2, 3]))).to.be.an.instanceof(Array);
     });
