@@ -19,8 +19,8 @@ s.fdef(rangedRand, {
     args: s.and(s.cat('start', isInt, 'end', isInt),
                 args => args.start < args.end),
     ret: isString,
-    fn: s.and(x => x.ret >= x.start,
-              x => x.ret < x.end)
+    fn: s.and(f => f.ret >= f.start,
+              f => f.ret < f.end)
 });
 
 console.log(stest.check(rangedRand));
