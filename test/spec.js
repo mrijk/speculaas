@@ -16,9 +16,6 @@ describe('Test node.spec functions', () => {
         });
     });
 
-    describe('Test the alt function', () => {
-    });
-
     describe('Test the getSpec function', () => {
         it('should return an existing spec', () => {
             s.def('::odd?', s.and(isInteger, isOdd));
