@@ -47,9 +47,20 @@ describe('Test the collOf function', () => {
         expect(s.isValid('::vnum', [1, 2, 3])).to.be.true;
     });
 
+    it('should output to a Set if :into param is set', () => {
+        s.def('::vnum', s.collOf(isNumber, {into: new Set()}));
+        expect(s.conform('::vnum', [1, 2, 3])).to.be.an.instanceof(Set);
+    });
+    
     it('should accept an object of type Set as input', () => {
         s.def('::vset3', s.collOf(isNumber, {kind: isSet, count: 3}));
-        expect(s.isValid('::vset3', new Set([1, 2, 3]))).to.be.true;        
+        expect(s.isValid('::vset3', new Set([1, 2, 3]))).to.be.true;
+        expect(s.conform('::vset3', new Set([1, 2, 3]))).to.be.an.instanceof(Set);
+    });
+
+    it.only('should output to an Array if :into param is array', () => {
+        s.def('::vset3', s.collOf(isNumber, {into: []}));
+        expect(s.conform('::vset3', new Set([1, 2, 3]))).to.be.an.instanceof(Array);
     });
 
     it('should implement a generator', () => {
