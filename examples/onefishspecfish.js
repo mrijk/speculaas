@@ -23,13 +23,13 @@ s.def('::first-line', s.cat(':n1', '::fish-number', ':n2', '::fish-number', 'c1'
 
 s.explain('::first-line', [1, 2, 'Red', 'Black']);
 
-const isOneBigger = ({[':n1']: n1, [':n2']: n2}) => n2 === n1 + 1;
+const isOneBigger = ({n1, n2}) => n2 === n1 + 1;
 
-s.def('::first-line', s.and(s.cat(':n1', '::fish-number', ':n2', '::fish-number', 'c1', '::color', 'c2', '::color'),
+s.def('::first-line', s.and(s.cat('n1', '::fish-number', 'n2', '::fish-number', 'c1', '::color', 'c2', '::color'),
                             isOneBigger,
                             ({c1, c2}) => c1 !== c2));
 
-s.isValid('::first-line', [1, 2, 'Red', 'Blue']);
+console.log(s.isValid('::first-line', [1, 2, 'Red', 'Blue']));
 
 s.conform('::first-line', [1, 2, 'Red', 'Blue']);
 
@@ -37,4 +37,20 @@ s.isValid('::first-line', [2, 1, 'Red', 'Blue']);
 
 s.explain('::first-line', [2, 1, 'Red', 'Blue']);
 
-console.log(s.exercise('::first-line', 5));
+s.exercise('::first-line', 5);
+
+// We need another predicate to make it rhyme
+
+const fishNumberRhymesWithColor = ({n2: n, c2: c}) => (n === 2 && c === 'Blue') || (n === 1 && c === 'Dun');
+
+s.def('::first-line', s.and(s.cat('n1', '::fish-number', 'n2', '::fish-number', 'c1', '::color', 'c2', '::color'),
+                            isOneBigger,
+                            ({c1, c2}) => c1 !== c2,
+                            fishNumberRhymesWithColor));
+
+s.isValid('::first-line', [1, 2, 'Red', 'Blue']);
+s.explain('::first-line', [1, 2, 'Red', 'Dun']);
+
+console.log(s.exercise('::first-line'));
+
+
