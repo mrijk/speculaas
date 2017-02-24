@@ -11,6 +11,7 @@ Still to implement:
 - describe
 - every
 - every-kv
+- fspec
 - unqualified keys (:req-un and :opt-un)
 - implement clojure.spec.test
   - instrument
@@ -21,4 +22,5 @@ Other TODO:
 
 - create an npm out of this lib
 - add documentation
+
 - Use nodespec to test nodespec!
