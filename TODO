@@ -3,7 +3,6 @@ Still to implement:
 - create generators for all operators:
   - and
   - keys
-  - mapOf,
   - ...
 - conformKeys for mapOf
 - describe
