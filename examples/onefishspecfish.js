@@ -6,6 +6,8 @@ const _ = require('lodash');
 
 const s = require('../lib/spec');
 
+const {isString} = require('../test/utils');
+
 const fishNumbers = {0: 'Zero',
                      1: 'One',
                      2: 'Two'};
@@ -51,6 +53,17 @@ s.def('::first-line', s.and(s.cat('n1', '::fish-number', 'n2', '::fish-number', 
 s.isValid('::first-line', [1, 2, 'Red', 'Blue']);
 s.explain('::first-line', [1, 2, 'Red', 'Dun']);
 
-console.log(s.exercise('::first-line'));
+s.exercise('::first-line');
 
+function fishLine(n1, n2, c1, c2) {
+    return _([fishNumbers[n1], fishNumbers[n2], c1, c2]).map(x => x + ' Fish.').join(' ');
+}
 
+console.log(fishLine(1, 2, 'Red', 'Blue'));
+
+s.fdef(fishLine, {
+    args: '::first-line',
+    ret: isString
+});
+
+    
