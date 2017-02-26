@@ -5,6 +5,7 @@
 const _ = require('lodash');
 
 const s = require('../lib/spec');
+const stest = require('../lib/test');
 
 const {isString} = require('../test/utils');
 
@@ -66,4 +67,5 @@ s.fdef(fishLine, {
     ret: isString
 });
 
+stest.instrument(fishLine);
     
