@@ -15,6 +15,10 @@ Still to implement:
   - ...
 - 'Real' parsing
 
+Instrumentation hints:
+
+- falafel, rewire?
+
 Other TODO:
 
 - create an npm out of this lib

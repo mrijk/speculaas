@@ -34,8 +34,7 @@ describe('Test the mapOf function', () => {
     });
 
     it('should implement a generator', () => {
-//        console.log(s.exercise('::scores'));
-        expect(s.exercise('::scores')).to.have.length(10);
-//            .to.satisfy(sample => _.every(sample, ([v]) => _.isArray(v) && v.length === 2));
+        expect(s.exercise('::scores')).to.have.length(10)
+            .to.satisfy(sample => _.every(sample, (v) => _.isArray(v) && v.length === 2));
     });
 });
