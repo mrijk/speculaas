@@ -18,6 +18,6 @@ describe('Test node.spec.gen functions', () => {
     });
 
     it('should generate 10 integers', () => {
-        expect(gen.sample(s.gen(isInt))).to.have.length(10);
+        expect([...gen.sample(s.gen(isInt))]).to.have.length(10);
     });
 });
