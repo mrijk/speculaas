@@ -1,1 +1,1 @@
-// Empty
+module.exports = require('./lib/spec');
