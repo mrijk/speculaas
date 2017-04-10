@@ -16,9 +16,19 @@ For now, see the examples folder.
 
 ## Tests
 
+Unit tests:
+
 ```bash
 $ npm test
 ```
+
+Test coverage:
+
+`npm run cover`
+
+Run [ESlint](http://eslint.org):
+
+`npm run lint`
 
 For an alternative look at [js.spec](http://js-spec.online)
 
