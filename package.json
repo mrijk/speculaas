@@ -1,12 +1,16 @@
 {
   "name": "speculaas",
-  "version": "0.0.3",
-  "description": "",
+  "version": "0.0.4",
+  "description": "NodeJS implementation of clojure.spec",
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive -R spec",
     "cover": "istanbul cover _mocha -- -R spec",
     "lint": "eslint lib samples"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrijk/speculaas.git"
   },
   "author": {
     "name": "Maurits Rijk",
