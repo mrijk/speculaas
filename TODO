@@ -15,9 +15,12 @@ Still to implement:
   - ...
 - 'Real' parsing
 
+Instrumentation hints:
+
+- falafel, rewire?
+
 Other TODO:
 
-- create an npm out of this lib
 - add documentation
 
-- Use nodespec to test nodespec!
+- Use speculaas to test speculaas!
