@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive -R spec",
+    "cover": "istanbul cover _mocha -- -R spec",
     "lint": "eslint lib samples"
   },
   "author": {
-      "name": "Maurits Rijk",
-      "email": "maurits.rijk@gmail.com"
+    "name": "Maurits Rijk",
+    "email": "maurits.rijk@gmail.com"
   },
   "bugs": {
     "url": "https://github.com/mrijk/nodespec/issues"
@@ -24,7 +25,9 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "coveralls": "^2.13.0",
     "eslint": "^3.19.0",
+    "istanbul": "^0.4.5",
     "mocha": "^3.2.0"
   }
 }

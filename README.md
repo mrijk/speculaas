@@ -1,4 +1,4 @@
-nodespec[![Build Status](https://travis-ci.org/mrijk/nodespec.svg)](https://travis-ci.org/mrijk/nodespec)
+nodespec [![Build Status](https://travis-ci.org/mrijk/nodespec.svg)](https://travis-ci.org/mrijk/nodespec)
 ======
 
 NodeJS version of [clojure.spec](http://clojure.org/about/spec)
