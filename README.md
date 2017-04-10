@@ -1,5 +1,6 @@
 Speculaas [![Build Status](https://travis-ci.org/mrijk/nodespec.svg)](https://travis-ci.org/mrijk/nodespec)
 [![Coverage Status](https://coveralls.io/repos/github/mrijk/nodespec/badge.svg?branch=master)](https://coveralls.io/github/mrijk/nodespec?branch=master)
+[![npm version](https://badge.fury.io/js/speculaas.svg)](https://badge.fury.io/js/speculaas)
 ======
 
 NodeJS version of [clojure.spec](http://clojure.org/about/spec)
