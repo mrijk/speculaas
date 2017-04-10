@@ -1,14 +1,23 @@
 {
-  "name": "spec",
-  "version": "1.0.0",
+  "name": "nodespec",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive -R spec",
     "lint": "eslint lib samples"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+      "name": "Maurits Rijk",
+      "email": "maurits.rijk@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/mrijk/nodespec/issues"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.4",
     "testcheck": "^0.1.4"
