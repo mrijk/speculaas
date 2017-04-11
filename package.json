@@ -6,7 +6,9 @@
   "scripts": {
     "test": "mocha --recursive -R spec",
     "cover": "istanbul cover _mocha -- -R spec",
-    "lint": "eslint lib samples"
+    "lint": "eslint lib samples",
+    "docs:prepare": "gitbook install",
+    "docs:watch": "npm run docs:prepare && gitbook serve"
   },
   "repository": {
     "type": "git",
@@ -31,6 +33,7 @@
     "chai": "^3.5.0",
     "coveralls": "^2.13.0",
     "eslint": "^3.19.0",
+    "gitbook-cli": "^2.3.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0"
   }
