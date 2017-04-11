@@ -1,5 +1,5 @@
-Speculaas [![Build Status](https://travis-ci.org/mrijk/nodespec.svg)](https://travis-ci.org/mrijk/nodespec)
-[![Coverage Status](https://coveralls.io/repos/github/mrijk/nodespec/badge.svg?branch=master)](https://coveralls.io/github/mrijk/nodespec?branch=master)
+Speculaas [![Build Status](https://travis-ci.org/mrijk/speculaas.svg)](https://travis-ci.org/mrijk/speculaas)
+[![Coverage Status](https://coveralls.io/repos/github/mrijk/speculaas/badge.svg?branch=master)](https://coveralls.io/github/mrijk/speculaas?branch=master)
 [![npm version](https://badge.fury.io/js/speculaas.svg)](https://badge.fury.io/js/speculaas)
 ======
 
