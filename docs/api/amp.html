@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>intIn | npm version</title>
+        <title>amp | npm version</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.5.2">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../docs/api/mapOf.html" />
+    <link rel="next" href="../../docs/api/intIn.html" />
     
     
-    <link rel="prev" href="../../docs/api/amp.html" />
+    <link rel="prev" href="../../docs/api/and.html" />
     
 
         
@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="2.17" data-chapter-title="intIn" data-filepath="docs/api/intIn.md" data-basepath="../.." data-revision="Wed Apr 12 2017 22:38:54 GMT+0200 (CEST)">
+    <div class="book" data-level="2.3" data-chapter-title="amp" data-filepath="docs/api/amp.md" data-basepath="../.." data-revision="Wed Apr 12 2017 22:38:54 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -137,7 +137,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" data-path="docs/api/amp.html">
+        <li class="chapter active" data-level="2.3" data-path="docs/api/amp.html">
             
                 
                     <a href="../../docs/api/amp.html">
@@ -243,7 +243,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.17" data-path="docs/api/intIn.html">
+        <li class="chapter " data-level="2.17" data-path="docs/api/intIn.html">
             
                 
                     <a href="../../docs/api/intIn.html">
@@ -403,24 +403,15 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="intin">intIn</h1>
-<p>Usage: <code>intIn(start end)</code></p>
-<p>Returns a spec that validates ints in the range from start (inclusive) to end (exclusive).</p>
-<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/intIn.js" target="_blank">Source</a></p>
+                        <h1 id="amp">amp</h1>
+<p>Usage: <code>amp(re, preds)</code></p>
+<p>Takes a regex op re, and predicates. Returns a regex-op that consumes
+input as per re but subjects the resulting value to the
+conjunction of the predicates, and any conforming they might perform.</p>
+<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/amp.js" target="_blank">Source</a></p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
-
-<span class="hljs-comment">// Define range of a single byte</span>
-s.def(<span class="hljs-string">&apos;::oneByte&apos;</span>, s.intIn(<span class="hljs-number">0</span>, <span class="hljs-number">256</span>));
-
-s.isValid(<span class="hljs-string">&apos;::oneByte&apos;</span>, <span class="hljs-number">0</span>);
-<span class="hljs-comment">// true</span>
-
-s.isValid(<span class="hljs-string">&apos;::oneByte&apos;</span>, <span class="hljs-number">256</span>);
-<span class="hljs-comment">// false</span>
-
-s.isValid(<span class="hljs-string">&apos;::oneByte&apos;</span>, <span class="hljs-number">512</span>);
-<span class="hljs-comment">// false</span>
+<span class="hljs-keyword">const</span> {isBoolean, isString} = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;lodash&apos;</span>);
 </code></pre>
 
                     
@@ -432,10 +423,10 @@ s.isValid(<span class="hljs-string">&apos;::oneByte&apos;</span>, <span class="h
         </div>
 
         
-        <a href="../../docs/api/amp.html" class="navigation navigation-prev " aria-label="Previous page: amp"><i class="fa fa-angle-left"></i></a>
+        <a href="../../docs/api/and.html" class="navigation navigation-prev " aria-label="Previous page: and"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../docs/api/mapOf.html" class="navigation navigation-next " aria-label="Next page: mapOf"><i class="fa fa-angle-right"></i></a>
+        <a href="../../docs/api/intIn.html" class="navigation navigation-next " aria-label="Next page: intIn"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
