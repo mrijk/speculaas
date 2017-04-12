@@ -2,6 +2,7 @@
 * [Getting Started](docs/getting-started.md)
 * [API Reference](docs/api-reference.md)
   * [alt](docs/api/alt.md)
+  * [and](docs/api/and.md)
   * [amp](docs/api/amp.md)
   * [cat](docs/api/cat.md)
   * [collOf](docs/api/collOf.md)
