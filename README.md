@@ -13,6 +13,8 @@ NodeJS version of [clojure.spec](http://clojure.org/about/spec)
 
 For now, see the examples folder.
 
+[Documentation](https://mrijk.github.io/speculaas) is in progress.
+
 ## Tests
 
 Unit tests:
