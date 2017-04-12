@@ -5,20 +5,21 @@ Usage: ```nilable(pred)```
 
 Returns a spec that accepts null and values satisfying pred.
 
+[Source](https://github.com/mrijk/speculaas/blob/master/lib/nilable.js)
+
 Example:
 
 ```js
 const s = require('speculaas');
-
 const {isString} = require('lodash');
 
-assert(s.isValid(isString, null));
-// throws "AssertionError: false == true"
+s.isValid(isString, null);
+// false
 
-assert(s.isValid(s.nilable(isString), 'foobar'));
-// OK
+s.isValid(s.nilable(isString), 'foobar');
+// true
 
-assert(s.isValid(s.nilable(isString), null));
-// OK
+s.isValid(s.nilable(isString), null);
+// true
 
 ```
