@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>alt | npm version</title>
+        <title>mapOf | npm version</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.5.2">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../docs/api/and.html" />
+    <link rel="next" href="../../docs/api/nilable.html" />
     
     
-    <link rel="prev" href="../../docs/api-reference.html" />
+    <link rel="prev" href="../../docs/api/intIn.html" />
     
 
         
@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="2.1" data-chapter-title="alt" data-filepath="docs/api/alt.md" data-basepath="../.." data-revision="Wed Apr 12 2017 16:21:02 GMT+0200 (CEST)">
+    <div class="book" data-level="2.20" data-chapter-title="mapOf" data-filepath="docs/api/mapOf.md" data-basepath="../.." data-revision="Wed Apr 12 2017 16:21:02 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -107,7 +107,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="2.1" data-path="docs/api/alt.html">
+        <li class="chapter " data-level="2.1" data-path="docs/api/alt.html">
             
                 
                     <a href="../../docs/api/alt.html">
@@ -264,7 +264,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.20" data-path="docs/api/mapOf.html">
+        <li class="chapter active" data-level="2.20" data-path="docs/api/mapOf.html">
             
                 
                     <a href="../../docs/api/mapOf.html">
@@ -395,23 +395,20 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="alt">alt</h1>
-<p>Usage: <code>alt(...)</code></p>
-<p>Returns a spec that accepts null and values satisfying pred.</p>
-<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/alt.js" target="_blank">Source</a></p>
+                        <h1 id="mapof">mapOf</h1>
+<p>Usage: <code>mapOf(kpred, vpred, opts)</code></p>
+<p>Returns a spec for a map whose keys satisfy kpred and vals satisfy vpred.</p>
+<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/mapOf.js" target="_blank">Source</a></p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
-<span class="hljs-keyword">const</span> {isBoolean, isString} = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;lodash&apos;</span>);
+<span class="hljs-keyword">const</span> {isInteger, isString} = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;lodash&apos;</span>);
 
-s.def(<span class="hljs-string">&apos;::bool-or-string&apos;</span>, s.alt(<span class="hljs-string">&apos;:s&apos;</span>, isString, <span class="hljs-string">&apos;:b&apos;</span>, isBoolean));
+s.def(<span class="hljs-string">&apos;::scores&apos;</span>, s.mapOf(isString, isInteger));
 
-s.isValid(<span class="hljs-string">&apos;::bool-or-string&apos;</span>, [<span class="hljs-literal">true</span>]);
+s.isValid(<span class="hljs-string">&apos;::scores&apos;</span>, {<span class="hljs-string">&apos;Sally&apos;</span>: <span class="hljs-number">1000</span>, <span class="hljs-string">&apos;Joe&apos;</span>: <span class="hljs-number">500</span>});
 <span class="hljs-comment">// true</span>
 
-s.isValid(<span class="hljs-string">&apos;::bool-or-string&apos;</span>, [<span class="hljs-string">&apos;foo&apos;</span>]);
-<span class="hljs-comment">// true</span>
-
-s.isValid(<span class="hljs-string">&apos;::bool-or-string&apos;</span>, [<span class="hljs-number">1</span>]);
+s.isValid(<span class="hljs-string">&apos;::scores&apos;</span>, {<span class="hljs-string">&apos;Sally&apos;</span>: <span class="hljs-number">1000</span>, <span class="hljs-string">&apos;Joe&apos;</span>: <span class="hljs-string">&apos;500&apos;</span>});
 <span class="hljs-comment">// false</span>
 </code></pre>
 
@@ -424,10 +421,10 @@ s.isValid(<span class="hljs-string">&apos;::bool-or-string&apos;</span>, [<span 
         </div>
 
         
-        <a href="../../docs/api-reference.html" class="navigation navigation-prev " aria-label="Previous page: API Reference"><i class="fa fa-angle-left"></i></a>
+        <a href="../../docs/api/intIn.html" class="navigation navigation-prev " aria-label="Previous page: intIn"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../docs/api/and.html" class="navigation navigation-next " aria-label="Next page: and"><i class="fa fa-angle-right"></i></a>
+        <a href="../../docs/api/nilable.html" class="navigation navigation-next " aria-label="Next page: nilable"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
