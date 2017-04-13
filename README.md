@@ -33,7 +33,7 @@ Run [ESlint](http://eslint.org):
 
 Q: what kind of a silly name is speculaas?
 
-A: [nodespec](https://www.npmjs.com/package/nodespec) and [node-spec](https://www.npmjs.com/package/node-spec) where already taken. [Speculaas](https://en.wikipedia.org/wiki/Speculaas) is a kind of a Dutch/Belgium biscuit.
+A: [nodespec](https://www.npmjs.com/package/nodespec) and [node-spec](https://www.npmjs.com/package/node-spec) were already taken. [Speculaas](https://en.wikipedia.org/wiki/Speculaas) is a kind of a Dutch/Belgium biscuit.
 
 Q: any alternatives for your code?
 
