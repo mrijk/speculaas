@@ -1,7 +1,7 @@
 intIn
 =====
 
-Usage: ```intIn(start end)```
+Usage: ```intIn(start, end)```
 
 Returns a spec that validates ints in the range from start (inclusive) to end (exclusive).
 

@@ -17,6 +17,7 @@ describe('Test the keys function', () => {
         s.def('::first-name', isString);
         s.def('::last-name', isString);
         s.def('::email', '::email-type');
+        s.def('::phone', isString);
         s.def('::person', s.keys({req: ['::first-name', '::last-name', '::email'], opt: ['::phone']}));
     });
 
@@ -26,6 +27,16 @@ describe('Test the keys function', () => {
                              '::first-name': 'Elon',
                              '::last-name': 'Musk',
                              '::email': 'elon@example.com'
+                         })).to.be.true;
+    });
+    
+    it('should should accept object with required and optional keys', () => {
+        expect(s.isValid('::person',
+                         {
+                             '::first-name': 'Elon',
+                             '::last-name': 'Musk',
+                             '::email': 'elon@example.com',
+                             '::phone': '06 12345678'
                          })).to.be.true;
     });
 

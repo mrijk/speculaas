@@ -18,6 +18,7 @@
   * [fdef](docs/api/fdef.md)
   * [gen](docs/api/gen.md)
   * [intIn](docs/api/intIn.md)
+  * [isIntInRange](docs/api/isIntInRange.md)
   * [isValid](docs/api/isValid.md)
   * [keys](docs/api/keys.md)
   * [mapOf](docs/api/mapOf.md)
