@@ -19,6 +19,10 @@ describe('Test the cat function', () => {
         expect(s.isValid('::ingredient', [2, 13])).to.be.false;
     });
 
+    it('should fail nr of values is not correct', () => {
+        expect(s.isValid('::ingredient', [2])).to.be.false;
+    });
+
     it('should conform to a value', () => {
         expect(s.conform('::ingredient', [2, ':teaspoon'])).to.eql({':quantity': 2, ':unit': ':teaspoon'});
     });
