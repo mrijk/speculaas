@@ -7,7 +7,7 @@ const _ = require('lodash');
 const s = require('../lib/spec');
 const stest = require('../lib/test');
 
-const {isString} = require('../test/utils');
+const {isString} = s.utils;
 
 const fishNumbers = {0: 'Zero',
                      1: 'One',

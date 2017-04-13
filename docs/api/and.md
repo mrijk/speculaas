@@ -12,5 +12,10 @@ Example:
 
 ```js
 const s = require('speculaas');
-const {isBoolean, isString} = require('lodash');
+const {isInteger, isEven} = s.utils;
+
+s.def('::even?', s.and(isInteger, isEven));
+
+s.isValid('::even?', 12);
+// true
 ```

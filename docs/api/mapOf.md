@@ -11,7 +11,7 @@ Example:
 
 ```js
 const s = require('speculaas');
-const {isInteger, isString} = require('lodash');
+const {isInteger, isString} = s.utils;
 
 s.def('::scores', s.mapOf(isString, isInteger));
 

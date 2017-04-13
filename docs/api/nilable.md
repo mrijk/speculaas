@@ -11,7 +11,7 @@ Example:
 
 ```js
 const s = require('speculaas');
-const {isString} = require('lodash');
+const {isString} = s.utils;
 
 s.isValid(isString, null);
 // false

@@ -13,5 +13,5 @@ Example:
 
 ```js
 const s = require('speculaas');
-const {isBoolean, isString} = require('lodash');
+const {isBoolean, isString} = s.utils;
 ```

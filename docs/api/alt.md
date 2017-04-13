@@ -11,7 +11,7 @@ Example:
 
 ```js
 const s = require('speculaas');
-const {isBoolean, isString} = require('lodash');
+const {isBoolean, isString} = s.utils;
 
 s.def('::bool-or-string', s.alt(':s', isString, ':b', isBoolean));
     

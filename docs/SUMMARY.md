@@ -1,5 +1,7 @@
 # Table of content 
 * [Getting Started](docs/getting-started.md)
+* Examples
+  * [One Fish Spec Fish](docs/examples/onefishspecfish.md)
 * [API Reference](docs/api-reference.md)
   * [alt](docs/api/alt.md)
   * [and](docs/api/and.md)
@@ -31,4 +33,3 @@
   * [star](docs/api/star.md)
   * [test](docs/api/test.md)
   * [tuple](docs/api/tuple.md)
-* [Examples]
