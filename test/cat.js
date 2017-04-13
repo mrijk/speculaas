@@ -23,6 +23,11 @@ describe('Test the cat function', () => {
         expect(s.conform('::ingredient', [2, ':teaspoon'])).to.eql({':quantity': 2, ':unit': ':teaspoon'});
     });
 
+    it('should handle nested concatenation', () => {
+        s.def('::named-ingredient', s.cat(':name', isString, ':ingredient', '::ingredient'));
+        expect(s.isValid('::named-ingredient', ['salt', [2, 'teaspoon']])).to.be.true;
+    });
+    
     it('should implement a generator', () => {
         s.def('::ingredient', s.cat(':quantity', isInteger, ':unit', isString));
 
