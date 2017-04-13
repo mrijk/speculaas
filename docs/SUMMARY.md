@@ -19,6 +19,7 @@
   * [explain](docs/api/explain.md)
   * [fdef](docs/api/fdef.md)
   * [gen](docs/api/gen.md)
+  * [getSpec](docs/api/getSpec.md)
   * [intIn](docs/api/intIn.md)
   * [isIntInRange](docs/api/isIntInRange.md)
   * [isValid](docs/api/isValid.md)
