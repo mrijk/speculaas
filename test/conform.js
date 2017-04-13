@@ -4,7 +4,7 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {isInteger} = require('./utils');
+const {isInteger} = s.utils;
 
 describe('Test the conform function', () => {
     s.def('::a', isInteger);

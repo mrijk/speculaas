@@ -4,7 +4,7 @@ const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
-const {isString} = require('./utils');
+const {isString} = s.utils;
 
 describe('Test the assert functions', () => {
 

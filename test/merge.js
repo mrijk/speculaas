@@ -4,7 +4,7 @@ const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
-const {isBoolean, isString} = require('./utils');
+const {isBoolean, isString} = s.utils;
 
 describe('Test the merge function', () => {
     it('should merge a spec', () => {

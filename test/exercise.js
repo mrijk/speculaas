@@ -6,7 +6,7 @@ const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
-const {isInteger, isNull, isString, isBoolean} = require('./utils');
+const {isInteger, isNull, isString, isBoolean} = s.utils;
 
 describe('Test the exercise function', () => {
     it('should generate 10 integers', () => {

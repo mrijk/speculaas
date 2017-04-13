@@ -6,7 +6,7 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {isNull, isString} = require('./utils');
+const {isNull, isString} = s.utils;
 
 describe('Test the nilable function', () => {
     it('should create a spec that allows null as a valid value', () => {

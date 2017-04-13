@@ -6,7 +6,7 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {isInteger, isOdd, invalidString} = require('./utils');
+const {isInteger, isOdd, invalidString} = s.utils;
 
 describe('Test the plus (+) function', () => {
     s.def('::odd?', s.and(isInteger, isOdd));

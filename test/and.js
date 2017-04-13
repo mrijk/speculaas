@@ -4,7 +4,7 @@ const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
-const {isEven, isInteger, invalidString} = require('./utils');
+const {isEven, isInteger, invalidString} = s.utils;
 
 describe('Test the and function', () => {
     it('should test the and of 1 spec', () => {

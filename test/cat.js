@@ -6,7 +6,7 @@ const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
-const {isInteger, isNumber, isString} = require('./utils');
+const {isInteger, isNumber, isString} = s.utils;
 
 describe('Test the cat function', () => {
     s.def('::ingredient', s.cat(':quantity', isNumber, ':unit', isString));

@@ -6,7 +6,7 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {isInteger, isString} = require('./utils');
+const {isInteger, isString} = s.utils;
 
 describe('Test the mapOf function', () => {
     s.def('::scores', s.mapOf(isString, isInteger));

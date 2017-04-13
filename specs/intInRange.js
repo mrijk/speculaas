@@ -1,6 +1,6 @@
 const s = require('../lib/spec');
 
-const {isBoolean, isInteger} = require('../test/utils');
+const {isBoolean, isInteger} = s.utils;
 
 module.exports = {
     args: s.cat('start', isInteger, 'end', isInteger, 'val', isInteger),

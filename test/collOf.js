@@ -6,7 +6,7 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {isInteger, isNumber, isSet, isString, isVector} = require('./utils');
+const {isInteger, isNumber, isSet, isString, isVector} = s.utils;
 
 describe('Test the collOf function', () => {
     s.def('::vnum3', s.collOf(isNumber, {kind: isVector, count: 3, distinct: true}));

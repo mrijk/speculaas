@@ -5,7 +5,7 @@ const {expect} = require('chai');;
 const s = require('../../lib/spec');
 const stest = require('../../lib/test');
 
-const {isInteger} = require('../utils');
+const {isInteger} = s.utils;
 
 describe('Test check function', () => {
     it('should have result ok when the function is called with valid parameters and return value', () => {

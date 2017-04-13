@@ -6,7 +6,7 @@ const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
-const {isInt, isInteger, isString} = require('./utils');
+const {isInt, isInteger, isString} = s.utils;
 
 describe('Test the or function', () => {
 

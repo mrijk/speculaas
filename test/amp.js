@@ -6,7 +6,7 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {isEven, isString} = require('./utils');
+const {isEven, isString} = s.utils;
 
 describe('Test the amp (&) function', () => {
     s.def('::even-strings', s.amp(s.star(isString), x => isEven(x.length)));

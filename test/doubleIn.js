@@ -6,7 +6,7 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {isDouble} = require('./utils');
+const {isDouble} = s.utils;
 
 describe('Test the doubleIn function', () => {
     s.def('::percentage', s.doubleIn({min: 0.0, max: 100.0}));

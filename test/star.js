@@ -6,7 +6,7 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {isInteger, isOdd} = require('./utils');
+const {isInteger, isOdd} = s.utils;
 
 describe('Test the star (*) function', () => {
     s.def('::odd?', s.and(isInteger, isOdd));

@@ -1,12 +1,10 @@
-'use strict';
-
 const _ = require('lodash');
 
 const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
-const {isBoolean, isString} = require('./utils');
+const {isBoolean, isString} = s.utils;
 
 describe('Test the alt function', () => {
     s.def('::bool-or-string', s.alt(':s', isString, ':b', isBoolean));
