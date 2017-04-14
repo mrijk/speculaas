@@ -11,6 +11,12 @@ describe('Test the define function', () => {
         expect(s.isValid('::suit', ':club')).to.be.true;
     });
 
+    it('should accept a map as predicate', () => {
+        s.def('::coord', {x: 1, y: 2});
+        expect(s.isValid('::coord', 'x')).to.be.true;
+        expect(s.isValid('::coord', 'z')).to.be.false;
+    });
+
     it('should accept a Symbol', () => {
         const odd = Symbol();
         s.def(odd, isOdd);
