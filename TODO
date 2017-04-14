@@ -1,7 +1,6 @@
 Still to implement:
 
 - create generators for all operators:
-  - and: fails on test '::even?', 0
   - keys
   - ...
 - conformKeys for mapOf

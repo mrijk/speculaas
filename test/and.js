@@ -1,4 +1,4 @@
-'use strict';
+const _ = require('lodash');
 
 const {expect} = require('chai');;
 
@@ -15,7 +15,7 @@ describe('Test the and function', () => {
     
     it('should test the and of 2 specs', () => {
         s.def('::even?', s.and(isInteger, isEven));        
-        expect(s.conform('::even?', 12)).to.equal(12);
+        expect(s.conform('::even?', 0)).to.equal(0);
         expect(s.conform('::even?', 13)).to.equal(invalidString);
     });
 
@@ -26,8 +26,8 @@ describe('Test the and function', () => {
 
     it('should implement a generator', () => {
         s.def('::even?', s.and(isInteger, isEven));
-        console.log(s.exercise('::even?', 7));
-        expect(s.exercise('::even?', 7)).to.have.length(7);
+        expect(s.exercise('::even?', 7)).to.have.length(7)
+            .to.satisfy(sample => _.every(sample, ([v]) => isInteger(v) && isEven(v)));
     });
 });
 
