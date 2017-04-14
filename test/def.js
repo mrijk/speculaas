@@ -17,6 +17,11 @@ describe('Test the define function', () => {
         expect(s.isValid('::coord', 'z')).to.be.false;
     });
 
+    it('should use return from def', () => {
+        const f = s.def('::positive', x => x > 0);
+        expect(s.isValid(f, 1)).to.be.true;
+    });
+    
     it('should accept a Symbol', () => {
         const odd = Symbol();
         s.def(odd, isOdd);
