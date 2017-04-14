@@ -23,5 +23,11 @@ describe('Test the and function', () => {
         s.def('::one-bigger', ({n1}) => {console.log(n1); return n1;});
         expect(s.conform(s.and(s.cat('n1', isInteger), '::one-bigger'), [13])).to.eql({n1: 13});
     });
+
+    it('should implement a generator', () => {
+        s.def('::even?', s.and(isInteger, isEven));
+        console.log(s.exercise('::even?', 7));
+        expect(s.exercise('::even?', 7)).to.have.length(7);
+    });
 });
 
