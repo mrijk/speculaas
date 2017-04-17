@@ -30,6 +30,7 @@
   * [or](docs/api/or.md)
   * [plus](docs/api/plus.md)
   * [question](docs/api/question.md)
+  * [registry](docs/api/registry.md)
   * [spec](docs/api/spec.md)
   * [star](docs/api/star.md)
   * [test](docs/api/test.md)
