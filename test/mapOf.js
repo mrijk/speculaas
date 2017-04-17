@@ -9,8 +9,10 @@ const s = require('../lib/spec');
 const {isInteger, isString} = s.utils;
 
 describe('Test the mapOf function', () => {
-    s.def('::scores', s.mapOf(isString, isInteger));
-    s.def('::scores2to3', s.mapOf(isString, isInteger, {minCount: 2, maxCount: 3}));
+    before(() => {
+        s.def('::scores', s.mapOf(isString, isInteger));
+        s.def('::scores2to3', s.mapOf(isString, isInteger, {minCount: 2, maxCount: 3}));
+    });
     
     it('should return a spec for a map', () => {
         expect(s.isValid('::scores', {'Sally': 1000, 'Joe': 500})).to.be.true;
