@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="3.1" data-chapter-title="alt" data-filepath="docs/api/alt.md" data-basepath="../.." data-revision="Wed Apr 19 2017 14:43:29 GMT+0200 (CEST)">
+    <div class="book" data-level="3.1" data-chapter-title="alt" data-filepath="docs/api/alt.md" data-basepath="../.." data-revision="Wed Apr 19 2017 15:17:32 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -573,8 +573,11 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="alt">alt</h1>
-<p>Usage: <code>alt(...)</code></p>
-<p>Returns a spec that accepts null and values satisfying pred.</p>
+<p>Usage: <code>alt([, ...keyPredForms])</code></p>
+<p>Returns a regex op that returns a map entry containing the key of the
+first matching pred and the corresponding value. Thus the
+&apos;key&apos; and &apos;val&apos; functions can be used to refer generically to the
+components of the tagged return.</p>
 <p><a href="https://github.com/mrijk/speculaas/blob/master/lib/alt.js" target="_blank">Source</a></p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
