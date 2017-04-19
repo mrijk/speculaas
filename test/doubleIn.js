@@ -4,6 +4,8 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
+const {idemPotent} = require('./utils');
+
 const {isDouble} = s.utils;
 
 describe('Test the doubleIn function', () => {
@@ -41,8 +43,7 @@ describe('Test the doubleIn function', () => {
     });
 
     it('should unform a conformed value', () => {
-        const conformed = s.conform('::percentage', 42.0);
-        expect(s.unform('::percentage', conformed)).to.eql(42.0);
+        expect(idemPotent('::percentage', 42.0));
     });
 
     it('should implement a generator', () => {
