@@ -1,5 +1,3 @@
-'use strict';
-
 const _ = require('lodash');
 
 const {expect} = require('chai');
@@ -8,7 +6,9 @@ const s = require('../lib/spec');
 const stest = require('../lib/test');
 
 describe('Test the IntIn function', () => {
-    s.def('::oneByte', s.intIn(0, 256));
+    before(() => {
+        s.def('::oneByte', s.intIn(0, 256));
+    });
     
     it('should return true if value is with range', () => {
         expect(s.isValid('::oneByte', 0)).to.be.true;
@@ -25,6 +25,11 @@ describe('Test the IntIn function', () => {
     it('should implement a generator', () => {
         expect(s.exercise(s.intIn(0, 42))).to.have.length(10)
             .to.satisfy(sample => _.every(sample, ([v]) => s.isIntInRange(0, 42, v)));
+    });
+
+    it('should unform a conformed value', () => {
+        const conformed = s.conform('::oneByte', 13);
+        expect(s.unform('::oneByte', conformed)).to.eql(13);
     });
 
     it('should use the spec to test', () => {
