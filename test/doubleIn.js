@@ -1,5 +1,3 @@
-'use strict';
-
 const _ = require('lodash');
 
 const {expect} = require('chai');
@@ -9,7 +7,9 @@ const s = require('../lib/spec');
 const {isDouble} = s.utils;
 
 describe('Test the doubleIn function', () => {
-    s.def('::percentage', s.doubleIn({min: 0.0, max: 100.0}));
+    before(() => {
+        s.def('::percentage', s.doubleIn({min: 0.0, max: 100.0}));
+    });
 
     it('should return true if value is within range', () => {
         expect(s.isValid('::percentage', 50.1)).to.be.true;
@@ -38,6 +38,11 @@ describe('Test the doubleIn function', () => {
     it('should accept NaN', () => {
         s.def('::nan', s.doubleIn({isNaN: true}));
         expect(s.isValid('::nan', NaN)).to.be.true;
+    });
+
+    it('should unform a conformed value', () => {
+        const conformed = s.conform('::percentage', 42.0);
+        expect(s.unform('::percentage', conformed)).to.eql(42.0);
     });
 
     it('should implement a generator', () => {
