@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>doubleIn | Speculaas </title>
+        <title>every | Speculaas </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.5.2">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../docs/api/every.html" />
+    <link rel="next" href="../../docs/api/everyKv.html" />
     
     
-    <link rel="prev" href="../../docs/api/describe.html" />
+    <link rel="prev" href="../../docs/api/doubleIn.html" />
     
 
         
@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="3.9" data-chapter-title="doubleIn" data-filepath="docs/api/doubleIn.md" data-basepath="../.." data-revision="Wed Apr 19 2017 16:33:03 GMT+0200 (CEST)">
+    <div class="book" data-level="3.10" data-chapter-title="every" data-filepath="docs/api/every.md" data-basepath="../.." data-revision="Wed Apr 19 2017 16:33:03 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -255,7 +255,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.9" data-path="docs/api/doubleIn.html">
+        <li class="chapter " data-level="3.9" data-path="docs/api/doubleIn.html">
             
                 
                     <a href="../../docs/api/doubleIn.html">
@@ -270,7 +270,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.10" data-path="docs/api/every.html">
+        <li class="chapter active" data-level="3.10" data-path="docs/api/every.html">
             
                 
                     <a href="../../docs/api/every.html">
@@ -596,12 +596,21 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="doublein">doubleIn</h1>
-<p>Usage: <code>doubleIn(...)</code></p>
-<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/doubleIn.js" target="_blank">Source</a></p>
+                        <h1 id="every">every</h1>
+<p>Usage: <code>every(pred[,opts])</code></p>
+<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/every.js" target="_blank">Source</a></p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
-<span class="hljs-keyword">const</span> {isBoolean, isString} = s.utils;
+<span class="hljs-keyword">const</span> {isNumber, isVector} = s.utils;
+
+<span class="hljs-comment">// spec for vector with 3 unique numbers</span>
+s.def(<span class="hljs-string">&apos;::vnum3&apos;</span>, s.every(isNumber, {kind: isVector, count: <span class="hljs-number">3</span>, distinct: <span class="hljs-literal">true</span>}));
+
+s.isValid(<span class="hljs-string">&apos;::vnum3&apos;</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]);
+<span class="hljs-comment">// true</span>
+
+s.isValid(<span class="hljs-string">&apos;::vnum3&apos;</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>]);
+<span class="hljs-comment">// false</span>
 </code></pre>
 
                     
@@ -613,10 +622,10 @@
         </div>
 
         
-        <a href="../../docs/api/describe.html" class="navigation navigation-prev " aria-label="Previous page: describe"><i class="fa fa-angle-left"></i></a>
+        <a href="../../docs/api/doubleIn.html" class="navigation navigation-prev " aria-label="Previous page: doubleIn"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../docs/api/every.html" class="navigation navigation-next " aria-label="Next page: every"><i class="fa fa-angle-right"></i></a>
+        <a href="../../docs/api/everyKv.html" class="navigation navigation-next " aria-label="Next page: everyKv"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

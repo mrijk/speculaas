@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>doubleIn | Speculaas </title>
+        <title>everyKv | Speculaas </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.5.2">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../docs/api/every.html" />
+    <link rel="next" href="../../docs/api/exerciseFn.html" />
     
     
-    <link rel="prev" href="../../docs/api/describe.html" />
+    <link rel="prev" href="../../docs/api/every.html" />
     
 
         
@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="3.9" data-chapter-title="doubleIn" data-filepath="docs/api/doubleIn.md" data-basepath="../.." data-revision="Wed Apr 19 2017 16:33:03 GMT+0200 (CEST)">
+    <div class="book" data-level="3.11" data-chapter-title="everyKv" data-filepath="docs/api/everyKv.md" data-basepath="../.." data-revision="Wed Apr 19 2017 16:33:03 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -255,7 +255,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.9" data-path="docs/api/doubleIn.html">
+        <li class="chapter " data-level="3.9" data-path="docs/api/doubleIn.html">
             
                 
                     <a href="../../docs/api/doubleIn.html">
@@ -285,7 +285,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.11" data-path="docs/api/everyKv.html">
+        <li class="chapter active" data-level="3.11" data-path="docs/api/everyKv.html">
             
                 
                     <a href="../../docs/api/everyKv.html">
@@ -596,12 +596,21 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="doublein">doubleIn</h1>
-<p>Usage: <code>doubleIn(...)</code></p>
-<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/doubleIn.js" target="_blank">Source</a></p>
+                        <h1 id="everykv">everyKv</h1>
+<p>Usage: <code>everyKv(kpred, vpred[, opts])</code></p>
+<p>Like <a href="every.html">&apos;every&apos;</a> but takes separate key and val preds and works on associative collections.</p>
+<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/everyKv.js" target="_blank">Source</a></p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
-<span class="hljs-keyword">const</span> {isBoolean, isString} = s.utils;
+<span class="hljs-keyword">const</span> {isInteger, isString} = s.utils;
+
+s.def(<span class="hljs-string">&apos;::scores&apos;</span>, s.everyKv(isString, isInteger));
+
+s.isValid(<span class="hljs-string">&apos;::scores&apos;</span>, {<span class="hljs-string">&apos;Sally&apos;</span>: <span class="hljs-number">1000</span>, <span class="hljs-string">&apos;Joe&apos;</span>: <span class="hljs-number">500</span>});
+<span class="hljs-comment">// true</span>
+
+s.isValid(<span class="hljs-string">&apos;::scores&apos;</span>, {<span class="hljs-string">&apos;Sally&apos;</span>: <span class="hljs-number">1000</span>, <span class="hljs-string">&apos;Joe&apos;</span>: <span class="hljs-string">&apos;500&apos;</span>});
+<span class="hljs-comment">// false</span>
 </code></pre>
 
                     
@@ -613,10 +622,10 @@
         </div>
 
         
-        <a href="../../docs/api/describe.html" class="navigation navigation-prev " aria-label="Previous page: describe"><i class="fa fa-angle-left"></i></a>
+        <a href="../../docs/api/every.html" class="navigation navigation-prev " aria-label="Previous page: every"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../docs/api/every.html" class="navigation navigation-next " aria-label="Next page: every"><i class="fa fa-angle-right"></i></a>
+        <a href="../../docs/api/exerciseFn.html" class="navigation navigation-next " aria-label="Next page: exerciseFn"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

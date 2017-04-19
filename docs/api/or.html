@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>doubleIn | Speculaas </title>
+        <title>or | Speculaas </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.5.2">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../docs/api/every.html" />
+    <link rel="next" href="../../docs/api/plus.html" />
     
     
-    <link rel="prev" href="../../docs/api/describe.html" />
+    <link rel="prev" href="../../docs/api/nilable.html" />
     
 
         
@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="3.9" data-chapter-title="doubleIn" data-filepath="docs/api/doubleIn.md" data-basepath="../.." data-revision="Wed Apr 19 2017 16:33:03 GMT+0200 (CEST)">
+    <div class="book" data-level="3.25" data-chapter-title="or" data-filepath="docs/api/or.md" data-basepath="../.." data-revision="Wed Apr 19 2017 16:33:03 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -255,7 +255,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.9" data-path="docs/api/doubleIn.html">
+        <li class="chapter " data-level="3.9" data-path="docs/api/doubleIn.html">
             
                 
                     <a href="../../docs/api/doubleIn.html">
@@ -455,7 +455,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.25" data-path="docs/api/or.html">
+        <li class="chapter active" data-level="3.25" data-path="docs/api/or.html">
             
                 
                     <a href="../../docs/api/or.html">
@@ -596,12 +596,21 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="doublein">doubleIn</h1>
-<p>Usage: <code>doubleIn(...)</code></p>
-<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/doubleIn.js" target="_blank">Source</a></p>
+                        <h1 id="or">or</h1>
+<p>Usage: <code>or([...keyPredForms])</code></p>
+<p>Returns a destructuring spec that returns a map entry containing the
+key of the first matching pred and the corresponding value. Thus the
+&apos;key&apos; and &apos;val&apos; functions can be used to refer generically to the
+components of the tagged return.</p>
+<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/or.js" target="_blank">Source</a></p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
-<span class="hljs-keyword">const</span> {isBoolean, isString} = s.utils;
+<span class="hljs-keyword">const</span> {isInt, isString} = s.utils;
+
+s.def(<span class="hljs-string">&apos;::name-or-id&apos;</span>, s.or(<span class="hljs-string">&apos;:name&apos;</span>, isString, <span class="hljs-string">&apos;:id&apos;</span>, isInt));
+
+s.conform(<span class="hljs-string">&apos;::name-or-id&apos;</span>, <span class="hljs-string">&apos;abc&apos;</span>));
+<span class="hljs-comment">// [&apos;:name&apos;, &apos;abc&apos;]</span>
 </code></pre>
 
                     
@@ -613,10 +622,10 @@
         </div>
 
         
-        <a href="../../docs/api/describe.html" class="navigation navigation-prev " aria-label="Previous page: describe"><i class="fa fa-angle-left"></i></a>
+        <a href="../../docs/api/nilable.html" class="navigation navigation-prev " aria-label="Previous page: nilable"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../docs/api/every.html" class="navigation navigation-next " aria-label="Next page: every"><i class="fa fa-angle-right"></i></a>
+        <a href="../../docs/api/plus.html" class="navigation navigation-next " aria-label="Next page: plus"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
