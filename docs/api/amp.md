@@ -13,5 +13,17 @@ Example:
 
 ```js
 const s = require('speculaas');
-const {isBoolean, isString} = s.utils;
+const {isEven, isString} = s.utils;
+
+// Spec for array with even number of strings
+s.def('::even-strings', s.amp(s.star(isString), x => isEven(x.length)));
+
+s.isValid('::even-strings', ['a', 1]);
+// false
+
+s.isValid('::even-strings', ['a', 'b']);
+// true
+
+s.isValid('::even-strings', ['a', 'b', 'c']);
+// false
 ```
