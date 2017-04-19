@@ -35,3 +35,4 @@
   * [star](docs/api/star.md)
   * [test](docs/api/test.md)
   * [tuple](docs/api/tuple.md)
+  * [unform](docs/api/unform.md)

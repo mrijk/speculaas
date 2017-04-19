@@ -12,7 +12,7 @@ Example:
 
 ```js
 const s = require('speculaas');
-const {isInteger} = int.utils;
+const {isInteger} = s.utils;
 
 s.def('::a', isInteger);
 s.conform('::a', 12);
