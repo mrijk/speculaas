@@ -1,5 +1,3 @@
-'use strict';
-
 const _ = require('lodash');
 
 const {expect} = require('chai');;
@@ -9,7 +7,9 @@ const s = require('../lib/spec');
 const {isInteger, isNumber, isString} = s.utils;
 
 describe('Test the cat function', () => {
-    s.def('::ingredient', s.cat(':quantity', isNumber, ':unit', isString));
+    before(() => {
+        s.def('::ingredient', s.cat(':quantity', isNumber, ':unit', isString));
+    });
    
     it('should match a concatenation', () => {
         expect(s.isValid('::ingredient', [2, ':teaspoon'])).to.be.true;
@@ -25,6 +25,12 @@ describe('Test the cat function', () => {
 
     it('should conform to a value', () => {
         expect(s.conform('::ingredient', [2, ':teaspoon'])).to.eql({':quantity': 2, ':unit': ':teaspoon'});
+    });
+
+    it('should unform a conformed value', () => {
+        const input = [2, ':teaspoon'];
+        const conformed = s.conform('::ingredient', input);
+        expect(s.unform('::ingredient', conformed)).to.eql(input);
     });
 
     it('should handle nested concatenation', () => {

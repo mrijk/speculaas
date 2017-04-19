@@ -12,5 +12,9 @@ Example:
 
 ```js
 const s = require('speculaas');
-const {isBoolean, isString} = s.utils;
+const {isNumber, isString} = s.utils;
+
+s.def('::ingredient', s.cat(':quantity', isNumber, ':unit', isString));
+s.conform('::ingredient', [2, ':teaspoon']);
+// {':quantity': 2, ':unit': ':teaspoon'}
 ```
