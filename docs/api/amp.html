@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="3.3" data-chapter-title="amp" data-filepath="docs/api/amp.md" data-basepath="../.." data-revision="Wed Apr 19 2017 12:24:54 GMT+0200 (CEST)">
+    <div class="book" data-level="3.3" data-chapter-title="amp" data-filepath="docs/api/amp.md" data-basepath="../.." data-revision="Wed Apr 19 2017 14:43:29 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -580,7 +580,19 @@ conjunction of the predicates, and any conforming they might perform.</p>
 <p><a href="https://github.com/mrijk/speculaas/blob/master/lib/amp.js" target="_blank">Source</a></p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
-<span class="hljs-keyword">const</span> {isBoolean, isString} = s.utils;
+<span class="hljs-keyword">const</span> {isEven, isString} = s.utils;
+
+<span class="hljs-comment">// Spec for array with even number of strings</span>
+s.def(<span class="hljs-string">&apos;::even-strings&apos;</span>, s.amp(s.star(isString), x =&gt; isEven(x.length)));
+
+s.isValid(<span class="hljs-string">&apos;::even-strings&apos;</span>, [<span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-number">1</span>]);
+<span class="hljs-comment">// false</span>
+
+s.isValid(<span class="hljs-string">&apos;::even-strings&apos;</span>, [<span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-string">&apos;b&apos;</span>]);
+<span class="hljs-comment">// true</span>
+
+s.isValid(<span class="hljs-string">&apos;::even-strings&apos;</span>, [<span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-string">&apos;b&apos;</span>, <span class="hljs-string">&apos;c&apos;</span>]);
+<span class="hljs-comment">// false</span>
 </code></pre>
 
                     

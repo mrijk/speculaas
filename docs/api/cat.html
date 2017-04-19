@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="3.4" data-chapter-title="cat" data-filepath="docs/api/cat.md" data-basepath="../.." data-revision="Wed Apr 19 2017 12:24:54 GMT+0200 (CEST)">
+    <div class="book" data-level="3.4" data-chapter-title="cat" data-filepath="docs/api/cat.md" data-basepath="../.." data-revision="Wed Apr 19 2017 14:43:29 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -579,7 +579,11 @@ containing the keys of each pred and the corresponding value.</p>
 <p><a href="https://github.com/mrijk/speculaas/blob/master/lib/cat.js" target="_blank">Source</a></p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
-<span class="hljs-keyword">const</span> {isBoolean, isString} = s.utils;
+<span class="hljs-keyword">const</span> {isNumber, isString} = s.utils;
+
+s.def(<span class="hljs-string">&apos;::ingredient&apos;</span>, s.cat(<span class="hljs-string">&apos;:quantity&apos;</span>, isNumber, <span class="hljs-string">&apos;:unit&apos;</span>, isString));
+s.conform(<span class="hljs-string">&apos;::ingredient&apos;</span>, [<span class="hljs-number">2</span>, <span class="hljs-string">&apos;:teaspoon&apos;</span>]);
+<span class="hljs-comment">// {&apos;:quantity&apos;: 2, &apos;:unit&apos;: &apos;:teaspoon&apos;}</span>
 </code></pre>
 
                     
