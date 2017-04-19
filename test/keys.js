@@ -6,7 +6,7 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {isString} = require('./utils');
+const {isString} = s.utils;
 
 describe('Test the keys function', () => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/

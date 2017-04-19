@@ -6,7 +6,7 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {isDouble, isInteger, isString} = require('./utils');
+const {isDouble, isInteger, isString} = s.utils;
 
 describe('Test the tuple function', () => {
     s.def('::point', s.tuple(isDouble, isDouble, isDouble));

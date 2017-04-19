@@ -1,10 +1,8 @@
-'use strict';
-
 const {expect} = require('chai')
 
-const {isInt, isString} = require('./utils');
-
 const s = require('../lib/spec');
+const {isInt, isString} = s.utils;
+
 const gen = require('../lib/gen');
 
 describe('Test node.spec.gen functions', () => {

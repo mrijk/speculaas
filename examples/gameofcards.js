@@ -5,7 +5,7 @@ const _ = require('lodash');
 const gen = require('../lib/gen');
 const s = require('../lib/spec');
 
-const {isInt, isString} = require('../test/utils');
+const {isInt, isString} = s.utils;
 
 //
 // Spec to model a game of cards

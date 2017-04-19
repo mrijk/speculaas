@@ -4,7 +4,7 @@ const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
-const {isInteger, isOdd} = require('./utils');
+const {isInteger, isOdd} = s.utils;
 
 describe('Test the isValid function', () => {
     it('should return true when a value meets a spec', () => {

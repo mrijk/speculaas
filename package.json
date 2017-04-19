@@ -1,6 +1,6 @@
 {
   "name": "speculaas",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "NodeJS implementation of clojure.spec",
   "keywords": [
     "specification",
@@ -25,7 +25,7 @@
     "email": "maurits.rijk@gmail.com"
   },
   "bugs": {
-    "url": "https://github.com/mrijk/nodespec/issues"
+    "url": "https://github.com/mrijk/speculaas/issues"
   },
   "engines": {
     "node": ">=6.0.0"

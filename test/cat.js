@@ -6,7 +6,7 @@ const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
-const {isInteger, isNumber, isString} = require('./utils');
+const {isInteger, isNumber, isString} = s.utils;
 
 describe('Test the cat function', () => {
     s.def('::ingredient', s.cat(':quantity', isNumber, ':unit', isString));
@@ -19,10 +19,19 @@ describe('Test the cat function', () => {
         expect(s.isValid('::ingredient', [2, 13])).to.be.false;
     });
 
+    it('should fail nr of values is not correct', () => {
+        expect(s.isValid('::ingredient', [2])).to.be.false;
+    });
+
     it('should conform to a value', () => {
         expect(s.conform('::ingredient', [2, ':teaspoon'])).to.eql({':quantity': 2, ':unit': ':teaspoon'});
     });
 
+    it('should handle nested concatenation', () => {
+        s.def('::named-ingredient', s.cat(':name', isString, ':ingredient', '::ingredient'));
+        expect(s.isValid('::named-ingredient', ['salt', [2, 'teaspoon']])).to.be.true;
+    });
+    
     it('should implement a generator', () => {
         s.def('::ingredient', s.cat(':quantity', isInteger, ':unit', isString));
 

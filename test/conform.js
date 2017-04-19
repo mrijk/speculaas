@@ -4,10 +4,12 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {isInteger} = require('./utils');
+const {isInteger} = s.utils;
 
 describe('Test the conform function', () => {
-    s.def('::a', isInteger);
+    before(() => {
+        s.def('::a', isInteger);
+    });
 
     it('should return value when value is conform spec', () => {
         expect(s.conform('::a', 12)).to.equal(12);
