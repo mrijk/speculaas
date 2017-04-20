@@ -6,7 +6,7 @@ const {idemPotent} = require('./utils');
 
 const {isBoolean, isString} = s.utils;
 
-describe.only('Test the merge function', () => {
+describe('Test the merge function', () => {
     const doggy = {
         ':animal/kind': 'dog',
         ':animal/says': 'woof',
