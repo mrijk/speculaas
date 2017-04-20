@@ -1,15 +1,17 @@
-'use strict';
-
 const _ = require('lodash');
 
 const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
+const {idemPotent} = require('./utils');
+
 const {isDouble, isInteger, isString} = s.utils;
 
 describe('Test the tuple function', () => {
-    s.def('::point', s.tuple(isDouble, isDouble, isDouble));
+    before(() => {
+        s.def('::point', s.tuple(isDouble, isDouble, isDouble));
+    });
     
     it('should return a spec for a tuple', () => {
         expect(s.isValid('::point', [1.5, 2.5, -0.5])).to.be.true;
@@ -21,6 +23,10 @@ describe('Test the tuple function', () => {
     
     it('should fail on invalid data length', () => {
         expect(s.isValid('::point', [1.5, 2.5, -0.5, 3.0])).to.be.false;
+    });
+
+    it('should unform a conformed value', () => {
+        expect(idemPotent('::point', [1.5, 2.5, -0.5])).to.be.true;
     });
 
     it('should implement a generator', () => {

@@ -31,7 +31,7 @@ describe('Test the or function', () => {
         expect(s.conform('::name-or-id', 13)).to.eql([':id', 13]);
     });
 
-    it.only('should unform a conformed value', () => {
+    it('should unform a conformed value', () => {
         expect(idemPotent('::name-or-id', 'abc')).to.be.true;
     });
 
