@@ -1,10 +1,10 @@
-'use strict';
-
 const _ = require('lodash');
 
 const {expect} = require('chai');
 
 const s = require('../lib/spec');
+
+const {idemPotent} = require('./utils');
 
 const {isInteger, isOdd} = s.utils;
 
@@ -18,6 +18,10 @@ describe('Test the star (*) function', () => {
     
     it('should accept an empty value sequence', () => {
         expect(s.conform(odds, [])).to.eql([]);
+    });
+
+    it('should unform a conformed value', () => {
+        expect(idemPotent(odds, [])).to.be.true;
     });
 
     it('should implement a generator', () => {
