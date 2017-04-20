@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="3.9" data-chapter-title="doubleIn" data-filepath="docs/api/doubleIn.md" data-basepath="../.." data-revision="Wed Apr 19 2017 16:33:03 GMT+0200 (CEST)">
+    <div class="book" data-level="3.9" data-chapter-title="doubleIn" data-filepath="docs/api/doubleIn.md" data-basepath="../.." data-revision="Thu Apr 20 2017 13:07:15 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -597,11 +597,27 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="doublein">doubleIn</h1>
-<p>Usage: <code>doubleIn(...)</code></p>
+<p>Usage: <code>doubleIn([options])</code></p>
+<p>Specs a 64-bit floating point number. </p>
+<p>Options:</p>
+<ul>
+<li>isInfinite</li>
+<li>isNaN</li>
+<li>min</li>
+<li>max</li>
+</ul>
 <p><a href="https://github.com/mrijk/speculaas/blob/master/lib/doubleIn.js" target="_blank">Source</a></p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
 <span class="hljs-keyword">const</span> {isBoolean, isString} = s.utils;
+
+s.def(<span class="hljs-string">&apos;::percentage&apos;</span>, s.doubleIn({min: <span class="hljs-number">0.0</span>, max: <span class="hljs-number">100.0</span>}));
+
+s.isValid(<span class="hljs-string">&apos;::percentage&apos;</span>, <span class="hljs-number">50.1</span>);
+<span class="hljs-comment">// true</span>
+
+s.isValid(<span class="hljs-string">&apos;::percentage&apos;</span>, <span class="hljs-number">101.0</span>);
+<span class="hljs-comment">// false</span>
 </code></pre>
 
                     

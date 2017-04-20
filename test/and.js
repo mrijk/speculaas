@@ -4,6 +4,8 @@ const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
+const {idemPotent} = require('./utils');
+
 const {isEven, isInteger, invalidString} = s.utils;
 
 describe('Test the and function', () => {
@@ -28,8 +30,7 @@ describe('Test the and function', () => {
     });
 
     it('should unform a conformed value', () => {
-        const conformed = s.conform('::even?', 42);
-        expect(s.unform('::even?', conformed)).to.eql(42);
+        expect(idemPotent('::even?', 42)).to.be.true;
     });
 
     it('should implement a generator', () => {

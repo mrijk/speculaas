@@ -1,10 +1,10 @@
-'use strict';
-
 const _ = require('lodash');
 
 const {expect} = require('chai');
 
 const s = require('../lib/spec');
+
+const {idemPotent} = require('./utils');
 
 const {isString} = s.utils;
 
@@ -54,6 +54,15 @@ describe('Test the keys function', () => {
                              '::last-name': 'Musk',
                              '::email': 'n/a'
                          })).to.be.false;
+    });
+
+    it('should unform a conformed value', () => {
+        const input = {
+            '::first-name': 'Elon',
+            '::last-name': 'Musk',
+            '::email': 'elon@example.com'
+        };
+        expect(idemPotent('::person', input)).to.be.true;
     });
 
     it('should implement a generator', () => {
