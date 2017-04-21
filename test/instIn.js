@@ -35,7 +35,7 @@ describe('Test the instIn function', () => {
         expect(idemPotent('::2017', new Date('2017-04-27'))).to.be.true;
     });
 
-    xit('should use the spec to test', () => {
+    it('should use the spec to test', () => {
         const instIn = s.instIn;
         const specs = require('../specs/instIn');
         s.fdef(instIn, specs);
