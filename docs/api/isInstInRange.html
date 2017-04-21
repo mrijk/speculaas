@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>nilable | Speculaas </title>
+        <title>isInstInRange | Speculaas </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.5.2">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../docs/api/or.html" />
+    <link rel="next" href="../../docs/api/isIntInRange.html" />
     
     
-    <link rel="prev" href="../../docs/api/mapOf.html" />
+    <link rel="prev" href="../../docs/api/intIn.html" />
     
 
         
@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="3.26" data-chapter-title="nilable" data-filepath="docs/api/nilable.md" data-basepath="../.." data-revision="Fri Apr 21 2017 16:01:56 GMT+0200 (CEST)">
+    <div class="book" data-level="3.20" data-chapter-title="isInstInRange" data-filepath="docs/api/isInstInRange.md" data-basepath="../.." data-revision="Fri Apr 21 2017 16:01:56 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -396,7 +396,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.20" data-path="docs/api/isInstInRange.html">
+        <li class="chapter active" data-level="3.20" data-path="docs/api/isInstInRange.html">
             
                 
                     <a href="../../docs/api/isInstInRange.html">
@@ -470,7 +470,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.26" data-path="docs/api/nilable.html">
+        <li class="chapter " data-level="3.26" data-path="docs/api/nilable.html">
             
                 
                     <a href="../../docs/api/nilable.html">
@@ -642,22 +642,12 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="nilable">nilable</h1>
-<p>Usage: <code>nilable(pred)</code></p>
-<p>Returns a spec that accepts null and values satisfying pred.</p>
-<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/nilable.js" target="_blank">Source</a></p>
+                        <h1 id="isinstinrange">isInstInRange</h1>
+<p>Usage: <code>isInstInRange(start, end, val)</code></p>
+<p>Return true if start &lt;= val and val &lt; end</p>
+<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/instIn.js" target="_blank">Source</a></p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
-<span class="hljs-keyword">const</span> {isString} = s.utils;
-
-s.isValid(isString, <span class="hljs-literal">null</span>);
-<span class="hljs-comment">// false</span>
-
-s.isValid(s.nilable(isString), <span class="hljs-string">&apos;foobar&apos;</span>);
-<span class="hljs-comment">// true</span>
-
-s.isValid(s.nilable(isString), <span class="hljs-literal">null</span>);
-<span class="hljs-comment">// true</span>
 </code></pre>
 
                     
@@ -669,10 +659,10 @@ s.isValid(s.nilable(isString), <span class="hljs-literal">null</span>);
         </div>
 
         
-        <a href="../../docs/api/mapOf.html" class="navigation navigation-prev " aria-label="Previous page: mapOf"><i class="fa fa-angle-left"></i></a>
+        <a href="../../docs/api/intIn.html" class="navigation navigation-prev " aria-label="Previous page: intIn"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../docs/api/or.html" class="navigation navigation-next " aria-label="Next page: or"><i class="fa fa-angle-right"></i></a>
+        <a href="../../docs/api/isIntInRange.html" class="navigation navigation-next " aria-label="Next page: isIntInRange"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

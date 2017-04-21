@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>nilable | Speculaas </title>
+        <title>tuple | Speculaas </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.5.2">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../docs/api/or.html" />
+    <link rel="next" href="../../docs/api/unform.html" />
     
     
-    <link rel="prev" href="../../docs/api/mapOf.html" />
+    <link rel="prev" href="../../docs/api/star.html" />
     
 
         
@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="3.26" data-chapter-title="nilable" data-filepath="docs/api/nilable.md" data-basepath="../.." data-revision="Fri Apr 21 2017 16:01:56 GMT+0200 (CEST)">
+    <div class="book" data-level="3.34" data-chapter-title="tuple" data-filepath="docs/api/tuple.md" data-basepath="../.." data-revision="Fri Apr 21 2017 16:01:56 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -470,7 +470,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.26" data-path="docs/api/nilable.html">
+        <li class="chapter " data-level="3.26" data-path="docs/api/nilable.html">
             
                 
                     <a href="../../docs/api/nilable.html">
@@ -574,7 +574,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.34" data-path="docs/api/tuple.html">
+        <li class="chapter active" data-level="3.34" data-path="docs/api/tuple.html">
             
                 
                     <a href="../../docs/api/tuple.html">
@@ -642,22 +642,20 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="nilable">nilable</h1>
-<p>Usage: <code>nilable(pred)</code></p>
-<p>Returns a spec that accepts null and values satisfying pred.</p>
-<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/nilable.js" target="_blank">Source</a></p>
+                        <h1 id="tuple">tuple</h1>
+<p>Usage: <code>tuple([...preds])</code></p>
+<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/tuple.js" target="_blank">Source</a></p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
-<span class="hljs-keyword">const</span> {isString} = s.utils;
+<span class="hljs-keyword">const</span> {isDouble} = s.utils;
 
-s.isValid(isString, <span class="hljs-literal">null</span>);
+s.def(<span class="hljs-string">&apos;::point&apos;</span>, s.tuple(isDouble, isDouble, isDouble));
+
+s.isValid(<span class="hljs-string">&apos;::point&apos;</span>, [<span class="hljs-number">1.5</span>, <span class="hljs-number">2.5</span>, -<span class="hljs-number">0.5</span>]);
+<span class="hljs-comment">// true</span>
+
+s.isValid(<span class="hljs-string">&apos;::point&apos;</span>, [<span class="hljs-number">1.5</span>, <span class="hljs-number">2.5</span>, -<span class="hljs-number">0.5</span>, <span class="hljs-number">3.0</span>]);
 <span class="hljs-comment">// false</span>
-
-s.isValid(s.nilable(isString), <span class="hljs-string">&apos;foobar&apos;</span>);
-<span class="hljs-comment">// true</span>
-
-s.isValid(s.nilable(isString), <span class="hljs-literal">null</span>);
-<span class="hljs-comment">// true</span>
 </code></pre>
 
                     
@@ -669,10 +667,10 @@ s.isValid(s.nilable(isString), <span class="hljs-literal">null</span>);
         </div>
 
         
-        <a href="../../docs/api/mapOf.html" class="navigation navigation-prev " aria-label="Previous page: mapOf"><i class="fa fa-angle-left"></i></a>
+        <a href="../../docs/api/star.html" class="navigation navigation-prev " aria-label="Previous page: star"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../docs/api/or.html" class="navigation navigation-next " aria-label="Next page: or"><i class="fa fa-angle-right"></i></a>
+        <a href="../../docs/api/unform.html" class="navigation navigation-next " aria-label="Next page: unform"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

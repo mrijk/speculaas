@@ -1,14 +1,10 @@
-'use strict';
-
-const _ = require('lodash');
-
 const {expect} = require('chai');
 
 const s = require('../lib/spec');
 const stest = require('../lib/test');
 
 describe('Test isIntInRange? function', () => {
-    it('should return true if value is with range', () => {
+    it('should return true if value is within range', () => {
         expect(s.isIntInRange(0, 13, 0)).to.be.true;
     });
 
