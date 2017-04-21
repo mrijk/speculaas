@@ -9,23 +9,25 @@ const {idemPotent} = require('./utils');
 const {isInteger, isOdd, invalidString} = s.utils;
 
 describe('Test the plus (+) function', () => {
-    s.def('::odd?', s.and(isInteger, isOdd));
-    const odds = s.plus('::odd?');
+    before(() => {
+        s.def('::odd?', s.and(isInteger, isOdd));
+        s.def('::odds', s.plus('::odd?'))
+    });
     
     it('should return the value', () => {
-        expect(s.conform(odds, [1, 3])).to.eql([1, 3]);
+        expect(s.conform('::odds', [1, 3])).to.eql([1, 3]);
     });
     
     it('should return the invalid string when value sequence is empty', () => {
-        expect(s.conform(odds, [])).to.equal(invalidString);
+        expect(s.conform('::odds', [])).to.equal(invalidString);
     });
     
     it('should return the invalid string', () => {
-        expect(s.conform(odds, [1, 3, 6])).to.equal(invalidString);
+        expect(s.conform('::odds', [1, 3, 6])).to.equal(invalidString);
     });
 
     it('should unform a conformed value', () => {
-        expect(idemPotent(odds, [1, 3, 5])).to.be.true;
+        expect(idemPotent('::odds', [1, 3, 5])).to.be.true;
     });
 
     it('should implement a generator', () => {
