@@ -9,34 +9,37 @@ const {idemPotent} = require('./utils');
 
 describe('Test the InstIn function', () => {
     before(() => {
+        s.def('::2017', s.instIn(new Date('2017'), new Date('2018')));
     });
 
-    xit('should return true if value is within range', () => {
-        expect(s.isValid('::oneByte', 0)).to.be.true;
+    it('should return true if value is within range', () => {
+        expect(s.isValid('::2017', new Date('2017-04-27'))).to.be.true;
     });
 
-    xit('should exclude the upper bound', () => {
-        expect(s.isValid('::oneByte', 256)).to.be.false;
+    it('should exclude the upper bound', () => {
+        expect(s.isValid('::2017', new Date('2018'))).to.be.false;
     });
 
-    xit('should return false if value is outside the range', () => {
-        expect(s.isValid('::oneByte', 512)).to.be.false;
+    it('should return false if value is outside the range', () => {
+        expect(s.isValid('::2017', new Date('2000'))).to.be.false;
     });
 
-    xit('should implement a generator', () => {
-        expect(s.exercise(s.intIn(0, 42))).to.have.length(10)
-            .to.satisfy(sample => _.every(sample, ([v]) => s.isIntInRange(0, 42, v)));
+    it('should implement a generator', () => {
+        const start = new Date('2017');
+        const end = new Date('2018');
+        expect(s.exercise('::2017')).to.have.length(10)
+            .to.satisfy(sample => _.every(sample, ([v]) => s.isIntInRange(start, end, v)));
     });
 
-    xit('should unform a conformed value', () => {
-        expect(idemPotent('::oneByte', 13)).to.be.true;
+    it('should unform a conformed value', () => {
+        expect(idemPotent('::2017', new Date('2017-04-27'))).to.be.true;
     });
 
     xit('should use the spec to test', () => {
-        const intIn = s.intIn;
-        const specs = require('../specs/intIn');
-        s.fdef(intIn, specs);
+        const instIn = s.instIn;
+        const specs = require('../specs/instIn');
+        s.fdef(instIn, specs);
 
-        expect(stest.check(intIn)).to.have.property('result').to.equal(true);        
+        expect(stest.check(instIn)).to.have.property('result').to.equal(true);        
     });
 });
