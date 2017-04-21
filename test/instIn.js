@@ -7,7 +7,7 @@ const stest = require('../lib/test');
 
 const {idemPotent} = require('./utils');
 
-describe('Test the InstIn function', () => {
+describe('Test the instIn function', () => {
     before(() => {
         s.def('::2017', s.instIn(new Date('2017'), new Date('2018')));
     });

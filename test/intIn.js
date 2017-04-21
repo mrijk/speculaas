@@ -36,6 +36,7 @@ describe('Test the IntIn function', () => {
     it('should use the spec to test', () => {
         const intIn = s.intIn;
         const specs = require('../specs/intIn');
+
         s.fdef(intIn, specs);
 
         expect(stest.check(intIn)).to.have.property('result').to.equal(true);        
