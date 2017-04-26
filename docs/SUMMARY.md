@@ -24,6 +24,7 @@
   * [intIn](docs/api/intIn.md)
   * [isInstInRange](docs/api/isInstInRange.md)
   * [isIntInRange](docs/api/isIntInRange.md)
+  * [isSpec](docs/api/isSpec.md)
   * [isValid](docs/api/isValid.md)
   * [keys](docs/api/keys.md)
   * [mapOf](docs/api/mapOf.md)
@@ -38,3 +39,4 @@
   * [test](docs/api/test.md)
   * [tuple](docs/api/tuple.md)
   * [unform](docs/api/unform.md)
+  * [withGen](docs/api/withGen.md)
