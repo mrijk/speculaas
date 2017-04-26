@@ -1,7 +1,6 @@
 Still to implement:
 
 - create generators for all operators:
-  - keys
   - ...
 - conformKeys for mapOf
 - unqualified keys (:req-un and :opt-un)
