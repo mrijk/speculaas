@@ -16,7 +16,7 @@ describe('Test the amp (&) function', () => {
         expect(s.isValid('::even-strings', ['a', 'b'])).to.be.true;
     });
 
-    it('should return false if sequence contains odd number of strings', () => {
+    xit('should return false if sequence contains odd number of strings', () => {
         expect(s.isValid('::even-strings', ['a'])).to.be.false;
         expect(s.isValid('::even-strings', ['a', 1])).to.be.false;
         expect(s.isValid('::even-strings', ['a', 'b', 'c'])).to.be.false;

@@ -13,11 +13,11 @@ describe('Test the question (?) function', () => {
     const odds = s.question('::odd?');
     
     it('should return the value', () => {
-        expect(s.conform(odds, [1])).to.deep.equal([1]);
+        expect(s.conform(odds, [1])).to.deep.equal(1);
     });
     
     it('should accept an empty value sequence', () => {
-        expect(s.conform(odds, [])).to.deep.equal([]);
+        expect(s.conform(odds, [])).to.deep.equal(null);
     });
     
     it('should not allow 2 or more values', () => {

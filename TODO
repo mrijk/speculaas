@@ -1,10 +1,8 @@
 Still to implement:
 
 - create generators for all operators:
-  - keys
   - ...
 - conformKeys for mapOf
-- fspec
 - unqualified keys (:req-un and :opt-un)
 - implement clojure.spec.test
   - instrument

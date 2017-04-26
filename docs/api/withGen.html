@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>describe | Speculaas </title>
+        <title>withGen | Speculaas </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.5.2">
@@ -37,10 +37,8 @@
         
     
     
-    <link rel="next" href="../../docs/api/doubleIn.html" />
     
-    
-    <link rel="prev" href="../../docs/api/def.html" />
+    <link rel="prev" href="../../docs/api/unform.html" />
     
 
         
@@ -48,7 +46,7 @@
     <body>
         
         
-    <div class="book" data-level="3.8" data-chapter-title="describe" data-filepath="docs/api/describe.md" data-basepath="../.." data-revision="Wed Apr 26 2017 15:33:23 GMT+0200 (CEST)">
+    <div class="book" data-level="3.37" data-chapter-title="withGen" data-filepath="docs/api/withGen.md" data-basepath="../.." data-revision="Wed Apr 26 2017 15:33:23 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -240,7 +238,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.8" data-path="docs/api/describe.html">
+        <li class="chapter " data-level="3.8" data-path="docs/api/describe.html">
             
                 
                     <a href="../../docs/api/describe.html">
@@ -627,7 +625,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.37" data-path="docs/api/withGen.html">
+        <li class="chapter active" data-level="3.37" data-path="docs/api/withGen.html">
             
                 
                     <a href="../../docs/api/withGen.html">
@@ -680,13 +678,18 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="describe">describe</h1>
-<p>Usage: <code>describe(spec)</code></p>
-<p>Returns an abbreviated description of the spec as data.</p>
-<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/describe.js" target="_blank">Source</a></p>
+                        <h1 id="withgen">withGen</h1>
+<p>Usage: <code>withGen(spec, genFn)</code></p>
+<p>Takes a spec and a no-arg, generator-returning fn and returns a version of that spec that uses that generator</p>
+<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/withGen.js" target="_blank">Source</a></p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
-<span class="hljs-keyword">const</span> {isBoolean, isString} = s.utils;
+<span class="hljs-keyword">const</span> testcheck = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;testcheck&apos;</span>);
+
+<span class="hljs-comment">// Only generate integers in the [5, 7) range</span>
+<span class="hljs-keyword">const</span> gen = () =&gt; testcheck.gen.intWithin(<span class="hljs-number">5</span>, <span class="hljs-number">7</span>);
+
+<span class="hljs-keyword">const</span> spec = s.withGen(s.intIn(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>), gen);
 </code></pre>
 
                     
@@ -698,10 +701,8 @@
         </div>
 
         
-        <a href="../../docs/api/def.html" class="navigation navigation-prev " aria-label="Previous page: def"><i class="fa fa-angle-left"></i></a>
+        <a href="../../docs/api/unform.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: unform"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../../docs/api/doubleIn.html" class="navigation navigation-next " aria-label="Next page: doubleIn"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>describe | Speculaas </title>
+        <title>question | Speculaas </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.5.2">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../docs/api/doubleIn.html" />
+    <link rel="next" href="../../docs/api/registry.html" />
     
     
-    <link rel="prev" href="../../docs/api/def.html" />
+    <link rel="prev" href="../../docs/api/plus.html" />
     
 
         
@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="3.8" data-chapter-title="describe" data-filepath="docs/api/describe.md" data-basepath="../.." data-revision="Wed Apr 26 2017 15:33:23 GMT+0200 (CEST)">
+    <div class="book" data-level="3.30" data-chapter-title="question" data-filepath="docs/api/question.md" data-basepath="../.." data-revision="Wed Apr 26 2017 15:33:23 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -240,7 +240,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.8" data-path="docs/api/describe.html">
+        <li class="chapter " data-level="3.8" data-path="docs/api/describe.html">
             
                 
                     <a href="../../docs/api/describe.html">
@@ -530,7 +530,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.30" data-path="docs/api/question.html">
+        <li class="chapter active" data-level="3.30" data-path="docs/api/question.html">
             
                 
                     <a href="../../docs/api/question.html">
@@ -680,13 +680,23 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="describe">describe</h1>
-<p>Usage: <code>describe(spec)</code></p>
-<p>Returns an abbreviated description of the spec as data.</p>
-<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/describe.js" target="_blank">Source</a></p>
+                        <h1 id="question">question</h1>
+<p>Usage: <code>question(predForm)</code></p>
+<p>Returns a regex op that matches zero or one value matching
+pred. Produces a single value (not a collection) if matched.</p>
+<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/question.js" target="_blank">Source</a></p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
-<span class="hljs-keyword">const</span> {isBoolean, isString} = s.utils;
+<span class="hljs-keyword">const</span> {isInteger, isOdd} = s.utils;
+
+s.def(<span class="hljs-string">&apos;::odd?&apos;</span>, s.and(isInteger, isOdd));
+<span class="hljs-keyword">const</span> odds = s.question(<span class="hljs-string">&apos;::odd?&apos;</span>);
+
+s.isValid(odds, [<span class="hljs-number">1</span>]);
+<span class="hljs-comment">// true</span>
+
+s.isValid(odds, [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>]);
+<span class="hljs-comment">// false</span>
 </code></pre>
 
                     
@@ -698,10 +708,10 @@
         </div>
 
         
-        <a href="../../docs/api/def.html" class="navigation navigation-prev " aria-label="Previous page: def"><i class="fa fa-angle-left"></i></a>
+        <a href="../../docs/api/plus.html" class="navigation navigation-prev " aria-label="Previous page: plus"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../docs/api/doubleIn.html" class="navigation navigation-next " aria-label="Next page: doubleIn"><i class="fa fa-angle-right"></i></a>
+        <a href="../../docs/api/registry.html" class="navigation navigation-next " aria-label="Next page: registry"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
