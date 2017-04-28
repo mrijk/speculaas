@@ -15,5 +15,6 @@ The following table shows how Clojure names are mapped to valid NodeJS function 
 | int-in        | [intIn](api/intIn.md)        |
 | int-in-range? | [isIntInRange](api/isIntInRange.md) |
 | map-of        | [mapOf](api/mapOf.md)        |
+| regex?        | [isSpec](api/isRegex.md)     |
 | spec?         | [isSpec](api/isSpec.md)      |
 | with-gen      | [withGen](api/withGen.mid)   |

@@ -24,6 +24,7 @@
   * [intIn](docs/api/intIn.md)
   * [isInstInRange](docs/api/isInstInRange.md)
   * [isIntInRange](docs/api/isIntInRange.md)
+  * [isRegex](docs/api/isRegex.md)
   * [isSpec](docs/api/isSpec.md)
   * [isValid](docs/api/isValid.md)
   * [keys](docs/api/keys.md)
