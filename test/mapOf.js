@@ -4,6 +4,8 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
+const {idemPotent} = require('./utils');
+
 const {isInteger, isString} = s.utils;
 
 describe('Test the mapOf function', () => {
@@ -33,8 +35,12 @@ describe('Test the mapOf function', () => {
         expect(s.isValid('::scores', map)).to.be.false;
     });
 
+    it('should unform a conformed value', () => {
+        expect(idemPotent('::scores', {'Sally': 1000, 'Joe': 500})).to.be.true;
+    });
+
     it('should implement a generator', () => {
-        expect(s.exercise('::scores')).to.have.length(10)
+        expect(s.exercise('::scores2to3')).to.have.length(10)
             .to.satisfy(sample => _.every(sample, v => _.isArray(v) && v.length === 2));
     });
 });
