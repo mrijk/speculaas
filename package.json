@@ -33,7 +33,7 @@
   "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.4",
-    "testcheck": "^1.0.0-rc.0"
+    "testcheck": "1.0.0-rc.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
