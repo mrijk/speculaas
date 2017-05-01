@@ -8,7 +8,7 @@ const {idemPotent} = require('./utils');
 
 const {isInteger, isString, invalidString} = s.utils;
 
-describe.only('Test the conformer function', () => {
+describe('Test the conformer function', () => {
     it('should create a spec using a predicate function', () => {
         const pred = value => isInteger(value) ? value : invalidString;
         const spec = s.conformer(pred);
@@ -24,7 +24,7 @@ describe.only('Test the conformer function', () => {
         expect(s.conform(spec, 13)).to.eql([13]);
         expect(s.unform(spec, [13])).to.equal(13);
     });
-    
+
     it('should unform a conformed value', () => {
         const spec = s.conformer(isString);
         expect(idemPotent(spec, '13')).to.be.true;
