@@ -4,6 +4,8 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
+const {idemPotent} = require('./utils');
+
 const {isEven, isString} = s.utils;
 
 describe('Test the amp (&) function', () => {
@@ -11,12 +13,12 @@ describe('Test the amp (&) function', () => {
         s.def('::even-strings', s.amp(s.star(isString), x => isEven(x.length)));
     });
     
-    it('should return true if sequence contains odd number of strings', () => {
+    it('should return true if sequence contains even number of strings', () => {
         expect(s.isValid('::even-strings', [])).to.be.true;
         expect(s.isValid('::even-strings', ['a', 'b'])).to.be.true;
     });
 
-    xit('should return false if sequence contains odd number of strings', () => {
+    it('should return false if sequence contains odd number of strings', () => {
         expect(s.isValid('::even-strings', ['a'])).to.be.false;
         expect(s.isValid('::even-strings', ['a', 1])).to.be.false;
         expect(s.isValid('::even-strings', ['a', 'b', 'c'])).to.be.false;
@@ -27,9 +29,7 @@ describe('Test the amp (&) function', () => {
     });
 
     it('should unform a conformed value', () => {
-        const input = ['a', 'b'];
-        const conformed = s.conform('::even-strings', input);
-        expect(s.unform('::even-strings', conformed)).to.eql(input);
+        expect(idemPotent('::even-strings', ['a', 'b'])).to.be.true;
     });
 
     it('should implement a generator', () => {
