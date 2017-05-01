@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>or | Speculaas </title>
+        <title>merge | Speculaas </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.5.2">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../docs/api/plus.html" />
+    <link rel="next" href="../../docs/api/nilable.html" />
     
     
-    <link rel="prev" href="../../docs/api/nilable.html" />
+    <link rel="prev" href="../../docs/api/mapOf.html" />
     
 
         
@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="3.29" data-chapter-title="or" data-filepath="docs/api/or.md" data-basepath="../.." data-revision="Mon May 01 2017 08:43:45 GMT+0200 (CEST)">
+    <div class="book" data-level="3.27" data-chapter-title="merge" data-filepath="docs/api/merge.md" data-basepath="../.." data-revision="Mon May 01 2017 08:43:45 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -501,7 +501,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.27" data-path="docs/api/merge.html">
+        <li class="chapter active" data-level="3.27" data-path="docs/api/merge.html">
             
                 
                     <a href="../../docs/api/merge.html">
@@ -531,7 +531,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.29" data-path="docs/api/or.html">
+        <li class="chapter " data-level="3.29" data-path="docs/api/or.html">
             
                 
                     <a href="../../docs/api/or.html">
@@ -711,21 +711,37 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="or">or</h1>
-<p>Usage: <code>or([...keyPredForms])</code></p>
-<p>Returns a destructuring spec that returns a map entry containing the
-key of the first matching pred and the corresponding value. Thus the
-&apos;key&apos; and &apos;val&apos; functions can be used to refer generically to the
-components of the tagged return.</p>
-<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/or.js" target="_blank">Source</a></p>
+                        <h1 id="merge">merge</h1>
+<p>Usage: <code>merge([...predForms])</code></p>
+<p>Takes map-validating specs (e.g. &apos;keys&apos; specs) and
+returns a spec that returns a conformed map satisfying all of the
+specs.  Unlike &apos;and&apos;, merge can generate maps satisfying the
+union of the predicates.</p>
+<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/merge.js" target="_blank">Source</a></p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
-<span class="hljs-keyword">const</span> {isInt, isString} = s.utils;
+<span class="hljs-keyword">const</span> {isBoolean, isString} = s.utils;
 
-s.def(<span class="hljs-string">&apos;::name-or-id&apos;</span>, s.or(<span class="hljs-string">&apos;:name&apos;</span>, isString, <span class="hljs-string">&apos;:id&apos;</span>, isInt));
+<span class="hljs-comment">// Specs for an animal</span>
+s.def(<span class="hljs-string">&apos;:animal/kind&apos;</span>, isString);
+s.def(<span class="hljs-string">&apos;:animal/says&apos;</span>, isString);
+s.def(<span class="hljs-string">&apos;:animal/common&apos;</span>, s.keys({req: [<span class="hljs-string">&apos;:animal/kind&apos;</span>, <span class="hljs-string">&apos;:animal/says&apos;</span>]}));
 
-s.conform(<span class="hljs-string">&apos;::name-or-id&apos;</span>, <span class="hljs-string">&apos;abc&apos;</span>));
-<span class="hljs-comment">// [&apos;:name&apos;, &apos;abc&apos;]</span>
+<span class="hljs-comment">// Specs for a dog</span>
+s.def(<span class="hljs-string">&apos;:dog/tail?&apos;</span>, isBoolean);
+s.def(<span class="hljs-string">&apos;:dog/breed&apos;</span>, isString);
+
+s.def(<span class="hljs-string">&apos;:animal/dog&apos;</span>, s.merge(<span class="hljs-string">&apos;:animal/common&apos;</span>, s.keys({req: [<span class="hljs-string">&apos;:dog/tail?&apos;</span>, <span class="hljs-string">&apos;:dog/breed&apos;</span>]})));
+
+<span class="hljs-keyword">const</span> doggy = {
+    <span class="hljs-string">&apos;:animal/kind&apos;</span>: <span class="hljs-string">&apos;dog&apos;</span>,
+    <span class="hljs-string">&apos;:animal/says&apos;</span>: <span class="hljs-string">&apos;woof&apos;</span>,
+    <span class="hljs-string">&apos;:dog/tail?&apos;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">&apos;:dog/breed&apos;</span>: <span class="hljs-string">&apos;retriever&apos;</span>
+};
+
+s.isValid(<span class="hljs-string">&apos;:animal/dog&apos;</span>, doggy);
+<span class="hljs-comment">// true</span>
 </code></pre>
 
                     
@@ -737,10 +753,10 @@ s.conform(<span class="hljs-string">&apos;::name-or-id&apos;</span>, <span class
         </div>
 
         
-        <a href="../../docs/api/nilable.html" class="navigation navigation-prev " aria-label="Previous page: nilable"><i class="fa fa-angle-left"></i></a>
+        <a href="../../docs/api/mapOf.html" class="navigation navigation-prev " aria-label="Previous page: mapOf"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../docs/api/plus.html" class="navigation navigation-next " aria-label="Next page: plus"><i class="fa fa-angle-right"></i></a>
+        <a href="../../docs/api/nilable.html" class="navigation navigation-next " aria-label="Next page: nilable"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

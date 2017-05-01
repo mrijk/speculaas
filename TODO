@@ -1,17 +1,10 @@
 Still to implement:
 
-- create generators for all operators:
-  - ...
-- conformKeys for mapOf
 - unqualified keys (:req-un and :opt-un)
 - implement clojure.spec.test
   - instrument
   - ...
 - 'Real' parsing
-
-Instrumentation hints:
-
-- falafel, rewire?
 
 Other TODO:
 

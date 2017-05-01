@@ -66,9 +66,12 @@ describe('Test the keys function', () => {
     });
 
     it('should implement a generator', () => {
-        s.def('::oldPerson', s.keys({req: ['::first-name', '::last-name']}));
-        expect(s.exercise('::oldPerson')).to.have.length(10);
-//            .to.satisfy(sample => _.every(sample, ([[v]]) => _.isUndefined(v) || isString(v)));
+        const req = ['::first-name', '::last-name'];
+        const opt = ['::phone'];
+        s.def('::oldPerson', s.keys({req, opt}));
+        
+        expect(s.exercise('::oldPerson')).to.have.length(10)
+            .to.satisfy(sample => _.every(sample, ([v]) => _.every(req, k => _.has(v, k))));
     });
 });
 
