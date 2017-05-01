@@ -6,10 +6,6 @@ Still to implement:
   - ...
 - 'Real' parsing
 
-Instrumentation hints:
-
-- falafel, rewire?
-
 Other TODO:
 
 - Use speculaas to test speculaas!
