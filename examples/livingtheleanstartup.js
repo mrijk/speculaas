@@ -30,9 +30,13 @@ s.def('::customers', s.collOf('::customer'));
 
 function validate(spec, value, message) {
     if (!s.isValid(spec, value)) {
-        throw new Error(message, s.explainData(spec, value));
+        throw new Error(message + '\n' + s.explainData(spec, value));
     }
 }
 
+// Todo: original example uses req-un and ':id'. Is this useful in NodeJS context?
 validate('::customers', [{'::id': 1, '::name': 'Susan', '::state': 'OH'},
                          {'::id': 2, '::name': 'Brian', '::state': "CA"}], 'Bad Customers');
+
+validate('::customers', [{'::id': 1, '::name': 'Susan', '::state': 'OH'},
+                         {'::id': 2, '::name': 'Brian'}], 'Bad Customers');
