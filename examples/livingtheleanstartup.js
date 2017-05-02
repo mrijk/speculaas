@@ -34,4 +34,5 @@ function validate(spec, value, message) {
     }
 }
 
-validate('::customers', [{':id': 1, ':name': 'Susan', ':state': 'OH'}], 'Bad Customers');
+validate('::customers', [{'::id': 1, '::name': 'Susan', '::state': 'OH'},
+                         {'::id': 2, '::name': 'Brian', '::state': "CA"}], 'Bad Customers');
