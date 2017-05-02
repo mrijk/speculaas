@@ -19,6 +19,7 @@
   * [exerciseFn](docs/api/exerciseFn.md)
   * [explain](docs/api/explain.md)
   * [fdef](docs/api/fdef.md)
+  * [fspec](docs/api/fspec.md)
   * [gen](docs/api/gen.md)
   * [getSpec](docs/api/getSpec.md)
   * [instIn](docs/api/instIn.md)
