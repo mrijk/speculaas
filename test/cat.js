@@ -4,6 +4,8 @@ const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
+const {idemPotent} = require('./utils');
+
 const {isInteger, isNumber, isString} = s.utils;
 
 describe('Test the cat function', () => {
@@ -28,9 +30,7 @@ describe('Test the cat function', () => {
     });
 
     it('should unform a conformed value', () => {
-        const input = [2, ':teaspoon'];
-        const conformed = s.conform('::ingredient', input);
-        expect(s.unform('::ingredient', conformed)).to.eql(input);
+        expect(idemPotent('::ingredient', [2, ':teaspoon'])).to.be.true;
     });
 
     it('should handle nested concatenation', () => {
