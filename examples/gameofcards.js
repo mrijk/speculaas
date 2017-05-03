@@ -38,19 +38,21 @@ const kenny = {
     '::hand': []
 };
 
-console.log(s.isValid('::player', kenny));
+s.isValid('::player', kenny);
 
 s.isValid('::game', {
-    '::deck': [], // deck,
-    '::players': []
-    /*
+    '::deck': deck,
+    '::players': [
         {
             '::name': 'Kenny Rogers',
             '::score': 100,
             '::hand': [[2, ':banana']]
         }
     ]
-    */
 });
 
+// Generate a random player in our card game
 gen.generate(s.gen('::player'));
+
+// Generate a whole game
+gen.generate(s.gen('::game'));
