@@ -1,4 +1,5 @@
-const {expect} = require('chai');;
+const {expect} = require('chai');
+const genfun = require('genfun');
 
 const s = require('../lib/spec');
 
@@ -14,13 +15,14 @@ describe('Test the multispec function', () => {
         s.def(':error/code', isInt);        
     });
 
-    xit('create a multispec', () => {
-        const eventType = () => s.keys({req: [':event/type', ':event/timestamp', ':search/url']});
+    it('create a multispec', () => {
+        const eventType = genfun();
 
-        defmethod(eventType, ':event/search', () => s.keys({req: [':event/type', ':event/timestamp', ':search/url']}));
+        eventType.add([':event/search'],
+                      () => s.keys({req: [':event/type', ':event/timestamp', ':search/url']}));
 
-        defmethod(eventType, ':event/error', () => s.keys({req: [':event/type', ':event/timestamp',
-                                                                 ':error/message', ':error/code']}));
+        eventType.add([':event/error'], () => s.keys({req: [':event/type', ':event/timestamp',
+                                                            ':error/message', ':error/code']}));
 
         s.def(':event/event', s.multiSpec(eventType, ':event/type'));
 
