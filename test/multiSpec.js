@@ -13,9 +13,7 @@ describe('Test the multispec function', () => {
 
         s.def(':error/message', isString);
         s.def(':error/code', isInt);        
-    });
 
-    it('create a multispec', () => {
         const eventType = genfun();
 
         eventType.add([':event/search'],
@@ -25,7 +23,9 @@ describe('Test the multispec function', () => {
                                                             ':error/message', ':error/code']}));
 
         s.def(':event/event', s.multiSpec(eventType, ':event/type'));
+    });
 
+    it('validate using a multispec', () => {
         expect(s.isValid(':event/event', {
             ':event/type': ':event/search',
             ':event/timestamp': 146397012300,
@@ -38,5 +38,18 @@ describe('Test the multispec function', () => {
             ':error/message': 'Invalid host',
             ':error/code': 500
         })).to.be.true;
+    });
+
+    it('fail on unknown event type', () => {
+        expect(s.isValid(':event/event', {
+            ':event/type': ':event/restart'
+        })).to.be.false;
+    });
+    
+    it('fail on invalid data', () => {
+        expect(s.isValid(':event/event', {
+            ':event/type': ':event/search',
+            ':search/url': 200
+        })).to.be.false;
     });
 });

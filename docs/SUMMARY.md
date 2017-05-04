@@ -32,6 +32,7 @@
   * [keys](docs/api/keys.md)
   * [mapOf](docs/api/mapOf.md)
   * [merge](docs/api/merge.md)
+  * [multiSpec](docs/api/multiSpec.md)
   * [nilable](docs/api/nilable.md)
   * [or](docs/api/or.md)
   * [plus](docs/api/plus.md)
