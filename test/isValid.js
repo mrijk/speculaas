@@ -1,5 +1,3 @@
-'use strict';
-
 const {expect} = require('chai');;
 
 const s = require('../lib/spec');
@@ -32,7 +30,7 @@ describe('Test the isValid function', () => {
         expect(s.isValid(suit, 42)).to.be.false;
     });
 
-    xit('should throw an error if spec doesn\'t exist', () => {
+    it('should throw an error if spec doesn\'t exist', () => {
         expect(() => s.isValid('::foobar', 5)).to.throw(Error, /Unable to resolve spec/);
     });
 });

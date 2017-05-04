@@ -9,25 +9,20 @@ const {idemPotent} = require('./utils');
 const {isInteger, isString, invalidString} = s.utils;
 
 describe('Test the conformer function', () => {
-    xit('should create a spec using a predicate function', () => {
+    it('should create a spec using a predicate function', () => {
         const pred = value => isInteger(value) ? value : invalidString;
         const spec = s.conformer(pred);
         expect(s.isValid(spec, 13)).to.be.true;
         expect(s.isValid(spec, '13')).to.be.false;
     });
 
-    xit('should create a spec with an unform function', () => {
+    it('should create a spec with an unform function', () => {
         const pred = value => isInteger(value) ? [value] : invalidString;
         const unform = ([value]) => value;
 
         const spec = s.conformer(pred, unform);
         expect(s.conform(spec, 13)).to.eql([13]);
         expect(s.unform(spec, [13])).to.equal(13);
-    });
-
-    it('should unform a conformed value', () => {
-        const spec = s.conformer(isString);
-        expect(idemPotent(spec, '13')).to.be.true;
     });
 
     it('should implement a generator', () => {
