@@ -1,5 +1,3 @@
-'use strict';
-
 const {expect} = require('chai');
 
 const s = require('../lib/spec');
@@ -16,7 +14,7 @@ describe('Test the conform function', () => {
     });
 
     it('should handle a predicate', () => {
-        expect(s.conform('::a', 12)).to.equal(12);
+        expect(s.conform(x => x > 0, 12)).to.equal(12);
     });
 
     it('should return invalid string', () => {

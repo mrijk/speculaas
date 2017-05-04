@@ -30,7 +30,7 @@ describe('Test the mapOf function', () => {
         expect(s.isValid('::scores2to3', {'Sally': 1000, 'Joe': 1000, 'Susan': 1000, 'Mike': 1000})).to.be.false;
     });
 
-    it('conform the keys if conformKeys is set to true', () => {
+    xit('conform the keys if conformKeys is set to true', () => {
         s.def('::foo', s.mapOf(s.conformer(_.toUpper), isInteger, {conformKeys: true}));
         expect(s.conform('::foo', {'Sally': 1000, 'Joe': 500})).to.eql({'SALLY': 1000, 'JOE': 500});
     });
