@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="3.36" data-chapter-title="spec" data-filepath="docs/api/spec.md" data-basepath="../.." data-revision="Fri May 05 2017 08:25:59 GMT+0200 (CEST)">
+    <div class="book" data-level="3.36" data-chapter-title="spec" data-filepath="docs/api/spec.md" data-basepath="../.." data-revision="Fri May 05 2017 09:59:28 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -757,17 +757,34 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="spec">spec</h1>
-<p>Usage: <code>spec(form)</code></p>
+<p>Usage: <code>spec(form [, {gen}])</code></p>
 <p>Takes a single predicate form, e.g. can be the name of a predicate,
 like <code>isEven</code>, or a fn literal like <code>x =&gt; x &lt; 42</code>. Note that it is not
 generally necessary to wrap predicates in spec when using the rest
 of the spec macros, only to attach a unique generator</p>
+<p>Optionally takes <code>gen</code> generator-fn, which must be a fn of no args that
+returns a test.check generator.</p>
+<p>Returns a spec.</p>
 <p><a href="https://github.com/mrijk/speculaas/blob/master/lib/def.js" target="_blank">Source</a></p>
-<p>Example:</p>
+<p>Example 1:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
 
 s.isValid(s.spec(x =&gt; x &lt; <span class="hljs-number">42</span>), <span class="hljs-number">13</span>);
 <span class="hljs-comment">// true</span>
+</code></pre>
+<p>Example 2:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
+<span class="hljs-keyword">const</span> testcheck = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;testcheck&apos;</span>);
+
+<span class="hljs-keyword">const</span> isBit = x =&gt; x === <span class="hljs-number">0</span> | x === <span class="hljs-number">1</span>;
+<span class="hljs-keyword">const</span> genBit = () =&gt; testcheck.gen.intWithin(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
+
+s.def(<span class="hljs-string">&apos;::bit&apos;</span>, s.spec(isBit, {gen: genBit}));
+s.exercise(<span class="hljs-string">&apos;::bit&apos;</span>);
+<span class="hljs-comment">// [ [ 0, 0 ],</span>
+<span class="hljs-comment">//   [ 1, 1 ],</span>
+<span class="hljs-comment">//   ...</span>
+<span class="hljs-comment">//   [ 1, 1 ] ]</span>
 </code></pre>
 
                     
