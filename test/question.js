@@ -3,6 +3,7 @@ const _ = require('lodash');
 const {expect} = require('chai');;
 
 const s = require('../lib/spec');
+const stest = require('../lib/test');
 
 const {idemPotent} = require('./utils');
 
@@ -32,5 +33,24 @@ describe('Test the question (?) function', () => {
         expect(s.exercise(s.question(isString))).to.have.length(10)
             .to.satisfy(sample => _.every(sample, ([[v]]) => _.isUndefined(v) || isString(v)));
     });
-});
 
+    it('should use the spec to test', () => {
+        const question = s.question;
+        const specs = require('../specs/question');
+
+        s.fdef(question, specs);
+
+        expect(stest.check(question)).to.have.property('result').to.equal(true);        
+    });
+
+    it('should exercise the question function', () => {
+        const question = s.question;
+        const specs = require('../specs/question');
+
+        s.fdef(question, specs);
+        
+        const questions = _.map(s.exerciseFn(question), ([, s]) => s);
+ 
+        _.forEach(questions, q => s.exercise(q));
+    });
+});
