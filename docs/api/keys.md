@@ -11,7 +11,7 @@ Example:
 
 ```js
 const s = require('speculaas');
-const {isBoolean, isString} = s.utils;
+const {isString} = s.utils;
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/
 
