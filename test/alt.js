@@ -29,7 +29,7 @@ describe('Test the alt function', () => {
     });
 
     xit('should handle list of values', () => {
-        s.def('::config', s.star(s.cat(':prop', isString,':val', '::bool-or-string')));
+        s.def('::config', s.star(s.cat(':prop', isString, ':val', '::bool-or-string')));
         expect(s.conform('::config', ['-server', 'foo', '-verbose', true, 'user', 'joe'])).to.eql([]);
     });
 

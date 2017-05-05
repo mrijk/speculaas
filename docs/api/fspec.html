@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>cat | Speculaas </title>
+        <title>fspec | Speculaas </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.5.2">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../docs/api/collOf.html" />
+    <link rel="next" href="../../docs/api/getSpec.html" />
     
     
-    <link rel="prev" href="../../docs/api/and.html" />
+    <link rel="prev" href="../../docs/api/exerciseFn.html" />
     
 
         
@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="3.4" data-chapter-title="cat" data-filepath="docs/api/cat.md" data-basepath="../.." data-revision="Fri May 05 2017 08:25:59 GMT+0200 (CEST)">
+    <div class="book" data-level="3.17" data-chapter-title="fspec" data-filepath="docs/api/fspec.md" data-basepath="../.." data-revision="Fri May 05 2017 08:25:59 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -180,7 +180,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.4" data-path="docs/api/cat.html">
+        <li class="chapter " data-level="3.4" data-path="docs/api/cat.html">
             
                 
                     <a href="../../docs/api/cat.html">
@@ -359,7 +359,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.17" data-path="docs/api/fspec.html">
+        <li class="chapter active" data-level="3.17" data-path="docs/api/fspec.html">
             
                 
                     <a href="../../docs/api/fspec.html">
@@ -756,18 +756,22 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="cat">cat</h1>
-<p>Usage: <code>cat(...)</code></p>
-<p>Returns a regex op that matches (all) values in sequence, returning a map
-containing the keys of each pred and the corresponding value.</p>
-<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/cat.js" target="_blank">Source</a></p>
+                        <h1 id="fspec">fspec</h1>
+<p>Usage: <code>fspec([options])</code></p>
+<p>Takes :args :ret and (optional) :fn kwargs whose values are preds
+and returns a spec whose conform/explain take a fn and validates it
+using generative testing. The conformed value is always the fn itself.</p>
+<p>See &apos;fdef&apos; for a single operation that creates an fspec and
+registers it, as well as a full description of :args, :ret and :fn</p>
+<p>fspecs can generate functions that validate the arguments and
+fabricate a return value compliant with the :ret spec, ignoring
+the :fn spec if present.</p>
+<p>Optionally takes :gen generator-fn, which must be a fn of no args
+that returns a test.check generator.</p>
+<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/fspec.js" target="_blank">Source</a></p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
-<span class="hljs-keyword">const</span> {isNumber, isString} = s.utils;
-
-s.def(<span class="hljs-string">&apos;::ingredient&apos;</span>, s.cat(<span class="hljs-string">&apos;:quantity&apos;</span>, isNumber, <span class="hljs-string">&apos;:unit&apos;</span>, isString));
-s.conform(<span class="hljs-string">&apos;::ingredient&apos;</span>, [<span class="hljs-number">2</span>, <span class="hljs-string">&apos;:teaspoon&apos;</span>]);
-<span class="hljs-comment">// {&apos;:quantity&apos;: 2, &apos;:unit&apos;: &apos;:teaspoon&apos;}</span>
+<span class="hljs-keyword">const</span> {invalidString, isInteger} = s.utils;
 </code></pre>
 
                     
@@ -779,10 +783,10 @@ s.conform(<span class="hljs-string">&apos;::ingredient&apos;</span>, [<span clas
         </div>
 
         
-        <a href="../../docs/api/and.html" class="navigation navigation-prev " aria-label="Previous page: and"><i class="fa fa-angle-left"></i></a>
+        <a href="../../docs/api/exerciseFn.html" class="navigation navigation-prev " aria-label="Previous page: exerciseFn"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../docs/api/collOf.html" class="navigation navigation-next " aria-label="Next page: collOf"><i class="fa fa-angle-right"></i></a>
+        <a href="../../docs/api/getSpec.html" class="navigation navigation-next " aria-label="Next page: getSpec"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
@@ -806,13 +810,9 @@ s.conform(<span class="hljs-string">&apos;::ingredient&apos;</span>, [<span clas
     <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
     
 
-    
-    <script src="../../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
-    
-
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
     gitbook.start(config);
 });
 </script>

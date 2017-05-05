@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>cat | Speculaas </title>
+        <title>conformer | Speculaas </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.5.2">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../docs/api/collOf.html" />
+    <link rel="next" href="../../docs/api/def.html" />
     
     
-    <link rel="prev" href="../../docs/api/and.html" />
+    <link rel="prev" href="../../docs/api/conform.html" />
     
 
         
@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="3.4" data-chapter-title="cat" data-filepath="docs/api/cat.md" data-basepath="../.." data-revision="Fri May 05 2017 08:25:59 GMT+0200 (CEST)">
+    <div class="book" data-level="3.7" data-chapter-title="conformer" data-filepath="docs/api/conformer.md" data-basepath="../.." data-revision="Fri May 05 2017 08:25:59 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -180,7 +180,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.4" data-path="docs/api/cat.html">
+        <li class="chapter " data-level="3.4" data-path="docs/api/cat.html">
             
                 
                     <a href="../../docs/api/cat.html">
@@ -225,7 +225,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.7" data-path="docs/api/conformer.html">
+        <li class="chapter active" data-level="3.7" data-path="docs/api/conformer.html">
             
                 
                     <a href="../../docs/api/conformer.html">
@@ -756,18 +756,25 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="cat">cat</h1>
-<p>Usage: <code>cat(...)</code></p>
-<p>Returns a regex op that matches (all) values in sequence, returning a map
-containing the keys of each pred and the corresponding value.</p>
-<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/cat.js" target="_blank">Source</a></p>
+                        <h1 id="conformer">conformer</h1>
+<p>Usage: <code>conformer(f, unf)</code></p>
+<p>Takes a predicate function with the semantics of conform i.e. it should return either a
+(possibly converted) value or &apos;:node.spec/invalid&apos;, and returns a
+spec that uses it as a predicate/conformer. Optionally takes a
+second fn that does unform of result of first</p>
+<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/conformer.js" target="_blank">Source</a></p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
-<span class="hljs-keyword">const</span> {isNumber, isString} = s.utils;
+<span class="hljs-keyword">const</span> {invalidString, isInteger} = s.utils;
 
-s.def(<span class="hljs-string">&apos;::ingredient&apos;</span>, s.cat(<span class="hljs-string">&apos;:quantity&apos;</span>, isNumber, <span class="hljs-string">&apos;:unit&apos;</span>, isString));
-s.conform(<span class="hljs-string">&apos;::ingredient&apos;</span>, [<span class="hljs-number">2</span>, <span class="hljs-string">&apos;:teaspoon&apos;</span>]);
-<span class="hljs-comment">// {&apos;:quantity&apos;: 2, &apos;:unit&apos;: &apos;:teaspoon&apos;}</span>
+<span class="hljs-keyword">const</span> pred = value =&gt; isInteger(value) ? value : invalidString;
+<span class="hljs-keyword">const</span> spec = s.conformer(pred);
+
+s.isValid(spec, <span class="hljs-number">13</span>);
+<span class="hljs-comment">// true</span>
+
+s.isValid(spec, <span class="hljs-string">&apos;13&apos;</span>);
+<span class="hljs-comment">// false</span>
 </code></pre>
 
                     
@@ -779,10 +786,10 @@ s.conform(<span class="hljs-string">&apos;::ingredient&apos;</span>, [<span clas
         </div>
 
         
-        <a href="../../docs/api/and.html" class="navigation navigation-prev " aria-label="Previous page: and"><i class="fa fa-angle-left"></i></a>
+        <a href="../../docs/api/conform.html" class="navigation navigation-prev " aria-label="Previous page: conform"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../docs/api/collOf.html" class="navigation navigation-next " aria-label="Next page: collOf"><i class="fa fa-angle-right"></i></a>
+        <a href="../../docs/api/def.html" class="navigation navigation-next " aria-label="Next page: def"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
@@ -806,13 +813,9 @@ s.conform(<span class="hljs-string">&apos;::ingredient&apos;</span>, [<span clas
     <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
     
 
-    
-    <script src="../../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
-    
-
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
     gitbook.start(config);
 });
 </script>

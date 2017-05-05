@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>cat | Speculaas </title>
+        <title>multiSpec | Speculaas </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.5.2">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../docs/api/collOf.html" />
+    <link rel="next" href="../../docs/api/nilable.html" />
     
     
-    <link rel="prev" href="../../docs/api/and.html" />
+    <link rel="prev" href="../../docs/api/merge.html" />
     
 
         
@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="3.4" data-chapter-title="cat" data-filepath="docs/api/cat.md" data-basepath="../.." data-revision="Fri May 05 2017 08:25:59 GMT+0200 (CEST)">
+    <div class="book" data-level="3.30" data-chapter-title="multiSpec" data-filepath="docs/api/multiSpec.md" data-basepath="../.." data-revision="Fri May 05 2017 08:25:59 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -180,7 +180,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.4" data-path="docs/api/cat.html">
+        <li class="chapter " data-level="3.4" data-path="docs/api/cat.html">
             
                 
                     <a href="../../docs/api/cat.html">
@@ -546,7 +546,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.30" data-path="docs/api/multiSpec.html">
+        <li class="chapter active" data-level="3.30" data-path="docs/api/multiSpec.html">
             
                 
                     <a href="../../docs/api/multiSpec.html">
@@ -756,18 +756,19 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="cat">cat</h1>
-<p>Usage: <code>cat(...)</code></p>
-<p>Returns a regex op that matches (all) values in sequence, returning a map
-containing the keys of each pred and the corresponding value.</p>
-<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/cat.js" target="_blank">Source</a></p>
+                        <h1 id="multispec">multiSpec</h1>
+<p>Usage: <code>multiSpec(mm retag)</code></p>
+<p>Takes the name of a spec/predicate-returning multimethod and a
+tag-restoring keyword or fn (retag).  Returns a spec that when
+conforming or explaining data will pass it to the multimethod to get
+an appropriate spec. You can e.g. use multiSpec to dynamically and
+extensibly associate specs with &apos;tagged&apos; data (i.e. data where one
+of the fields indicates the shape of the rest of the structure).</p>
+<p><a href="https://github.com/mrijk/speculaas/blob/master/lib/multiSpec.js" target="_blank">Source</a></p>
+<p>Note: NodeJS doesn&apos;t have multimethods, so you will have to use a library like
+<a href="https://www.npmjs.com/package/genfun" target="_blank">genfun</a> here.</p>
 <p>Example:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
-<span class="hljs-keyword">const</span> {isNumber, isString} = s.utils;
-
-s.def(<span class="hljs-string">&apos;::ingredient&apos;</span>, s.cat(<span class="hljs-string">&apos;:quantity&apos;</span>, isNumber, <span class="hljs-string">&apos;:unit&apos;</span>, isString));
-s.conform(<span class="hljs-string">&apos;::ingredient&apos;</span>, [<span class="hljs-number">2</span>, <span class="hljs-string">&apos;:teaspoon&apos;</span>]);
-<span class="hljs-comment">// {&apos;:quantity&apos;: 2, &apos;:unit&apos;: &apos;:teaspoon&apos;}</span>
 </code></pre>
 
                     
@@ -779,10 +780,10 @@ s.conform(<span class="hljs-string">&apos;::ingredient&apos;</span>, [<span clas
         </div>
 
         
-        <a href="../../docs/api/and.html" class="navigation navigation-prev " aria-label="Previous page: and"><i class="fa fa-angle-left"></i></a>
+        <a href="../../docs/api/merge.html" class="navigation navigation-prev " aria-label="Previous page: merge"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../docs/api/collOf.html" class="navigation navigation-next " aria-label="Next page: collOf"><i class="fa fa-angle-right"></i></a>
+        <a href="../../docs/api/nilable.html" class="navigation navigation-next " aria-label="Next page: nilable"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
@@ -806,13 +807,9 @@ s.conform(<span class="hljs-string">&apos;::ingredient&apos;</span>, [<span clas
     <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
     
 
-    
-    <script src="../../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
-    
-
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
     gitbook.start(config);
 });
 </script>
