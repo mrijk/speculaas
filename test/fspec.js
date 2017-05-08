@@ -6,14 +6,19 @@ const stest = require('../lib/test');
 const {isInteger} = s.utils;
 
 describe('Test the fspec function', () => {
-    it('should create a spec for a function', () => {
-        const adder = x => y => x + y;
-        const fspec = s.fspec({
-            args: s.cat(':y', isInteger),
-            ret: isInteger
-        });
+    const fspec = s.fspec({
+        args: s.cat(':y', isInteger),
+        ret: isInteger
+    });
 
+    it('should true true if the function complies to the spec', () => {
+        const adder = x => y => x + y;
         expect(s.isValid(fspec, adder(2))).to.be.true;
+    });
+
+    it('should return false if the function does not comply to the spec', () => {
+        const adder = x => y => 'x + y';
+        expect(s.isValid(fspec, adder(2))).to.be.false;
     });
 
     xit('should create a spec for a function', () => {
