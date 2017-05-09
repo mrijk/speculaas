@@ -21,6 +21,11 @@ describe('Test the fspec function', () => {
         expect(s.isValid(fspec, adder(2))).to.be.false;
     });
 
+    it('should return false if the input for fspec is not a function', () => {
+        const foo = 13;
+        expect(s.isValid(fspec, foo)).to.be.false;
+    });
+    
     it('should create a spec for a function', () => {
 
         const adder = x => y => x + y;
@@ -31,7 +36,7 @@ describe('Test the fspec function', () => {
                 args: s.cat(':y', isInteger),
                 ret: isInteger
             }),
-            fn: spec => spec.args[':x'] === spec.ret(0)
+            fn: f => f.args[':x'] === f.ret(0)
         });
 
         expect(stest.check(adder)).to.have.property('result').to.equal(true);

@@ -23,5 +23,19 @@ Example:
 
 ```js
 const s = require('speculaas');
-const {invalidString, isInteger} = s.utils;
+const {isInteger} = s.utils;
+
+const adder = x => y => x + y;
+
+s.fdef(adder, {
+    args: s.cat(':x', isInteger),
+    ret: s.fspec({
+        args: s.cat(':y', isInteger),
+        ret: isInteger
+    }),
+    fn: f => f.args[':x'] === f.ret(0)
+});
+
+s.test.check(adder);
+// {sym: 'adder', result: true, ...}
 ```
