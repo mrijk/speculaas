@@ -12,6 +12,35 @@ NodeJS version of [clojure.spec](http://clojure.org/about/spec)
 
 `npm install speculaas`
 
+## Example
+
+Example:
+
+```js
+const s = require('speculaas');
+const {isString} = s.utils;
+
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/
+
+s.def('emailType', s.and(isString, s => emailRegex.test(s)));
+        
+s.def('first-name', isString);
+s.def('last-name', isString);
+s.def('email', 'emailType');
+s.def('phone', isString);
+
+// First name, last name and email are required. Phone number is optional
+s.def('person', s.keys({req: ['first-name', 'last-name', 'email'], opt: ['phone']}));
+
+s.isValid('::person',
+{
+    'first-name': 'Elon',
+    'last-name': 'Musk',
+    'email': 'elon@example.com'
+});
+// true
+```
+
 ## Usage
 
 [Documentation](https://mrijk.github.io/speculaas) is in progress.
