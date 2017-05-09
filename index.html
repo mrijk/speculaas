@@ -46,7 +46,7 @@
     <body>
         
         
-    <div class="book" data-level="0" data-chapter-title="Introduction" data-filepath="README.md" data-basepath="." data-revision="Fri May 05 2017 09:59:28 GMT+0200 (CEST)">
+    <div class="book" data-level="0" data-chapter-title="Introduction" data-filepath="README.md" data-basepath="." data-revision="Tue May 09 2017 13:28:18 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -762,6 +762,31 @@
 <p>NodeJS version of <a href="http://clojure.org/about/spec" target="_blank">clojure.spec</a></p>
 <h2 id="installation">Installation</h2>
 <p><code>npm install speculaas</code></p>
+<h2 id="example">Example</h2>
+<p>Example:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> s = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;speculaas&apos;</span>);
+<span class="hljs-keyword">const</span> {isString} = s.utils;
+
+<span class="hljs-keyword">const</span> emailRegex = <span class="hljs-regexp">/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/</span>
+
+s.def(<span class="hljs-string">&apos;emailType&apos;</span>, s.and(isString, s =&gt; emailRegex.test(s)));
+
+s.def(<span class="hljs-string">&apos;first-name&apos;</span>, isString);
+s.def(<span class="hljs-string">&apos;last-name&apos;</span>, isString);
+s.def(<span class="hljs-string">&apos;email&apos;</span>, <span class="hljs-string">&apos;emailType&apos;</span>);
+s.def(<span class="hljs-string">&apos;phone&apos;</span>, isString);
+
+<span class="hljs-comment">// First name, last name and email are required. Phone number is optional</span>
+s.def(<span class="hljs-string">&apos;person&apos;</span>, s.keys({req: [<span class="hljs-string">&apos;first-name&apos;</span>, <span class="hljs-string">&apos;last-name&apos;</span>, <span class="hljs-string">&apos;email&apos;</span>], opt: [<span class="hljs-string">&apos;phone&apos;</span>]}));
+
+s.isValid(<span class="hljs-string">&apos;::person&apos;</span>,
+{
+    <span class="hljs-string">&apos;first-name&apos;</span>: <span class="hljs-string">&apos;Elon&apos;</span>,
+    <span class="hljs-string">&apos;last-name&apos;</span>: <span class="hljs-string">&apos;Musk&apos;</span>,
+    <span class="hljs-string">&apos;email&apos;</span>: <span class="hljs-string">&apos;elon@example.com&apos;</span>
+});
+<span class="hljs-comment">// true</span>
+</code></pre>
 <h2 id="usage">Usage</h2>
 <p><a href="https://mrijk.github.io/speculaas" target="_blank">Documentation</a> is in progress.</p>
 <h2 id="tests">Tests</h2>
@@ -813,9 +838,13 @@
     <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
     
 
+    
+    <script src="gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
     gitbook.start(config);
 });
 </script>

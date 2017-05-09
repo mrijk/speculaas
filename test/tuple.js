@@ -3,6 +3,7 @@ const _ = require('lodash');
 const {expect} = require('chai');
 
 const s = require('../lib/spec');
+const stest = require('../lib/test');
 
 const {idemPotent} = require('./utils');
 
@@ -38,5 +39,25 @@ describe('Test the tuple function', () => {
     it('should implement a generator', () => {
         expect(s.exercise(s.tuple(isInteger, isString))).to.have.length(10)
             .to.satisfy(sample => _.every(sample, ([v]) => _.isArray(v) && v.length === 2));
+    });
+
+    it('should use the spec to test', () => {
+        const tuple = s.tuple;
+        const specs = require('../specs/tuple');
+
+        s.fdef(tuple, specs);
+
+        expect(stest.check(tuple)).to.have.property('result').to.equal(true);        
+    });
+
+    it('should exercise the tuple function', () => {
+        const tuple = s.tuple;
+        const specs = require('../specs/tuple');
+
+        s.fdef(tuple, specs);
+        
+        const tuples = _.map(s.exerciseFn(tuple), ([, s]) => s);
+ 
+        _.forEach(tuples, t => s.exercise(t));
     });
 });
