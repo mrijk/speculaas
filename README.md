@@ -14,8 +14,6 @@ NodeJS version of [clojure.spec](http://clojure.org/about/spec)
 
 ## Example
 
-Example:
-
 ```js
 const s = require('speculaas');
 const {isString} = s.utils;
