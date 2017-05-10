@@ -6,7 +6,7 @@ const s = require('../lib/spec');
 
 const {idemPotent} = require('./utils');
 
-const {isInteger, isOdd} = s.utils;
+const {isBoolean, isInteger, isOdd, isString} = s.utils;
 
 describe('Test the star (*) function', () => {
     s.def('::odd?', s.and(isInteger, isOdd));
@@ -22,6 +22,17 @@ describe('Test the star (*) function', () => {
 
     it('should unform a conformed value', () => {
         expect(idemPotent(odds, [])).to.be.true;
+    });
+
+    it('should accept sequence', () => {
+        s.def('::opts', s.star(s.cat(':opt', isString, ':val', isBoolean)));
+        expect(s.conform('::opts', [':silent?', false, ':verbose', true])).to.eql(
+            [{':opt': ':silent?',
+              ':val': false,
+             },
+             {':opt': ':verbose',
+              ':val': true
+             }]);
     });
 
     it('should implement a generator', () => {

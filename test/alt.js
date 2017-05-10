@@ -7,7 +7,9 @@ const s = require('../lib/spec');
 const {isBoolean, isString} = s.utils;
 
 describe('Test the alt function', () => {
-    s.def('::bool-or-string', s.alt(':s', isString, ':b', isBoolean));
+    before(() => {
+        s.def('::bool-or-string', s.alt(':s', isString, ':b', isBoolean));
+    });
     
     it('should match a bool or string', () => {
         expect(s.isValid('::bool-or-string', [true])).to.be.true;
