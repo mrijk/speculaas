@@ -68,4 +68,4 @@ s.fdef(fishLine, {
 });
 
 stest.instrument(fishLine);
-    
+
