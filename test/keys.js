@@ -73,5 +73,9 @@ describe('Test the keys function', () => {
         expect(s.exercise('::oldPerson')).to.have.length(10)
             .to.satisfy(sample => _.every(sample, ([v]) => _.every(req, k => _.has(v, k))));
     });
+
+    it('should implement describe', () => {
+        expect(s.describe('::person')).to.eql(['keys', 'req', ['::first-name', '::last-name', '::email'], 'opt', ['::phone']]);
+    });
 });
 
