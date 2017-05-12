@@ -48,4 +48,8 @@ describe('Test the mapOf function', () => {
         expect(s.exercise('::scores2to3')).to.have.length(10)
             .to.satisfy(sample => _.every(sample, v => _.isArray(v) && v.length === 2));
     });
+
+    it('should implement describe', () => {
+        expect(s.describe('::scores')).to.eql(['mapOf', 'isString', 'isInteger']);
+    });
 });
