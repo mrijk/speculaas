@@ -52,5 +52,9 @@ describe('Test the alt function', () => {
         expect(s.exercise('::bool-or-string', 7)).to.have.length(7)
             .to.satisfy(sample => _.every(sample, ([[v]]) => isBoolean(v) || isString(v)));
     });
+
+    it('should implement describe', () => {
+        expect(s.describe('::bool-or-string')).to.eql(['alt', ':s', 'isString', ':b', 'isBoolean']);
+    });
 });
 
