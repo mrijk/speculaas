@@ -39,5 +39,10 @@ describe('Test the merge function', () => {
     it('should unform a conformed value', () => {
         expect(idemPotent(':animal/dog', doggy)).to.be.true;
     });
+
+    it('should implement describe', () => {
+        expect(s.describe(':animal/dog')).to.eql(['merge', ':animal/common', 
+                                                  ['keys', 'req', [':dog/tail?', ':dog/breed']]]);
+    });
 });
 
