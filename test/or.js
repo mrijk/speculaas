@@ -39,4 +39,8 @@ describe('Test the or function', () => {
         expect(s.exercise('::name-or-id', 7)).to.have.length(7)
             .to.satisfy(sample => _.every(sample, ([v]) => isInteger(v) || isString(v)));
     });
+
+    it('should implement describe', () => {
+        expect(s.describe('::name-or-id')).to.eql(['or', ':name', 'isString', ':id', 'isInt']);
+    });
 });
