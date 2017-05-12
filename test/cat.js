@@ -44,10 +44,14 @@ describe('Test the cat function', () => {
     });
     
     it('should implement a generator', () => {
-        s.def('::ingredient', s.cat(':quantity', isInteger, ':unit', isString));
+        s.def('::ingredient2', s.cat(':quantity', isInteger, ':unit', isString));
 
-        expect(s.exercise('::ingredient', 7)).to.have.length(7)
+        expect(s.exercise('::ingredient2', 7)).to.have.length(7)
             .to.satisfy(sample => _.every(sample, ([[v1, v2]]) => isInteger(v1) || isString(v2)));
+    });
+
+    it('should implement describe', () => {
+        expect(s.describe('::ingredient')).to.eql(['cat', ':quantity', 'isNumber', ':unit', 'isString']);
     });
 });
 

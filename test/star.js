@@ -39,6 +39,9 @@ describe('Test the star (*) function', () => {
         expect(s.exercise(s.star(isInteger))).to.have.length(10)
             .to.satisfy(sample => _.every(sample, ([v]) => _.isArray(v) && v.length >= 0));
     });
+
+    it('should implement describe', () => {
+        s.def('::odds', s.star(isOdd))
+        expect(s.describe('::odds')).to.eql(['star', 'isOdd']);
+    });
 });
-
-
