@@ -34,6 +34,11 @@ describe('Test the question (?) function', () => {
             .to.satisfy(sample => _.every(sample, ([[v]]) => _.isUndefined(v) || isString(v)));
     });
 
+    it('should implement describe', () => {
+        const q = s.question(isOdd);
+        expect(s.describe(q)).to.eql(['question', 'isOdd']);
+    });
+
     it('should use the spec to test', () => {
         const question = s.question;
         const specs = require('../specs/question');
