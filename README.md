@@ -2,11 +2,10 @@
 [![Coverage Status](https://coveralls.io/repos/github/mrijk/speculaas/badge.svg?branch=master)](https://coveralls.io/github/mrijk/speculaas?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/npm/speculaas/badge.svg)](https://snyk.io/test/npm/speculaas)
 [![npm version](https://badge.fury.io/js/speculaas.svg)](https://badge.fury.io/js/speculaas)
-
-Speculaas 
-======
-
 [![Join the chat at https://gitter.im/speculaas/Lobby](https://badges.gitter.im/speculaas/Lobby.svg)](https://gitter.im/speculaas/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+Speculaas
+======
 
 NodeJS version of [clojure.spec](http://clojure.org/about/spec)
 
