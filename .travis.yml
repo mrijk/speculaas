@@ -11,3 +11,12 @@ script:
 
 # Send coverage data to Coveralls
 after_script: "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
+
+# Notify Gitter
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/f8d6144c5249487c
+    on_success: always
+    on_failure: always
+    on_start: always
