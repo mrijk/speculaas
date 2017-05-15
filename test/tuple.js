@@ -62,6 +62,6 @@ describe('Test the tuple function', () => {
         
         const tuples = _.map(s.exerciseFn(tuple), ([, s]) => s);
  
-        _.forEach(tuples, t => s.exercise(t));
+        _.forEach(tuples, s.exercise);
     });
 });
