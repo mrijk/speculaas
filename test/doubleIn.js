@@ -3,6 +3,7 @@ const _ = require('lodash');
 const {expect} = require('chai');
 
 const s = require('../lib/spec');
+const stest = require('../lib/test');
 
 const {idemPotent} = require('./utils');
 
@@ -49,5 +50,16 @@ describe('Test the doubleIn function', () => {
     it('should implement a generator', () => {
         expect(s.exercise(s.doubleIn())).to.have.length(10)
             .to.satisfy(sample => _.every(sample, ([v]) => isDouble(v)));
+    });
+
+    it('should use the spec to test', () => {
+        const doubleIn = s.doubleIn;
+        const specs = require('../specs/doubleIn');
+
+        s.fdef(doubleIn, specs);
+
+        const generatedSpecs = _.map(s.exerciseFn(doubleIn), ([, s]) => s);
+ 
+        _.forEach(generatedSpecs, gs => s.exercise(gs));
     });
 });
