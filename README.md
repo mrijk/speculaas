@@ -6,6 +6,8 @@
 Speculaas 
 ======
 
+[![Join the chat at https://gitter.im/speculaas/Lobby](https://badges.gitter.im/speculaas/Lobby.svg)](https://gitter.im/speculaas/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 NodeJS version of [clojure.spec](http://clojure.org/about/spec)
 
 ## Installation
