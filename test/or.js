@@ -35,6 +35,10 @@ describe('Test the or function', () => {
         expect(idemPotent('::name-or-id', 'abc')).to.be.true;
     });
 
+    it('should throw an exception on unform with invalid key', () => {
+        expect(() => s.unform('::name-or-id', [':ID', 13])).to.throw(Error, 'Key :ID does not exist in spec');
+    });
+
     it('should implement a generator', () => {
         expect(s.exercise('::name-or-id', 7)).to.have.length(7)
             .to.satisfy(sample => _.every(sample, ([v]) => isInteger(v) || isString(v)));
