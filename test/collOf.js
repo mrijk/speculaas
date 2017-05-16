@@ -74,4 +74,8 @@ describe('Test the collOf function', () => {
         expect(s.exercise(s.collOf(isInteger))).to.have.length(10)
             .to.satisfy(sample => _.every(sample, ([v]) => _.isArray(v)));
     });
+
+    it('should implement describe', () => {
+        expect(s.describe('::vnum3')).to.eql(['collOf', 'isNumber', 'kind', 'isArray', 'count', 3, 'distinct', true]);
+    });
 });

@@ -41,6 +41,10 @@ describe('Test the tuple function', () => {
             .to.satisfy(sample => _.every(sample, ([v]) => _.isArray(v) && v.length === 2));
     });
 
+    it('should implement describe', () => {
+        expect(s.describe('::point')).to.eql(['tuple', 'isDouble', 'isDouble', 'isDouble']);
+    });
+
     it('should use the spec to test', () => {
         const tuple = s.tuple;
         const specs = require('../specs/tuple');
@@ -58,6 +62,6 @@ describe('Test the tuple function', () => {
         
         const tuples = _.map(s.exerciseFn(tuple), ([, s]) => s);
  
-        _.forEach(tuples, t => s.exercise(t));
+        _.forEach(tuples, s.exercise);
     });
 });

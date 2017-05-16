@@ -12,4 +12,8 @@ describe('Test the everyKv function', () => {
     it('should return a spec for everyKv', () => {
         expect(s.isValid('::scores', {'Sally': 1000, 'Joe': 500})).to.be.true;
     });
+
+    it('should implement describe', () => {
+        expect(s.describe('::scores')).to.eql(['everyKv', 'isString', 'isInteger']);
+    });
 });

@@ -24,6 +24,10 @@ describe('Test the instIn function', () => {
         expect(s.isValid('::2017', new Date('2000'))).to.be.false;
     });
 
+    it('should unform a conformed value', () => {
+        expect(idemPotent('::2017', new Date('2017-04-27'))).to.be.true;
+    });
+
     it('should implement a generator', () => {
         const start = new Date('2017');
         const end = new Date('2018');
@@ -31,8 +35,10 @@ describe('Test the instIn function', () => {
             .to.satisfy(sample => _.every(sample, ([v]) => s.isIntInRange(start, end, v)));
     });
 
-    it('should unform a conformed value', () => {
-        expect(idemPotent('::2017', new Date('2017-04-27'))).to.be.true;
+    it('should implement describe', () => {
+        const start = new Date('2017');
+        const end = new Date('2018');
+        expect(s.describe('::2017')).to.eql(['and', 'isInst', ['isInstInRange', start, end]]);
     });
 
     it('should use the spec to test', () => {

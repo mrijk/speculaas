@@ -1,6 +1,6 @@
 {
   "name": "speculaas",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "NodeJS implementation of clojure.spec",
   "keywords": [
     "specification",
@@ -43,6 +43,6 @@
     "gh-pages": "^1.0.0",
     "gitbook-cli": "^2.3.0",
     "istanbul": "^0.4.5",
-    "mocha": "^3.3.0"
+    "mocha": "^3.4.1"
   }
 }

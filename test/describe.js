@@ -2,7 +2,7 @@ const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
-const {isInteger, unknownString} = s.utils;
+const {isBool, isInteger, isString, unknownString} = s.utils;
 
 describe('Test the describe function', () => {
     

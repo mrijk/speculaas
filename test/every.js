@@ -12,4 +12,8 @@ describe('Test the every function', () => {
     it('should return a spec for a collection', () => {
         expect(s.isValid('::vnum3', [1, 2, 3])).to.be.true;
     });
+
+    it('should implement describe', () => {
+        expect(s.describe('::vnum3')).to.eql(['every', 'isNumber', 'kind', 'isArray', 'count', 3, 'distinct', true]);
+    });
 });

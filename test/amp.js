@@ -36,6 +36,10 @@ describe('Test the amp (&) function', () => {
         expect(s.exercise('::even-strings')).to.have.length(10)
             .to.satisfy(sample => _.every(sample, ([v]) => isEven(v.length)));
     });
+
+    it('should implement describe', () => {
+        expect(s.describe('::even-strings')).to.eql(['amp', ['star', 'isString'],  ['x => isEven(x.length)']]);
+    });
 });
 
 

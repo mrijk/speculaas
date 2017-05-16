@@ -37,5 +37,9 @@ describe('Test the and function', () => {
         expect(s.exercise('::even?', 7)).to.have.length(7)
             .to.satisfy(sample => _.every(sample, ([v]) => isInteger(v) && isEven(v)));
     });
+
+    it('should implement describe', () => {
+        expect(s.describe('::even?')).to.eql(['and', 'isInteger', 'isEven']);
+    });
 });
 

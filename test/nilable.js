@@ -36,4 +36,8 @@ describe('Test the nilable function', () => {
         expect(s.exercise('::nilable')).to.have.length(10)
             .to.satisfy(sample => _.every(sample, ([v]) => isNull(v) || isString(v)));
     });
+
+    it('should implement describe', () => {
+        expect(s.describe('::nilable')).to.eql(['nilable', 'isString']);
+    });
 });

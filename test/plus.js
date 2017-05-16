@@ -34,5 +34,9 @@ describe('Test the plus (+) function', () => {
         expect(s.exercise(s.plus(isInteger))).to.have.length(10)
             .to.satisfy(sample => _.every(sample, ([v]) => _.isArray(v) && v.length > 0));
     });
+
+    it('should implement describe', () => {
+        expect(s.describe('::odds')).to.eql(['plus', '::odd?']);
+    });
 });
 
