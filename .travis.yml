@@ -16,7 +16,7 @@ after_script: "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
 notifications:
   webhooks:
     urls:
-      - https://webhooks.gitter.im/e/f8d6144c5249487c
+      - https://webhooks.gitter.im/e/304d4a2a461f862ce3a7
     on_success: always
     on_failure: always
     on_start: always
