@@ -43,14 +43,14 @@ describe('Test the or function', () => {
                     path: [':name'],
                     pred: unknownString,
                     val: 3.14,
-                    via: [],
+                    via: ['::name-or-id'],
                     'in': []
                 },
                 {
                     path: [':id'],
                     pred: unknownString,
                     val: 3.14,
-                    via: [],
+                    via: ['::name-or-id'],
                     'in': []
                 }
             ]

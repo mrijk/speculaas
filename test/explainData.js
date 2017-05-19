@@ -24,5 +24,9 @@ describe('Test the explainData function', () => {
             }]
         });
     });
+
+    it('should throw an error if spec doesn\'t exist', () => {
+        expect(() => s.explainData('::foobar', 5)).to.throw(Error, /Unable to resolve spec/);
+    });
 });
 
