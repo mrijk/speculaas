@@ -40,7 +40,7 @@ describe('Test the nilable function', () => {
             problems: [
                 {
                     path: ['pred'],
-                    pred: unknownString,
+                    pred: 'isString',
                     val: 1,
                     via: ['::nilable'],
                     'in': []

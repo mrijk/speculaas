@@ -6,7 +6,7 @@ const s = require('../lib/spec');
 
 const {check, exerciseFunc, idemPotent} = require('./utils');
 
-const {isDouble, isInteger, isString} = s.utils;
+const {isDouble, isInteger, isString, unknownString} = s.utils;
 
 describe('Test the tuple function', () => {
     before(() => {
@@ -28,13 +28,29 @@ describe('Test the tuple function', () => {
     it('should conform a nested tuple', () => {
         s.def('::xpoint', s.tuple(isString, '::point'));
         const input = ['id', [1.5, 2.5, -0.5]];
-        expect(s.conform('::xpoint', input)).to.be.eql(input);
+        expect(s.conform('::xpoint', input)).to.eql(input);
     });
 
     it('should unform a conformed value', () => {
         expect(idemPotent('::point', [1.5, 2.5, -0.5])).to.be.true;
     });
-    
+
+    it('should implement explain', () => {
+        expect(s.explainData('::point', [1.5, 2.5, -0.5])).to.be.null;
+
+        expect(s.explainData('::point', [1.5, 2.5])).to.eql({
+            problems: [
+                {
+                    path: [],
+                    pred: 'values => values.length === predicates.length',
+                    val: [1.5, 2.5],
+                    via: ['::point'],
+                    'in': []
+                }
+            ]
+        });
+    });
+
     it('should implement a generator', () => {
         expect(s.exercise(s.tuple(isInteger, isString))).to.have.length(10)
             .to.satisfy(sample => _.every(sample, ([v]) => _.isArray(v) && v.length === 2));

@@ -17,7 +17,7 @@ describe('Test the explainData function', () => {
         expect(s.explainData(isString, 1)).to.eql({
             problems: [{
                 path: [],
-                pred: unknownString,
+                pred: 'isString',
                 val: 1,
                 via: [],
                 'in': []

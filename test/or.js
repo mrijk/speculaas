@@ -41,14 +41,14 @@ describe('Test the or function', () => {
             problems: [
                 {
                     path: [':name'],
-                    pred: unknownString,
+                    pred: 'isString',
                     val: 3.14,
                     via: ['::name-or-id'],
                     'in': []
                 },
                 {
                     path: [':id'],
-                    pred: unknownString,
+                    pred: 'isInt',
                     val: 3.14,
                     via: ['::name-or-id'],
                     'in': []

@@ -39,7 +39,7 @@ describe('Test the and function', () => {
             problems: [
                 {
                     path: [],
-                    pred: unknownString,
+                    pred: 'isEven',
                     val: 1,
                     via: ['::even?'],
                     'in': []
