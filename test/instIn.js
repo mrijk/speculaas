@@ -3,9 +3,8 @@ const _ = require('lodash');
 const {expect} = require('chai');
 
 const s = require('../lib/spec');
-const stest = require('../lib/test');
 
-const {exerciseFunc, idemPotent} = require('./utils');
+const {check, exerciseFunc, idemPotent} = require('./utils');
 
 describe('Test the instIn function', () => {
     before(() => {
@@ -42,11 +41,7 @@ describe('Test the instIn function', () => {
     });
 
     it('should use the spec to test', () => {
-        const instIn = s.instIn;
-        const specs = require('../specs/instIn');
-        s.fdef(instIn, specs);
-
-        expect(stest.check(instIn)).to.have.property('result').to.equal(true);        
+        expect(check(s.instIn, '../specs/instIn')).to.have.property('result').to.equal(true);
     });
 
     xit('should use the spec to test', () => {

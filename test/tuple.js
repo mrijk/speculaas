@@ -5,7 +5,7 @@ const {expect} = require('chai');
 const s = require('../lib/spec');
 const stest = require('../lib/test');
 
-const {exerciseFunc, idemPotent} = require('./utils');
+const {check, exerciseFunc, idemPotent} = require('./utils');
 
 const {isDouble, isInteger, isString} = s.utils;
 
@@ -46,12 +46,7 @@ describe('Test the tuple function', () => {
     });
 
     it('should use the spec to test', () => {
-        const tuple = s.tuple;
-        const specs = require('../specs/tuple');
-
-        s.fdef(tuple, specs);
-
-        expect(stest.check(tuple)).to.have.property('result').to.equal(true);        
+        expect(check(s.tuple, '../specs/tuple')).to.have.property('result').to.equal(true);
     });
 
     it('should exercise the tuple function', () => {

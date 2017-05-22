@@ -1,6 +1,14 @@
 const _ = require('lodash');
 
 const s = require('../lib/spec');
+const stest = require('../lib/test');
+
+function check(func, specPath) {
+   const specFile = require(specPath);
+    
+    s.fdef(func, specFile);
+    return stest.check(func);
+ }
 
 function exerciseFunc(func, specPath) {
     const specFile = require(specPath);
@@ -17,6 +25,7 @@ function idemPotent(spec, value) {
 }
 
 module.exports = {
+    check,
     exerciseFunc,
     idemPotent
 };

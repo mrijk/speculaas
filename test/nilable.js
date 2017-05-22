@@ -5,9 +5,9 @@ const {expect} = require('chai');
 const s = require('../lib/spec');
 const stest = require('../lib/test');
 
-const {isNull, isString} = s.utils;
+const {isNull, isString, unknownString} = s.utils;
 
-const {exerciseFunc} = require('./utils');
+const {check, exerciseFunc} = require('./utils');
 
 describe('Test the nilable function', () => {
     before(() => {
@@ -37,6 +37,24 @@ describe('Test the nilable function', () => {
 
     it('should implement explain', () => {
         expect(s.explainData('::nilable', null)).to.be.null;
+        expect(s.explainData('::nilable', 1)).to.be.eql({
+            problems: [
+                {
+                    path: ['pred'],
+                    pred: unknownString,
+                    val: 1,
+                    via: ['::nilable'],
+                    'in': []
+                },
+                {
+                    path: ['null'],
+                    pred: 'isNull',
+                    val: 1,
+                    via: ['::nilable'],
+                    'in': []
+                }
+            ]
+        });
     });
 
     it('should implement a generator', () => {
@@ -49,12 +67,7 @@ describe('Test the nilable function', () => {
     });
 
     it('should use the spec to test', () => {
-        const nilable = s.nilable;
-        const specs = require('../specs/nilable');
-
-        s.fdef(nilable, specs);
-
-        expect(stest.check(nilable)).to.have.property('result').to.equal(true);        
+        expect(check(s.nilable, '../specs/nilable')).to.have.property('result').to.equal(true);
     });
 
     it('should exercise the nilable function', () => {
