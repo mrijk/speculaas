@@ -3,7 +3,6 @@ const _ = require('lodash');
 const {expect} = require('chai');
 
 const s = require('../lib/spec');
-const stest = require('../lib/test');
 
 const {isNull, isString, unknownString} = s.utils;
 

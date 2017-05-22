@@ -1,7 +1,8 @@
 const {expect} = require('chai');
 
 const s = require('../lib/spec');
-const stest = require('../lib/test');
+
+const {check} = require('./utils');
 
 describe('Test isIntInRange? function', () => {
     it('should return true if value is within range', () => {
@@ -17,10 +18,6 @@ describe('Test isIntInRange? function', () => {
     });
 
     it('should use the spec to test', () => {
-        const intInRange = s.isIntInRange;
-        const specs = require('../specs/intInRange');
-        s.fdef(intInRange, specs);
-
-        expect(stest.check(intInRange)).to.have.property('result').to.equal(true);        
+        expect(check(s.isIntInRange, '../specs/intInRange')).to.have.property('result').to.equal(true);        
     });
 });
