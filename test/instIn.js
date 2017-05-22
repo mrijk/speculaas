@@ -5,7 +5,7 @@ const {expect} = require('chai');
 const s = require('../lib/spec');
 const stest = require('../lib/test');
 
-const {idemPotent} = require('./utils');
+const {exerciseFunc, idemPotent} = require('./utils');
 
 describe('Test the instIn function', () => {
     before(() => {
@@ -47,5 +47,9 @@ describe('Test the instIn function', () => {
         s.fdef(instIn, specs);
 
         expect(stest.check(instIn)).to.have.property('result').to.equal(true);        
+    });
+
+    xit('should use the spec to test', () => {
+        exerciseFunc(s.instIn, '../specs/instIn');
     });
 });

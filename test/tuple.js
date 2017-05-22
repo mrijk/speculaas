@@ -5,7 +5,7 @@ const {expect} = require('chai');
 const s = require('../lib/spec');
 const stest = require('../lib/test');
 
-const {idemPotent} = require('./utils');
+const {exerciseFunc, idemPotent} = require('./utils');
 
 const {isDouble, isInteger, isString} = s.utils;
 
@@ -55,13 +55,6 @@ describe('Test the tuple function', () => {
     });
 
     it('should exercise the tuple function', () => {
-        const tuple = s.tuple;
-        const specs = require('../specs/tuple');
-
-        s.fdef(tuple, specs);
-        
-        const tuples = _.map(s.exerciseFn(tuple), ([, s]) => s);
- 
-        _.forEach(tuples, s.exercise);
+        exerciseFunc(s.tuple, '../specs/tuple');
     });
 });

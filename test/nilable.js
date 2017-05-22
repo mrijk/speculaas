@@ -7,6 +7,8 @@ const stest = require('../lib/test');
 
 const {isNull, isString} = s.utils;
 
+const {exerciseFunc} = require('./utils');
+
 describe('Test the nilable function', () => {
     before(() => {
         s.def('::nilable', s.nilable(isString));
@@ -56,13 +58,6 @@ describe('Test the nilable function', () => {
     });
 
     it('should exercise the nilable function', () => {
-        const nilable = s.nilable;
-        const specs = require('../specs/nilable');
-
-        s.fdef(nilable, specs);
-        
-        const nilables = _.map(s.exerciseFn(nilable), ([, s]) => s);
- 
-        _.forEach(nilables, s.exercise);
+        exerciseFunc(s.nilable, '../specs/nilable');
     });
 });

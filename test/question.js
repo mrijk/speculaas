@@ -5,7 +5,7 @@ const {expect} = require('chai');;
 const s = require('../lib/spec');
 const stest = require('../lib/test');
 
-const {idemPotent} = require('./utils');
+const {exerciseFunc, idemPotent} = require('./utils');
 
 const {isInteger, isNull, isOdd, isString} = s.utils;
 
@@ -49,13 +49,6 @@ describe('Test the question (?) function', () => {
     });
 
     it('should exercise the question function', () => {
-        const question = s.question;
-        const specs = require('../specs/question');
-
-        s.fdef(question, specs);
-        
-        const questions = _.map(s.exerciseFn(question), ([, s]) => s);
- 
-        _.forEach(questions, q => s.exercise(q));
+        exerciseFunc(s.question, '../specs/question');
     });
 });

@@ -5,7 +5,7 @@ const {expect} = require('chai');
 const s = require('../lib/spec');
 const stest = require('../lib/test');
 
-const {idemPotent} = require('./utils');
+const {exerciseFunc, idemPotent} = require('./utils');
 
 const {isDouble} = s.utils;
 
@@ -57,15 +57,6 @@ describe('Test the doubleIn function', () => {
     });
 
     it('should use the spec to test', () => {
-        const doubleIn = s.doubleIn;
-        const specs = require('../specs/doubleIn');
-
-        s.fdef(doubleIn, specs);
-
-        expect(stest.check(doubleIn)).to.have.property('result').to.equal(true);        
-
-        const generatedSpecs = _.map(s.exerciseFn(doubleIn), ([, s]) => s);
- 
-        _.forEach(generatedSpecs, s.exercise);
+        exerciseFunc(s.doubleIn, '../specs/doubleIn');
     });
 });
