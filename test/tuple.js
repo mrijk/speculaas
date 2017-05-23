@@ -35,7 +35,7 @@ describe('Test the tuple function', () => {
         expect(idemPotent('::point', [1.5, 2.5, -0.5])).to.be.true;
     });
 
-    it.only('should implement explain', () => {
+    it('should implement explain', () => {
         expect(s.explainData('::point', [1.5, 2.5, -0.5])).to.be.null;
 
         expect(s.explainData('::point', [1.5, 2.5])).to.eql({
