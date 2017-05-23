@@ -11,8 +11,14 @@ describe('Test the IntIn function', () => {
         s.def('::oneByte', s.intIn(0, 256));
     });
 
-    it('should return true if value is with range', () => {
-        expect(s.isValid('::oneByte', 0)).to.be.true;
+    describe('should handle valid input', () => {
+        it('should return true if value is with range', () => {
+            expect(s.isValid('::oneByte', 0)).to.be.true;
+        });
+
+        it('explainData should return null', () => {
+            expect(s.explainData('::oneByte', 0)).to.be.null;
+        });
     });
 
     it('should exclude the upper bound', () => {

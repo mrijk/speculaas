@@ -57,7 +57,7 @@ describe('Test the plus (+) function', () => {
                         pred: 'isOdd',
                         val: 6,
                         via: ['::odds'],
-                    'in': [2]
+                        'in': [2]
                     }
                 ]
             });
