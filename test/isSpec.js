@@ -2,6 +2,8 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
+const {check} = require('./utils');
+
 describe('Test the isSpec function', () => {
 
     it('should return the spec object', () => {
@@ -16,5 +18,9 @@ describe('Test the isSpec function', () => {
 
     it('should return null if the parameter is an integer', () => {
         expect(s.isSpec(1)).to.be.null;
+    });
+
+    it('should use the spec to test', () => {
+        expect(check(s.isSpec, '../specs/isSpec')).to.have.property('result').to.equal(true);
     });
 });
