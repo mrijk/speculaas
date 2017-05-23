@@ -35,14 +35,14 @@ describe('Test the tuple function', () => {
         expect(idemPotent('::point', [1.5, 2.5, -0.5])).to.be.true;
     });
 
-    it('should implement explain', () => {
+    it.only('should implement explain', () => {
         expect(s.explainData('::point', [1.5, 2.5, -0.5])).to.be.null;
 
         expect(s.explainData('::point', [1.5, 2.5])).to.eql({
             problems: [
                 {
                     path: [],
-                    pred: 'values => values.length === predicates.length',
+                    pred: "function anonymous(values\n/**/) {\nreturn values.length === 3\n}",
                     val: [1.5, 2.5],
                     via: ['::point'],
                     'in': []
