@@ -30,6 +30,34 @@ describe('Test the plus (+) function', () => {
         expect(idemPotent('::odds', [1, 3, 5])).to.be.true;
     });
 
+    it('should implement explain', () => {
+        expect(s.explainData('::odds', [1, 3, 5])).to.be.null;
+
+        expect(s.explainData('::odds', [])).to.eql({
+            problems: [
+                {
+                    path: [],
+                    reason: 'Insufficient input',
+                    val: [],
+                    via: ['::odds'],
+                    'in': []
+                }
+            ]
+        });
+
+        expect(s.explainData('::odds', [1, 3, 6])).to.eql({
+            problems: [
+                {
+                    path: [],
+                    pred: 'isOdd',
+                    val: 6,
+                    via: ['::odds'],
+                    'in': [2]
+                }
+            ]
+        });
+    });
+
     it('should implement a generator', () => {
         expect(s.exercise(s.plus(isInteger))).to.have.length(10)
             .to.satisfy(sample => _.every(sample, ([v]) => _.isArray(v) && v.length > 0));
