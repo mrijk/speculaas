@@ -43,7 +43,7 @@ describe('Test the doubleIn function', () => {
                 problems: [
                     {
                         path: [],
-                        pred: 'x => (isnan(x) && min === -Infinity) || x >= min',
+//                        pred: 'x => (isnan(x) && min === -Infinity) || x >= min',
                         val: -1.1,
                         via: ['::percentage'],
                         'in': []
