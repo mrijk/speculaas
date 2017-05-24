@@ -13,16 +13,38 @@ describe('Test the tuple function', () => {
         s.def('::point', s.tuple(isDouble, isDouble, isDouble));
     });
     
-    it('should return a spec for a tuple', () => {
-        expect(s.isValid('::point', [1.5, 2.5, -0.5])).to.be.true;
+    describe('should handle valid input', () => {
+        it('should return a spec for a tuple', () => {
+            expect(s.isValid('::point', [1.5, 2.5, -0.5])).to.be.true;
+        });
+
+        it('explainData should return null', () => {
+            expect(s.explainData('::point', [1.5, 2.5, -0.5])).to.be.null;
+        });
     });
     
-    it('should fail on invalid data', () => {
-        expect(s.isValid('::point', [1.5, 2.5, 'foo'])).to.be.false;
-    });
+    describe('should reject invalid input', () => {
+        it('should fail on invalid data', () => {
+            expect(s.isValid('::point', [1.5, 2.5, 'foo'])).to.be.false;
+        });
     
-    it('should fail on invalid data length', () => {
-        expect(s.isValid('::point', [1.5, 2.5, -0.5, 3.0])).to.be.false;
+        it('should fail on invalid data length', () => {
+            expect(s.isValid('::point', [1.5, 2.5, -0.5, 3.0])).to.be.false;
+        });
+
+        it('should implement explain', () => {
+            expect(s.explainData('::point', [1.5, 2.5])).to.eql({
+                problems: [
+                    {
+                        path: [],
+                        pred: "function anonymous(values\n/**/) {\nreturn values.length === 3\n}",
+                        val: [1.5, 2.5],
+                        via: ['::point'],
+                        'in': []
+                    }
+                ]
+            });
+        });
     });
 
     it('should conform a nested tuple', () => {
@@ -33,22 +55,6 @@ describe('Test the tuple function', () => {
 
     it('should unform a conformed value', () => {
         expect(idemPotent('::point', [1.5, 2.5, -0.5])).to.be.true;
-    });
-
-    it('should implement explain', () => {
-        expect(s.explainData('::point', [1.5, 2.5, -0.5])).to.be.null;
-
-        expect(s.explainData('::point', [1.5, 2.5])).to.eql({
-            problems: [
-                {
-                    path: [],
-                    pred: "function anonymous(values\n/**/) {\nreturn values.length === 3\n}",
-                    val: [1.5, 2.5],
-                    via: ['::point'],
-                    'in': []
-                }
-            ]
-        });
     });
 
     it('should implement a generator', () => {

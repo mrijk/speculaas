@@ -11,18 +11,26 @@ describe('Test the alt function', () => {
         s.def('::bool-or-string', s.alt(':s', isString, ':b', isBoolean));
     });
     
-    it('should match a bool or string', () => {
-        expect(s.isValid('::bool-or-string', [true])).to.be.true;
-        expect(s.isValid('::bool-or-string', ['foo'])).to.be.true;
-    });
-    
-    it('should not match an integer', () => {
-        expect(s.isValid('::bool-or-string', [1])).to.be.false;
+    describe('should handle valid input', () => {
+        it('should match a bool or string', () => {
+            expect(s.isValid('::bool-or-string', [true])).to.be.true;
+            expect(s.isValid('::bool-or-string', ['foo'])).to.be.true;
+        });
+
+        it('should implement explain', () => {
+            expect(s.explainData('::bool-or-string', [true])).to.be.null;
+        });
     });
 
-    it('should conform to a string', () => {
-        expect(s.conform('::bool-or-string', [true])).to.eql([':b', true]);
-        expect(s.conform('::bool-or-string', ['foo'])).to.eql([':s', 'foo']);
+    describe('should reject invalid input', () => {
+        it('should not match an integer', () => {
+            expect(s.isValid('::bool-or-string', [1])).to.be.false;
+        });
+
+        it('should conform to a string', () => {
+            expect(s.conform('::bool-or-string', [true])).to.eql([':b', true]);
+            expect(s.conform('::bool-or-string', ['foo'])).to.eql([':s', 'foo']);
+        });
     });
 
     it('should handle list of values', () => {
