@@ -13,6 +13,18 @@ describe('Test the explainData function', () => {
         expect(s.explainData([1, 2], 2)).to.equal(null);
     });
 
+    it('should report a problem when the value is not in the array', () => {
+        expect(s.explainData([1, 2], 3)).to.eql({
+            problems: [{
+                path: [],
+                pred: unknownString,
+                val: 3,
+                via: [],
+                'in': []
+            }]            
+        });
+    });
+
     it('should return an object explaining why the spec fails', () => {
         expect(s.explainData(isString, 1)).to.eql({
             problems: [{
