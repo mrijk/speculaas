@@ -1,6 +1,6 @@
 const _ = require('lodash');
 
-const {expect} = require('chai');;
+const {expect} = require('chai');
 
 const s = require('../lib/spec');
 

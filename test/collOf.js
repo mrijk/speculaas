@@ -51,6 +51,20 @@ describe('Test the collOf function', () => {
         it('should fail on invalid length', () => {
             expect(s.isValid('::vnum3', [1, 2, 3, 4])).to.be.false;
         });
+
+        it('explainData should report about wrong length', () => {
+            expect(s.explainData('::vnum3', [1, 2, 3, 4])).to.eql({
+                problems: [
+                    {
+                        path: [],
+                        pred: 'values => values.length === 3',
+                        val: [1, 2, 3, 4],
+                        via: ['::vnum3'],
+                        'in': []
+                    }
+                ]
+            });
+        });
     });
 
 
