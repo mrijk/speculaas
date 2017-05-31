@@ -24,16 +24,24 @@ describe('Test the merge function', () => {
                                      s.keys({req: [':dog/tail?', ':dog/breed']})));
     });
 
-    it('should merge a spec', () => {
-        expect(s.isValid(':animal/dog', doggy)).to.be.true;
+    describe('should handle valid input', () => {
+        it('should merge a spec', () => {
+            expect(s.isValid(':animal/dog', doggy)).to.be.true;
+        });
+
+        it('explainData should return null', () => {
+            expect(s.explainData(':animal/dog', doggy)).to.be.null;
+        });
     });
 
-    it('should notice that a snake is not a dog', () => {
-        const snake = {
-            ':animal/kind': 'snake',
-            ':animal/says': 'ssssssss'
-        };
-        expect(s.isValid(':animal/dog', snake)).to.be.false;
+    describe('should reject invalid input', () => {
+        it('should notice that a snake is not a dog', () => {
+            const snake = {
+                ':animal/kind': 'snake',
+                ':animal/says': 'ssssssss'
+            };
+            expect(s.isValid(':animal/dog', snake)).to.be.false;
+        });
     });
     
     it('should unform a conformed value', () => {
