@@ -45,6 +45,20 @@ describe('Test the question (?) function', () => {
                 ]
             });
         });
+
+        it('explainData should report about wrong value', () => {
+            expect(s.explainData(s.question(isInteger), [true])).to.eql({
+                problems: [
+                    {
+                        path: [],
+                        pred: 'isInteger',
+                        val: true,
+                        via: [],
+                        'in': [0]
+                    }
+                ]
+            });
+        });
     });
 
     it('should unform a conformed value', () => {
