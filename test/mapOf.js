@@ -35,14 +35,21 @@ describe('Test the mapOf function', () => {
         });
 
         it('explainData should report about wrong type', () => {
-            expect(s.explainData('::scores', {'Sally': 1000, 'Joe': '500'})).to.eql({
+            expect(s.explainData('::scores', new Map([['Sally', '1000'], [true, 500]]))).to.eql({
                 problems: [
                     {
-                        path: [],
+                        path: [1],
                         pred: 'isInteger',
-                        val: '500',
+                        val: '1000',
                         via: ['::scores'],
-                        'in': []
+                        'in': ['Sally', '1000']
+                    },
+                    {
+                        path: [0],
+                        pred: 'isString',
+                        val: true,
+                        via: ['::scores'],
+                        'in': [true, 500]
                     }
                 ]
             });
