@@ -14,33 +14,56 @@ describe('Test the cat function', () => {
         s.def('::odds-then-maybe-even', s.cat(':odds', s.plus(isOdd), ':even', s.question(isEven)));
     });
    
-    it('should match a concatenation', () => {
-        expect(s.isValid('::ingredient', [2, ':teaspoon'])).to.be.true;
+    describe('should handle valid input', () => {
+        it('should match a concatenation', () => {
+            expect(s.isValid('::ingredient', [2, ':teaspoon'])).to.be.true;
+        });
+
+        it('should conform to a value', () => {
+            expect(s.conform('::ingredient', [2, ':teaspoon'])).to.eql({':quantity': 2, ':unit': ':teaspoon'});
+        });
+
+        it('should handle nested concatenation', () => {
+            s.def('::named-ingredient', s.cat(':name', isString, ':ingredient', '::ingredient'));
+            expect(s.isValid('::named-ingredient', ['salt', 2, 'teaspoon'])).to.be.true;
+        });
+        
+        it('should handle a list', () => {
+            expect(s.conform('::odds-then-maybe-even', [1, 3, 5, 100])).to.eql({ ':odds': [ 1, 3, 5 ], ':even': 100 });
+        });
+
+        it('explainData should return null', () => {
+            expect(s.explainData('::ingredient', [2, ':teaspoon'])).to.be.null;
+        });
     });
 
-    it('should fail if concatenation doesn\'t match', () => {
-        expect(s.isValid('::ingredient', [2, 13])).to.be.false;
-    });
+    describe('should reject invalid input', () => {
+        it('should fail if concatenation doesn\'t match', () => {
+            expect(s.isValid('::ingredient', [2, 13])).to.be.false;
+        });
 
-    it('should fail nr of values is not correct', () => {
-        expect(s.isValid('::ingredient', [2])).to.be.false;
-    });
+        xit('explainData should report about wrong type', () => {
+            expect(s.explainData('::ingredient', [2, 13])).to.eql({
+                problems: [
+                    {
+                        path: [],
+                        reason: 'Extra input',
+                        pred: 'isInt',
+                        val: [2, 3],
+                        via: [],
+                        'in': [1]
+                    }
+                ]
+            });
+        });
 
-    it('should conform to a value', () => {
-        expect(s.conform('::ingredient', [2, ':teaspoon'])).to.eql({':quantity': 2, ':unit': ':teaspoon'});
+        it('should fail nr of values is not correct', () => {
+            expect(s.isValid('::ingredient', [2])).to.be.false;
+        });
     });
 
     it('should unform a conformed value', () => {
         expect(idemPotent('::ingredient', [2, ':teaspoon'])).to.be.true;
-    });
-
-    it('should handle nested concatenation', () => {
-        s.def('::named-ingredient', s.cat(':name', isString, ':ingredient', '::ingredient'));
-        expect(s.isValid('::named-ingredient', ['salt', 2, 'teaspoon'])).to.be.true;
-    });
-
-    it('should handle a list', () => {
-        expect(s.conform('::odds-then-maybe-even', [1, 3, 5, 100])).to.eql({ ':odds': [ 1, 3, 5 ], ':even': 100 });
     });
     
     it('should implement a generator', () => {
