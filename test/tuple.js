@@ -37,7 +37,7 @@ describe('Test the tuple function', () => {
                 problems: [
                     {
                         path: [],
-                        pred: "function anonymous(values\n/**/) {\nreturn values.length === 3\n}",
+                        pred: 'values => values.length === 3',
                         val: [1.5, 2.5],
                         via: ['::point'],
                         'in': []
