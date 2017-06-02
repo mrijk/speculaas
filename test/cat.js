@@ -47,9 +47,8 @@ describe('Test the cat function', () => {
                 problems: [
                     {
                         path: [],
-                        reason: 'Extra input',
-                        pred: 'isInt',
-                        val: [2, 3],
+                        pred: 'isString',
+                        val: 13,
                         via: [],
                         'in': [1]
                     }

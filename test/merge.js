@@ -35,12 +35,34 @@ describe('Test the merge function', () => {
     });
 
     describe('should reject invalid input', () => {
+        const snake = {
+            ':animal/kind': 'snake',
+            ':animal/says': 'ssssssss'
+        };
+
         it('should notice that a snake is not a dog', () => {
-            const snake = {
-                ':animal/kind': 'snake',
-                ':animal/says': 'ssssssss'
-            };
             expect(s.isValid(':animal/dog', snake)).to.be.false;
+        });
+
+        it('explainData should report about wrong type', () => {
+            expect(s.explainData(':animal/dog', snake)).to.eql({
+                problems: [
+                    {
+                        path: [],
+                        pred: ':dog/tail?',
+                        val: snake,
+                        via: [':animal/dog'],
+                        'in': []
+                    },
+                    {
+                        path: [],
+                        pred: ':dog/breed',
+                        val: snake,
+                        via: [':animal/dog'],
+                        'in': []
+                    }
+                ]
+            });
         });
     });
     
