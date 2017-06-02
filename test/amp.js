@@ -48,6 +48,20 @@ describe('Test the amp (&) function', () => {
                 ]
             });
         });
+
+        it('explainData should report about wrong length', () => {
+            expect(s.explainData('::even-strings', ['a', 'b', 'c'])).to.eql({
+                problems: [
+                    {
+                        path: [],
+                        pred: 'x => isEven(x.length)',
+                        val: ['a', 'b', 'c'],
+                        via: ['::even-strings'],
+                        'in': []
+                    }
+                ]
+            });
+        });
     });
 
     it('should unform a conformed value', () => {
