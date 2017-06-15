@@ -32,7 +32,7 @@ describe('Test the tuple function', () => {
             expect(s.isValid('::point', [1.5, 2.5, -0.5, 3.0])).to.be.false;
         });
 
-        it('should implement explain', () => {
+        it('explainData should reject invalid length', () => {
             expect(s.explainData('::point', [1.5, 2.5])).to.eql({
                 problems: [
                     {
@@ -41,6 +41,20 @@ describe('Test the tuple function', () => {
                         val: [1.5, 2.5],
                         via: ['::point'],
                         'in': []
+                    }
+                ]
+            });
+        });
+
+        it('explainData should reject invalid fields', () => {
+            expect(s.explainData('::point', [1.5, 2.5, 'foo'])).to.eql({
+                problems: [
+                    {
+                        path: [2],
+                        pred: 'isDouble',
+                        val: 'foo',
+                        via: ['::point'],
+                        'in': [2]
                     }
                 ]
             });
