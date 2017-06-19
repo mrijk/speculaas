@@ -42,6 +42,21 @@ describe('Test the cat function', () => {
             expect(s.isValid('::ingredient', [2, 13])).to.be.false;
         });
 
+        it('explainData should report about insufficient input', () => {
+            expect(s.explainData('::ingredient', [2])).to.eql({
+                problems: [
+                    {
+                        path: [':unit'],
+                        reason: 'Insufficient input',
+                        pred: 'isString',
+                        val: undefined,
+                        via: [],
+                        'in': []
+                    }
+                ]
+            });
+        });
+        
         xit('explainData should report about wrong type', () => {
             expect(s.explainData('::ingredient', [2, 13])).to.eql({
                 problems: [
