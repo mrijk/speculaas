@@ -3,10 +3,9 @@ module.exports = function(config) {
         files: [
             { pattern: 'lib/*.js', mutated: true, included: false},
             { pattern: 'specs/*.js', mutated: false, included: false},
-            { pattern: 'lib/util/*.js', mutated: false, included: false},
+            { pattern: 'lib/util/*.js', mutated: true, included: false},
             { pattern: 'lib/test/*.js', mutated: false, included: false},
-            'test/*.js',
-            'test/utils.js'
+            'test/**/*.js'
         ],
         testRunner: 'mocha',
         testFramework: 'mocha',

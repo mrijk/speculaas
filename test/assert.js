@@ -9,6 +9,7 @@ const {isString} = s.utils;
 describe('Test the assert functions', () => {
 
     it('should set and get the checkAsserts', () => {
+        expect(s.isCheckAsserts()).to.be.false;	// default false
         s.checkAsserts(true);
         expect(s.isCheckAsserts()).to.be.true;
         s.checkAsserts(false);

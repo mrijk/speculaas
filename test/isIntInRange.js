@@ -17,6 +17,10 @@ describe('Test isIntInRange? function', () => {
         expect(s.isIntInRange(0, 13, -42)).to.be.false;
     });
 
+    it('should have an upper bound that is larger than the lower bound', () => {
+        expect(s.isIntInRange(13, 0, 0)).to.be.false;
+    });
+    
     it('should use the spec to test', () => {
         expect(check(s.isIntInRange, '../specs/intInRange')).to.have.property('result').to.equal(true);        
     });
