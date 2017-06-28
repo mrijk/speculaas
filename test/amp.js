@@ -62,6 +62,21 @@ describe('Test the amp (&) function', () => {
                 ]
             });
         });
+
+        it('explainData should report about length being zero', () => {
+            s.def('::even-and-not-empty-strings', s.amp(s.star(isString), x => isEven(x.length), x => x.length > 0));
+            expect(s.explainData('::even-and-not-empty-strings', [])).to.eql({
+                problems: [
+                    {
+                        path: [],
+                        pred: 'x => x.length > 0',
+                        val: [],
+                        via: ['::even-and-not-empty-strings'],
+                        'in': []
+                    }
+                ]
+            });
+        });
     });
 
     it('should unform a conformed value', () => {
