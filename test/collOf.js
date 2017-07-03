@@ -19,6 +19,11 @@ describe('Test the collOf function', () => {
         it('explainData should return null', () => {
             expect(s.explainData('::vnum3', [1, 2, 3])).to.be.null;
         });
+
+        it('explainData should return null if count is not specified', () => {
+            s.def('::vnumx', s.collOf(isNumber, {kind: isVector, distinct: true}));
+            expect(s.explainData('::vnumx', [1, 2, 3, 4])).to.be.null;
+        });
     });
 
     describe('should reject invalid input', () => {
