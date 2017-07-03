@@ -57,14 +57,14 @@ describe('Test the cat function', () => {
             });
         });
         
-        xit('explainData should report about wrong type', () => {
+        it('explainData should report about wrong type', () => {
             expect(s.explainData('::ingredient', [2, 13])).to.eql({
                 problems: [
                     {
-                        path: [],
+                        path: [':unit'],
                         pred: 'isString',
                         val: 13,
-                        via: [],
+                        via: ['::ingredient'],
                         'in': [1]
                     }
                 ]
