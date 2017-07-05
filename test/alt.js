@@ -31,6 +31,21 @@ describe('Test the alt function', () => {
             expect(s.conform('::bool-or-string', [true])).to.eql([':b', true]);
             expect(s.conform('::bool-or-string', ['foo'])).to.eql([':s', 'foo']);
         });
+
+        it('explainData should reject invalid length', () => {
+            expect(s.explainData('::bool-or-string', [])).to.be.eql({
+                problems: [
+                    {
+                        path: [],
+                        reason: 'Insufficient input',
+                        pred: ['alt', ':s', 'isString', ':b', 'isBoolean'],
+                        val: [],
+                        via: ['::bool-or-string'],
+                        'in': []
+                    }
+                ]
+            });
+        });
     });
 
     it('should handle list of values', () => {
