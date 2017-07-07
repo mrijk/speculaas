@@ -50,7 +50,7 @@ describe('Test the cat function', () => {
                         reason: 'Insufficient input',
                         pred: 'isString',
                         val: undefined,
-                        via: [],
+                        via: ['::ingredient'],
                         'in': []
                     }
                 ]
