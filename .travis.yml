@@ -8,6 +8,7 @@ install:
 
 script:
   - npm run cover
+  - sonar-scanner
 
 # Send coverage data to Coveralls
 after_script: "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
@@ -20,3 +21,8 @@ notifications:
     on_success: always
     on_failure: always
     on_start: always
+
+addons:
+  sonarcloud:
+    organization: "mrijk"
+    
