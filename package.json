@@ -39,7 +39,7 @@
   "devDependencies": {
     "chai": "^4.0.2",
     "coveralls": "^2.13.1",
-    "eslint": "^4.1.0",
+    "eslint": "^4.2.0",
     "genfun": "^4.0.1",
     "gh-pages": "^1.0.0",
     "gitbook-cli": "^2.3.0",
