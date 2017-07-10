@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/mrijk/speculaas.svg)](https://travis-ci.org/mrijk/speculaas)
+[![Quality Gate](https://sonarcloud.io/api/badges/gate?key=mrijk:speculaas)](https://sonarcloud.io/api/badges/gate?key=mrijk:speculaas)
 [![Coverage Status](https://coveralls.io/repos/github/mrijk/speculaas/badge.svg?branch=master)](https://coveralls.io/github/mrijk/speculaas?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/npm/speculaas/badge.svg)](https://snyk.io/test/npm/speculaas)
 [![npm version](https://badge.fury.io/js/speculaas.svg)](https://badge.fury.io/js/speculaas)
