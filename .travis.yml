@@ -1,8 +1,5 @@
 language: node_js
 
-jdk:
-  - oraclejdk8
-
 node_js:
   - stable
 
@@ -26,6 +23,9 @@ notifications:
     on_start: always
 
 addons:
+  apt:
+    packages:
+      - oracle-java8-set-default
   sonarcloud:
     organization: "mrijk"
     
