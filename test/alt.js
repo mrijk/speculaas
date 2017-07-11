@@ -46,6 +46,27 @@ describe('Test the alt function', () => {
                 ]
             });
         });
+
+        it('explainData should reject invalid input', () => {
+            expect(s.explainData('::bool-or-string', [1])).to.be.eql({
+                problems: [
+                    {
+                        path: [':s'],
+                        pred: 'isString',
+                        val: 1,
+                        via: ['::bool-or-string'],
+                        'in': [0]
+                    },
+                    {
+                        path: [':b'],
+                        pred: 'isBoolean',
+                        val: 1,
+                        via: ['::bool-or-string'],
+                        'in': [0]
+                    },
+                ]
+            });
+        });
     });
 
     it('should handle list of values', () => {
