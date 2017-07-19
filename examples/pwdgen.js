@@ -3,7 +3,14 @@
 // by Dave Paroulek
 
 const s = require('../lib/spec');
+const gen = require('../lib/gen');
 
-s.def('::two-lowers', s => s.match(/.*[a-z]+.*[a-z]+.*/));
+const {isString} = s.utils;
+
+s.def('::two-lowers',
+      s.and(isString, s => s.match(/.*[a-z]+.*[a-z]+.*/)));
+/*
 s.isValid('::two-lowers', '1234');
 s.isValid('::two-lowers', '12b34a');
+*/
+console.log(gen.generate(s.gen('::two-lowers')));
