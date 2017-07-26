@@ -45,7 +45,7 @@
     "gitbook-cli": "^2.3.2",
     "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
-    "sinon": "^2.3.8",
+    "sinon": "^2.4.0",
     "stryker": "^0.6.7",
     "stryker-api": "^0.5.6",
     "stryker-html-reporter": "^0.4.7",
