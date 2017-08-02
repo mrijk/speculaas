@@ -42,6 +42,14 @@ describe('Test the keys function', () => {
                              })).to.be.true;
         });
 
+        it('should conform an empty object when no keys are specified', () => {
+            expect(s.conform(s.keys({}), {})).to.eql({});
+        });
+        
+        it('should conform any object when no keys are specified', () => {
+            expect(s.conform(s.keys({}), {':a': 1})).to.eql({':a': 1});
+        });
+
         it('explainData should return null', () => {
             expect(s.explainData('::person', person)).to.be.null;
         });
