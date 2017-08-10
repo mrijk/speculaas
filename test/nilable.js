@@ -4,7 +4,9 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {isNull, isString} = s.utils;
+const {isNull, isString, invalidString, unknownString} = s.utils;
+
+const {check, exerciseFunc} = require('./utils');
 
 describe('Test the nilable function', () => {
     before(() => {
@@ -16,18 +18,51 @@ describe('Test the nilable function', () => {
         expect(s.isValid(s.nilable(isString), null)).to.be.true;            
     });
 
-    it('should create a named spec that allows null as a valid value', () => {
-        s.def('::string?', isString);
-        expect(s.isValid(s.nilable('::string?'), 'foobar')).to.be.true;
-        expect(s.isValid(s.nilable('::string?'), null)).to.be.true;
+    describe('should handle valid input', () => {
+        it('should create a named spec that allows null as a valid value', () => {
+            s.def('::string?', isString);
+            expect(s.isValid(s.nilable('::string?'), 'foobar')).to.be.true;
+            expect(s.isValid(s.nilable('::string?'), null)).to.be.true;
+        });
+        
+        it('should test conform', () => {
+            expect(s.conform('::nilable', null)).to.be.null;
+            expect(s.conform('::nilable', 'foobar')).to.equal('foobar');
+        });
+
+        it('explainData should return null', () => {
+            expect(s.explainData('::nilable', null)).to.be.null;
+        });
     });
 
-    it('should test the conform', () => {
-        expect(s.conform('::nilable', null)).to.be.null;
-        expect(s.conform('::nilable', 'foobar')).to.equal('foobar');
+    describe('should reject invalid input', () => {
+        it('should return the invalid string', () => {
+            expect(s.conform('::nilable', 1)).to.equal(invalidString);
+        });
+
+        it('should implement explain', () => {
+            expect(s.explainData('::nilable', 1)).to.eql({
+                problems: [
+                    {
+                        path: ['pred'],
+                        pred: 'isString',
+                        val: 1,
+                        via: ['::nilable'],
+                        'in': []
+                    },
+                    {
+                        path: ['null'],
+                        pred: 'isNull',
+                        val: 1,
+                        via: ['::nilable'],
+                        'in': []
+                    }
+                ]
+            });
+        });
     });
 
-    it('should test the unconform', () => {
+    it('should test unconform', () => {
         expect(s.unform('::nilable', null)).to.be.null;
         expect(s.unform('::nilable', 'foobar')).to.equal('foobar');
     });
@@ -39,5 +74,13 @@ describe('Test the nilable function', () => {
 
     it('should implement describe', () => {
         expect(s.describe('::nilable')).to.eql(['nilable', 'isString']);
+    });
+
+    it('should use the spec to test', () => {
+        expect(check(s.nilable, '../specs/nilable')).to.have.property('result').to.equal(true);
+    });
+
+    it('should exercise the nilable function', () => {
+        exerciseFunc(s.nilable, '../specs/nilable');
     });
 });

@@ -1,4 +1,4 @@
-// Example: Set Game. Node.spec implementation
+// Example: SET Game. Node.spec implementation
 // of https://gist.github.com/cgrand/4985a7ef80c8c85291213437d06d9169
 // by Christophe Grand
 

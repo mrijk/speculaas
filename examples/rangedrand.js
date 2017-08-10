@@ -1,7 +1,5 @@
 // Example: spec'ing functions
 
-const _ = require('lodash');
-
 const s = require('../lib/spec');
 const stest = require('../lib/test');
 

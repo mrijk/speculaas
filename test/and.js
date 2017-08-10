@@ -1,12 +1,12 @@
 const _ = require('lodash');
 
-const {expect} = require('chai');;
+const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
 const {idemPotent} = require('./utils');
 
-const {isEven, isInteger, invalidString} = s.utils;
+const {isEven, isInteger, invalidString, unknownString} = s.utils;
 
 describe('Test the and function', () => {
     before(() => {
@@ -31,6 +31,21 @@ describe('Test the and function', () => {
 
     it('should unform a conformed value', () => {
         expect(idemPotent('::even?', 42)).to.be.true;
+    });
+
+    it('should implement explain', () => {
+        expect(s.explainData('::even?', 0)).to.be.null;
+        expect(s.explainData('::even?', 1)).to.eql({
+            problems: [
+                {
+                    path: [],
+                    pred: 'isEven',
+                    val: 1,
+                    via: ['::even?'],
+                    'in': []
+                }
+            ]
+        });
     });
 
     it('should implement a generator', () => {

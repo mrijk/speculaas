@@ -6,18 +6,48 @@ const s = require('../lib/spec');
 
 const {idemPotent} = require('./utils');
 
-const {isBoolean, isInteger, isOdd, isString} = s.utils;
+const {invalidString, isBoolean, isInteger, isOdd, isString} = s.utils;
 
 describe('Test the star (*) function', () => {
-    s.def('::odd?', s.and(isInteger, isOdd));
-    const odds = s.star('::odd?');
-
-    it('should return the value', () => {
-        expect(s.conform(odds, [1, 3])).to.eql([1, 3]);
+    before(() => {
+        s.def('::odd?', s.and(isInteger, isOdd));
+        s.def('::odds', s.plus('::odd?'))
     });
 
-    it('should accept an empty value sequence', () => {
-        expect(s.conform(odds, [])).to.eql([]);
+    const odds = s.star('::odd?');
+
+    describe('should handle valid input', () => {
+        it('should return the value', () => {
+            expect(s.conform(odds, [1, 3])).to.eql([1, 3]);
+        });
+
+        it('should accept an empty value sequence', () => {
+            expect(s.conform(odds, [])).to.eql([]);
+        });
+
+        it('explainData should return null', () => {
+            expect(s.explainData(odds, [])).to.be.null;
+        });
+    });
+
+    describe('should reject invalid input', () => {
+        it('conform should return the invalid string when sequence contains invalid data', () => {
+            expect(s.conform(odds, [2])).to.equal(invalidString);
+        });
+
+        it('explainData should report a problem', () => {
+            expect(s.explainData('::odds', [1, 3, 6])).to.eql({
+                problems: [
+                    {
+                        path: [],
+                        pred: 'isOdd',
+                        val: 6,
+                        via: ['::odds'],
+                        'in': [2]
+                    }
+                ]
+            });
+        });
     });
 
     it('should unform a conformed value', () => {

@@ -2,7 +2,6 @@ Still to implement:
 
 - unqualified keys (:req-un and :opt-un)
 - implement clojure.spec.test
-  - instrument
   - ...
 
 Other TODO:

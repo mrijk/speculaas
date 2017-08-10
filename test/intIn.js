@@ -3,29 +3,64 @@ const _ = require('lodash');
 const {expect} = require('chai');
 
 const s = require('../lib/spec');
-const stest = require('../lib/test');
 
-const {idemPotent} = require('./utils');
+const {check, exerciseFunc, idemPotent} = require('./utils');
 
 describe('Test the IntIn function', () => {
     before(() => {
         s.def('::oneByte', s.intIn(0, 256));
     });
 
-    it('should return true if value is with range', () => {
-        expect(s.isValid('::oneByte', 0)).to.be.true;
+    describe('should handle valid input', () => {
+        it('should return true if value is with range', () => {
+            expect(s.isValid('::oneByte', 0)).to.be.true;
+        });
+
+        it('explainData should return null', () => {
+            expect(s.explainData('::oneByte', 0)).to.be.null;
+        });
     });
 
-    it('should exclude the upper bound', () => {
-        expect(s.isValid('::oneByte', 256)).to.be.false;
-    });
+    describe('should reject invalid input', () => {
+        it('should exclude the upper bound', () => {
+            expect(s.isValid('::oneByte', 256)).to.be.false;
+        });
 
-    it('should return false if value is outside the range', () => {
-        expect(s.isValid('::oneByte', 512)).to.be.false;
-    });
+        it('should return false if value is outside the range', () => {
+            expect(s.isValid('::oneByte', 512)).to.be.false;
+        });
 
-    it('should only accept integers', () => {
-        expect(s.isValid('::oneByte', 3.14)).to.be.false;
+        it('should only accept integers', () => {
+            expect(s.isValid('::oneByte', 3.14)).to.be.false;
+        });
+
+        it('explainData should report about wrong type', () => {
+            expect(s.explainData('::oneByte', 3.14)).to.eql({
+                problems: [
+                    {
+                        path: [],
+                        pred: 'isInt',
+                        val: 3.14,
+                        via: ['::oneByte'],
+                        'in': []
+                    }
+                ]
+            });
+        });
+
+        it('explainData should report about value outside range', () => {
+            expect(s.explainData('::oneByte', 512)).to.eql({
+                problems: [
+                    {
+                        path: [],
+                        pred: 'isIntInRange(0, 256, value)',
+                        val: 512,
+                        via: ['::oneByte'],
+                        'in': []
+                    }
+                ]
+            });
+        });
     });
     
     it('should unform a conformed value', () => {
@@ -42,11 +77,10 @@ describe('Test the IntIn function', () => {
     });
 
     it('should use the spec to test', () => {
-        const intIn = s.intIn;
-        const specs = require('../specs/intIn');
+        expect(check(s.intIn, '../specs/intIn')).to.have.property('result').to.equal(true);        
+    });
 
-        s.fdef(intIn, specs);
-
-        expect(stest.check(intIn)).to.have.property('result').to.equal(true);        
+    xit('should use the spec to test', () => {
+        exerciseFunc(s.intIn, '../specs/intIn');
     });
 });

@@ -6,7 +6,7 @@ const s = require('../lib/spec');
 
 const {idemPotent} = require('./utils');
 
-const {isInt, isInteger, isString} = s.utils;
+const {isInt, isInteger, isString, unknownString} = s.utils;
 
 describe('Test the or function', () => {
 
@@ -35,6 +35,28 @@ describe('Test the or function', () => {
         expect(idemPotent('::name-or-id', 'abc')).to.be.true;
     });
 
+    it('should implement explain', () => {
+        expect(s.explainData('::name-or-id', 100)).to.be.null;
+        expect(s.explainData('::name-or-id', 3.14)).to.eql({
+            problems: [
+                {
+                    path: [':name'],
+                    pred: 'isString',
+                    val: 3.14,
+                    via: ['::name-or-id'],
+                    'in': []
+                },
+                {
+                    path: [':id'],
+                    pred: 'isInt',
+                    val: 3.14,
+                    via: ['::name-or-id'],
+                    'in': []
+                }
+            ]
+        });
+    });
+    
     it('should throw an exception on unform with invalid key', () => {
         expect(() => s.unform('::name-or-id', [':ID', 13])).to.throw(Error, 'Key :ID does not exist in spec');
     });

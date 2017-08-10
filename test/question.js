@@ -3,9 +3,8 @@ const _ = require('lodash');
 const {expect} = require('chai');;
 
 const s = require('../lib/spec');
-const stest = require('../lib/test');
 
-const {idemPotent} = require('./utils');
+const {check, exerciseFunc, idemPotent} = require('./utils');
 
 const {isInteger, isNull, isOdd, isString} = s.utils;
 
@@ -13,16 +12,53 @@ describe('Test the question (?) function', () => {
     s.def('::odd?', s.and(isInteger, isOdd));
     const odds = s.question('::odd?');
     
-    it('should return the value', () => {
-        expect(s.conform(odds, [1])).to.deep.equal(1);
+    describe('should handle valid input', () => {
+        it('should return the value', () => {
+            expect(s.conform(odds, [1])).to.equal(1);
+        });
+        
+        it('should accept an empty value sequence', () => {
+            expect(s.conform(odds, [])).to.be.null;
+        });
+
+        it('explainData should return null', () => {
+            expect(s.explainData(odds, [])).to.be.null;
+        });
     });
-    
-    it('should accept an empty value sequence', () => {
-        expect(s.conform(odds, [])).to.deep.equal(null);
-    });
-    
-    it('should not allow 2 or more values', () => {
-        expect(s.isValid(odds, [1, 3])).to.be.false;
+
+    describe('should reject invalid input', () => {    
+        it('should not allow 2 or more values', () => {
+            expect(s.isValid(odds, [1, 3])).to.be.false;
+        });
+
+        it('explainData should report about wrong type', () => {
+            expect(s.explainData(odds, [1, 2, 3])).to.eql({
+                problems: [
+                    {
+                        path: [],
+                        reason: 'Extra input',
+                        pred: 'isInt',
+                        val: [2, 3],
+                        via: [],
+                        'in': [1]
+                    }
+                ]
+            });
+        });
+
+        it('explainData should report about wrong value', () => {
+            expect(s.explainData(s.question(isInteger), [true])).to.eql({
+                problems: [
+                    {
+                        path: [],
+                        pred: 'isInteger',
+                        val: true,
+                        via: [],
+                        'in': [0]
+                    }
+                ]
+            });
+        });
     });
 
     it('should unform a conformed value', () => {
@@ -40,22 +76,10 @@ describe('Test the question (?) function', () => {
     });
 
     it('should use the spec to test', () => {
-        const question = s.question;
-        const specs = require('../specs/question');
-
-        s.fdef(question, specs);
-
-        expect(stest.check(question)).to.have.property('result').to.equal(true);        
+        expect(check(s.question, '../specs/question')).to.have.property('result').to.equal(true);
     });
 
     it('should exercise the question function', () => {
-        const question = s.question;
-        const specs = require('../specs/question');
-
-        s.fdef(question, specs);
-        
-        const questions = _.map(s.exerciseFn(question), ([, s]) => s);
- 
-        _.forEach(questions, q => s.exercise(q));
+        exerciseFunc(s.question, '../specs/question');
     });
 });

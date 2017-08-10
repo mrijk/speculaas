@@ -21,39 +21,71 @@ describe('Test the keys function', () => {
         s.def('::person', s.keys({req: ['::first-name', '::last-name', '::email'], opt: ['::phone']}));
     });
 
-    it('should should accept object with required keys', () => {
-        expect(s.isValid('::person',
-                         {
-                             '::first-name': 'Elon',
-                             '::last-name': 'Musk',
-                             '::email': 'elon@example.com'
-                         })).to.be.true;
-    });
-    
-    it('should should accept object with required and optional keys', () => {
-        expect(s.isValid('::person',
-                         {
-                             '::first-name': 'Elon',
-                             '::last-name': 'Musk',
-                             '::email': 'elon@example.com',
-                             '::phone': '06 12345678'
-                         })).to.be.true;
+    describe('should handle valid input', () => {
+        const person = {
+            '::first-name': 'Elon',
+            '::last-name': 'Musk',
+            '::email': 'elon@example.com'
+        };
+ 
+        it('should should accept object with required keys', () => {
+            expect(s.isValid('::person', person)).to.be.true;
+        });
+
+        it('should should accept object with required and optional keys', () => {
+            expect(s.isValid('::person',
+                             {
+                                 '::first-name': 'Elon',
+                                 '::last-name': 'Musk',
+                                 '::email': 'elon@example.com',
+                                 '::phone': '06 12345678'
+                             })).to.be.true;
+        });
+
+        it('should conform an empty object when no keys are specified', () => {
+            expect(s.conform(s.keys({}), {})).to.eql({});
+        });
+        
+        it('should conform any object when no keys are specified', () => {
+            expect(s.conform(s.keys({}), {':a': 1})).to.eql({':a': 1});
+        });
+
+        it('explainData should return null', () => {
+            expect(s.explainData('::person', person)).to.be.null;
+        });
     });
 
-    it('should fail if required key is missing', () => {
-        expect(s.isValid('::person',
-                         {
-                             '::first-name': 'Elon'
-                         })).to.be.false;
-    });
+    describe('should reject invalid input', () => {
+        const invalidPerson = {
+            '::first-name': 'Elon',
+            '::last-name': 'Musk',
+            '::email': 'n/a'
+        };
 
-    it('should fail if attribute doesn\'t conform', () => {
-        expect(s.isValid('::person',
-                         {
-                             '::first-name': 'Elon',
-                             '::last-name': 'Musk',
-                             '::email': 'n/a'
-                         })).to.be.false;
+        it('should fail if required key is missing', () => {
+            expect(s.isValid('::person',
+                             {
+                                 '::first-name': 'Elon'
+                             })).to.be.false;
+        });
+
+        it('should fail if attribute doesn\'t conform', () => {
+            expect(s.isValid('::person', invalidPerson)).to.be.false;
+        });
+
+        it('explainData should report a problem', () => {
+            expect(s.explainData('::person', invalidPerson)).to.eql({
+                problems: [
+                    {
+                        path: [],
+                        val: 'n/a',
+                        pred: 's => emailRegex.test(s)',
+                        via: ['::person', '::email'],
+                        'in': ['::email']
+                    }
+                ]
+            });
+        });
     });
 
     it('should unform a conformed value', () => {

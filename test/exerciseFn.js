@@ -11,5 +11,7 @@ describe('Test the exerciseFn function', () => {
             args: s.cat(':x', isInteger),
             ret: isInteger
         });
+
+        expect(s.exerciseFn(square, 7)).to.have.length(7);
     });
 });
