@@ -46,7 +46,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^3.5.0",
     "sinon": "^3.2.1",
-    "stryker": "^0.9.0",
+    "stryker": "^0.9.1",
     "stryker-api": "^0.8.0",
     "stryker-html-reporter": "^0.7.1",
     "stryker-mocha-framework": "^0.4.0",
