@@ -18,13 +18,31 @@ describe('Test the doubleIn function', () => {
             expect(s.isValid('::percentage', 50.1)).to.be.true;
         });
 
+        it('should return true if value equals minimum allowed value', () => {
+            expect(s.isValid('::percentage', 0.0)).to.be.true;
+        });
+
+        it('should return true if value equals max allowed value', () => {
+            expect(s.isValid('::percentage', 100.0)).to.be.true;
+        });
+
         it('should accept infinite numbers', () => {
             s.def('::inf', s.doubleIn({isInfinite: true}));
             expect(s.isValid('::inf', Infinity)).to.be.true;
         });
 
-        it('should accept NaN', () => {
+        it('should accept infinite numbers by default', () => {
+            s.def('::no-inf', s.doubleIn());
+            expect(s.isValid('::no-inf', Infinity)).to.be.true;
+        });
+        
+        it('should accept NaN by default', () => {
             s.def('::nan', s.doubleIn({isNaN: true}));
+            expect(s.isValid('::nan', NaN)).to.be.true;
+        });
+
+        it('should accept NaN', () => {
+            s.def('::nan', s.doubleIn());
             expect(s.isValid('::nan', NaN)).to.be.true;
         });
 
@@ -66,13 +84,13 @@ describe('Test the doubleIn function', () => {
             });
         });
 
-        it('should refuse infinite numbers', () => {
-            s.def('::no-inf', s.doubleIn());
+        it('should reject infinite numbers ', () => {
+            s.def('::no-inf', s.doubleIn({isInfinite: false}));
             expect(s.isValid('::no-inf', Infinity)).to.be.false;
         });
 
         it('should refuse NaN', () => {
-            s.def('::no-nan', s.doubleIn());
+            s.def('::no-nan', s.doubleIn({isNaN: false}));
             expect(s.isValid('::no-nan', 3.14)).to.be.true;
             expect(s.isValid('::no-nan', NaN)).to.be.false;
         });
