@@ -44,7 +44,7 @@
     "gh-pages": "^1.0.0",
     "gitbook-cli": "^2.3.2",
     "istanbul": "^0.4.5",
-    "mocha": "^3.5.2",
+    "mocha": "^3.5.3",
     "sinon": "^3.2.1",
     "stryker": "^0.9.3",
     "stryker-api": "^0.8.0",
