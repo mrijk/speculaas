@@ -4,7 +4,7 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {idemPotent} = require('./utils');
+const {check, exerciseFunc, idemPotent} = require('./utils');
 
 const {isEven, isString} = s.utils;
 
@@ -25,6 +25,10 @@ describe('Test the amp (&) function', () => {
 
         it('explainData should return null', () => {
             expect(s.explainData('::even-strings', ['a', 'b'])).to.be.null;
+        });
+
+        it('should allow zero predicates on any input', () => {
+            expect(s.isValid(s.amp(s.star(isString)), [])).to.be.true;
         });
     });
 
@@ -90,6 +94,14 @@ describe('Test the amp (&) function', () => {
 
     it('should implement describe', () => {
         expect(s.describe('::even-strings')).to.eql(['amp', ['star', 'isString'],  ['x => isEven(x.length)']]);
+    });
+
+    xit('should use the spec to test', () => {
+        expect(check(s.amp, '../specs/amp')).to.have.property('result').to.equal(true);
+    });
+
+    xit('should exercise the amp spec', () => {
+        exerciseFunc(s.amp, '../specs/amp');
     });
 });
 

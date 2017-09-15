@@ -4,6 +4,8 @@ const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
+const {exerciseFunc} = require('./utils');
+
 const {isBoolean, isString} = s.utils;
 
 describe('Test the alt function', () => {
@@ -19,6 +21,10 @@ describe('Test the alt function', () => {
 
         it('should implement explain', () => {
             expect(s.explainData('::bool-or-string', [true])).to.be.null;
+        });
+
+        it('should not allow zero predicates on any input', () => {
+            expect(s.isValid(s.alt(), [1])).to.be.false;
         });
     });
 
@@ -99,6 +105,10 @@ describe('Test the alt function', () => {
 
     it('should implement describe', () => {
         expect(s.describe('::bool-or-string')).to.eql(['alt', ':s', 'isString', ':b', 'isBoolean']);
+    });
+
+    xit('should exercise the alt spec', () => {
+        exerciseFunc(s.alt, '../specs/alt');
     });
 });
 

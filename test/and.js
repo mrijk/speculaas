@@ -4,7 +4,7 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {exerciseFunc, idemPotent} = require('./utils');
+const {check, exerciseFunc, idemPotent} = require('./utils');
 
 const {isEven, isInteger, invalidString, unknownString} = s.utils;
 
@@ -59,6 +59,10 @@ describe('Test the and function', () => {
 
     it('should implement describe', () => {
         expect(s.describe('::even?')).to.eql(['and', 'isInteger', 'isEven']);
+    });
+
+    it('should use the spec to test', () => {
+        expect(check(s.and, '../specs/and')).to.have.property('result').to.equal(true);
     });
 
     xit('should exercise the and spec', () => {
