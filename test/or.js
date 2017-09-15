@@ -4,7 +4,7 @@ const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
-const {idemPotent} = require('./utils');
+const {exerciseFunc, idemPotent} = require('./utils');
 
 const {isInt, isInteger, isString, unknownString} = s.utils;
 
@@ -29,6 +29,10 @@ describe('Test the or function', () => {
     it('should return tag name and conformed value', () => {
         expect(s.conform('::name-or-id', 'abc')).to.eql([':name', 'abc']);
         expect(s.conform('::name-or-id', 13)).to.eql([':id', 13]);
+    });
+
+    it('should not allow zero predicates on any input', () => {
+        expect(s.isValid(s.or(), [])).to.be.false;
     });
 
     it('should unform a conformed value', () => {
@@ -68,5 +72,9 @@ describe('Test the or function', () => {
 
     it('should implement describe', () => {
         expect(s.describe('::name-or-id')).to.eql(['or', ':name', 'isString', ':id', 'isInt']);
+    });
+
+    xit('should exercise the or spec', () => {
+        exerciseFunc(s.or, '../specs/or');
     });
 });

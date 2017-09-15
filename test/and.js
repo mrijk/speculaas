@@ -4,7 +4,7 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {idemPotent} = require('./utils');
+const {exerciseFunc, idemPotent} = require('./utils');
 
 const {isEven, isInteger, invalidString, unknownString} = s.utils;
 
@@ -27,6 +27,10 @@ describe('Test the and function', () => {
     it('should promote the conform return value', () => {
         s.def('::one-bigger', ({n1}) => {console.log(n1); return n1;});
         expect(s.conform(s.and(s.cat('n1', isInteger), '::one-bigger'), [13])).to.eql({n1: 13});
+    });
+
+    it('should allow zero predicates on any input', () => {
+        expect(s.isValid(s.and(), [])).to.be.true;
     });
 
     it('should unform a conformed value', () => {
@@ -55,6 +59,10 @@ describe('Test the and function', () => {
 
     it('should implement describe', () => {
         expect(s.describe('::even?')).to.eql(['and', 'isInteger', 'isEven']);
+    });
+
+    xit('should exercise the and spec', () => {
+        exerciseFunc(s.and, '../specs/and');
     });
 });
 
