@@ -4,7 +4,7 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {idemPotent} = require('./utils');
+const {exerciseFunc, idemPotent} = require('./utils');
 
 const {invalidString, isBoolean, isInteger, isOdd, isString} = s.utils;
 
@@ -73,5 +73,9 @@ describe('Test the star (*) function', () => {
     it('should implement describe', () => {
         s.def('::odds', s.star(isOdd))
         expect(s.describe('::odds')).to.eql(['star', 'isOdd']);
+    });
+
+    it('should exercise the star function', () => {
+        exerciseFunc(s.star, '../specs/star');
     });
 });

@@ -4,7 +4,7 @@ const {expect} = require('chai');;
 
 const s = require('../lib/spec');
 
-const {idemPotent} = require('./utils');
+const {exerciseFunc, idemPotent} = require('./utils');
 
 const {isEven, isInteger, isNumber, isOdd, isString} = s.utils;
 
@@ -35,6 +35,10 @@ describe('Test the cat function', () => {
         it('explainData should return null', () => {
             expect(s.explainData('::ingredient', [2, ':teaspoon'])).to.be.null;
         });
+
+        it('should only allow zero predicates on empty input', () => {
+            expect(s.isValid(s.cat(), [])).to.be.true;
+        });
     });
 
     describe('should reject invalid input', () => {
@@ -42,6 +46,10 @@ describe('Test the cat function', () => {
             expect(s.isValid('::ingredient', [2, 13])).to.be.false;
         });
 
+        xit('should fail when no predicate supplied', () => {
+            expect(s.isValid(s.cat(), [1])).to.be.false;
+        });
+        
         it('explainData should report about insufficient input', () => {
             expect(s.explainData('::ingredient', [2])).to.eql({
                 problems: [
@@ -89,6 +97,10 @@ describe('Test the cat function', () => {
 
     it('should implement describe', () => {
         expect(s.describe('::ingredient')).to.eql(['cat', ':quantity', 'isNumber', ':unit', 'isString']);
+    });
+
+    it('should exercise the cat spec', () => {
+        exerciseFunc(s.cat, '../specs/cat');
     });
 });
 

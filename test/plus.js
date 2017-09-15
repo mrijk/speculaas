@@ -4,7 +4,7 @@ const {expect} = require('chai');
 
 const s = require('../lib/spec');
 
-const {idemPotent} = require('./utils');
+const {exerciseFunc, idemPotent} = require('./utils');
 
 const {isInteger, isOdd, invalidString} = s.utils;
 
@@ -75,6 +75,10 @@ describe('Test the plus (+) function', () => {
 
     it('should implement describe', () => {
         expect(s.describe('::odds')).to.eql(['plus', '::odd?']);
+    });
+
+    it('should exercise the plus function', () => {
+        exerciseFunc(s.plus, '../specs/plus');
     });
 });
 

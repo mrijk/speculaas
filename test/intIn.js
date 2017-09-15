@@ -22,6 +22,10 @@ describe('Test the IntIn function', () => {
     });
 
     describe('should reject invalid input', () => {
+        it('should return always false if upper bound less than lower bound', () => {
+            expect(s.isValid(s.intIn(256, 0), 0)).to.be.false;
+        });
+        
         it('should exclude the upper bound', () => {
             expect(s.isValid('::oneByte', 256)).to.be.false;
         });
