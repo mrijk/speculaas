@@ -74,6 +74,7 @@ describe('Test the or function', () => {
         expect(s.describe('::name-or-id')).to.eql(['or', ':name', 'isString', ':id', 'isInt']);
     });
 
+    // TODO: now fails because number of predicates can be 0!
     xit('should exercise the or spec', () => {
         exerciseFunc(s.or, '../specs/or');
     });
