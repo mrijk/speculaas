@@ -25,7 +25,7 @@ describe('Test the and function', () => {
     });
 
     it('should promote the conform return value', () => {
-        s.def('::one-bigger', ({n1}) => {console.log(n1); return n1;});
+        s.def('::one-bigger', ({n1}) => n1);
         expect(s.conform(s.and(s.cat('n1', isInteger), '::one-bigger'), [13])).to.eql({n1: 13});
     });
 
@@ -65,6 +65,7 @@ describe('Test the and function', () => {
         expect(check(s.and, '../specs/and')).to.have.property('result').to.equal(true);
     });
 
+    // Fails because it can generate 'impossible' specs
     xit('should exercise the and spec', () => {
         exerciseFunc(s.and, '../specs/and');
     });
