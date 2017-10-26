@@ -48,7 +48,7 @@
     "sinon": "^4.0.2",
     "stryker": "^0.13.0",
     "stryker-api": "^0.11.0",
-    "stryker-html-reporter": "^0.10.1",
+    "stryker-html-reporter": "^0.10.2",
     "stryker-mocha-framework": "^0.6.1",
     "stryker-mocha-runner": "^0.9.1"
   }
