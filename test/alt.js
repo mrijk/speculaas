@@ -53,6 +53,21 @@ describe('Test the alt function', () => {
             });
         });
 
+        it.only('explainData should reject extra input', () => {
+            expect(s.explainData('::bool-or-string', [true, true])).to.be.eql({
+                problems: [
+                    {
+                        path: [],
+                        reason: 'Extra input',
+                        pred: ['alt', ':s', 'isString', ':b', 'isBoolean'],
+                        val: [true],
+                        via: ['::bool-or-string'],
+                        'in': [1]
+                    }
+                ]
+            });
+        });
+
         it('explainData should reject invalid input', () => {
             expect(s.explainData('::bool-or-string', [1])).to.be.eql({
                 problems: [
