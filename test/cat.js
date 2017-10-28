@@ -64,7 +64,22 @@ describe('Test the cat function', () => {
                 ]
             });
         });
-        
+
+        xit('explainData should reject extra input', () => {
+            expect(s.explainData('::ingredient', [2, ':teaspoon', 13])).to.be.eql({
+                problems: [
+                    {
+                        path: [],
+                        reason: 'Extra input',
+                        pred: ['cat', ':quantity', 'isNumber', ':unit', 'isString'],
+                        val: [true],
+                        via: ['::bool-or-string'],
+                        'in': [1]
+                    }
+                ]
+            });
+        });
+
         it('explainData should report about wrong type', () => {
             expect(s.explainData('::ingredient', [2, 13])).to.eql({
                 problems: [
