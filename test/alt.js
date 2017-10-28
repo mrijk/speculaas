@@ -53,7 +53,7 @@ describe('Test the alt function', () => {
             });
         });
 
-        it.only('explainData should reject extra input', () => {
+        it('explainData should reject extra input', () => {
             expect(s.explainData('::bool-or-string', [true, true])).to.be.eql({
                 problems: [
                     {
