@@ -21,7 +21,8 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "lodash/import-scope": "off"
     },
     "globals": {
         "$": false,
