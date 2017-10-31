@@ -3,7 +3,8 @@
         "node": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
+    "plugins": ["lodash", "node"], 
+    "extends": ["eslint:recommended", "plugin:lodash/recommended", "plugin:node/recommended"],
     "rules": {
         "indent": [
             "error",
