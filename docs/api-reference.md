@@ -1,4 +1,4 @@
-Descriptions for the different functions where copied from the original 
+Descriptions for the different functions where copied from the original
 [clojure.spec api description](https://clojure.github.io/clojure/branch-master/clojure.spec-api.html).
 
 The following table shows how Clojure names are mapped to valid NodeJS function names:
@@ -15,6 +15,6 @@ The following table shows how Clojure names are mapped to valid NodeJS function 
 | int-in        | [intIn](api/intIn.md)        |
 | int-in-range? | [isIntInRange](api/isIntInRange.md) |
 | map-of        | [mapOf](api/mapOf.md)        |
-| regex?        | [isSpec](api/isRegex.md)     |
+| regex?        | [isRegex](api/isRegex.md)     |
 | spec?         | [isSpec](api/isSpec.md)      |
 | with-gen      | [withGen](api/withGen.mid)   |

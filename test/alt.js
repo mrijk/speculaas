@@ -12,7 +12,7 @@ describe('Test the alt function', () => {
     before(() => {
         s.def('::bool-or-string', s.alt(':s', isString, ':b', isBoolean));
     });
-    
+
     describe('should handle valid input', () => {
         it('should match a bool or string', () => {
             expect(s.isValid('::bool-or-string', [true])).to.be.true;
@@ -126,4 +126,3 @@ describe('Test the alt function', () => {
         exerciseFunc(s.alt, '../specs/alt');
     });
 });
-
