@@ -1,6 +1,7 @@
 { 
-  "gitbook": "2.x.x",
-  "structure": { 
-    "summary": "docs/SUMMARY.md" 
-  } 
+    "gitbook": "3.x.x",
+    "root": "./docs",
+    "structure": {
+        "summary": "SUMMARY.md"
+    } 
 }
