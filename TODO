@@ -1,9 +1,0 @@
-Still to implement:
-
-- unqualified keys (:req-un and :opt-un)
-- implement clojure.spec.test
-  - ...
-
-Other TODO:
-
-- Use speculaas to test speculaas!
