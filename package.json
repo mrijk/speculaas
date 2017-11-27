@@ -42,7 +42,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
-    "eslint": "^4.11.0",
+    "eslint": "^4.12.0",
     "eslint-plugin-lodash": "^2.5.0",
     "eslint-plugin-node": "^5.2.1",
     "genfun": "^4.0.1",
@@ -52,9 +52,10 @@
     "mocha": "^4.0.1",
     "pre-commit": "^1.2.2",
     "sinon": "^4.1.2",
-    "stryker": "^0.14.1",
+    "stryker": "^0.15.2",
     "stryker-api": "^0.11.0",
     "stryker-html-reporter": "^0.11.1",
+    "stryker-javascript-mutator": "^0.2.1",
     "stryker-mocha-framework": "^0.7.0",
     "stryker-mocha-runner": "^0.10.0"
   }

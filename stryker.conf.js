@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = config => {
     config.set({
         files: [
             { pattern: 'lib/*.js', mutated: true, included: false},
@@ -11,5 +11,6 @@ module.exports = function(config) {
         testFramework: 'mocha',
         coverageAnalysis: 'perTest',
         reporter: ['html', 'progress'],
+        mutator: 'javascript'
     });
 }
