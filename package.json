@@ -52,11 +52,11 @@
     "mocha": "^4.0.1",
     "pre-commit": "^1.2.2",
     "sinon": "^4.1.2",
-    "stryker": "^0.15.2",
+    "stryker": "^0.15.4",
     "stryker-api": "^0.11.0",
-    "stryker-html-reporter": "^0.11.1",
-    "stryker-javascript-mutator": "^0.2.1",
-    "stryker-mocha-framework": "^0.7.0",
-    "stryker-mocha-runner": "^0.10.0"
+    "stryker-html-reporter": "^0.11.2",
+    "stryker-javascript-mutator": "^0.2.3",
+    "stryker-mocha-framework": "^0.7.1",
+    "stryker-mocha-runner": "^0.10.1"
   }
 }
