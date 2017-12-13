@@ -11,7 +11,7 @@ const {invalidString, isBoolean, isInteger, isOdd, isString} = s.utils;
 describe('Test the star (*) function', () => {
     before(() => {
         s.def('::odd?', s.and(isInteger, isOdd));
-        s.def('::odds', s.plus('::odd?'))
+        s.def('::odds', s.plus('::odd?'));
     });
 
     const odds = s.star('::odd?');
