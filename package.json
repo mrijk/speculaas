@@ -44,7 +44,7 @@
     "coveralls": "^3.0.0",
     "eslint": "^4.16.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-lodash": "^2.5.0",
+    "eslint-plugin-lodash": "^2.5.1",
     "eslint-plugin-node": "^5.2.1",
     "genfun": "^5.0.0",
     "gh-pages": "^1.1.0",
