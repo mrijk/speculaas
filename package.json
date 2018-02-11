@@ -52,12 +52,12 @@
     "istanbul": "^0.4.5",
     "mocha": "^5.0.0",
     "pre-commit": "^1.2.2",
-    "sinon": "^4.2.2",
-    "stryker": "^0.18.2",
-    "stryker-api": "^0.12.0",
-    "stryker-html-reporter": "^0.11.5",
-    "stryker-javascript-mutator": "^0.3.3",
-    "stryker-mocha-framework": "^0.8.1",
-    "stryker-mocha-runner": "^0.10.3"
+    "sinon": "^4.3.0",
+    "stryker": "^0.19.2",
+    "stryker-api": "^0.13.0",
+    "stryker-html-reporter": "^0.12.1",
+    "stryker-javascript-mutator": "^0.4.0",
+    "stryker-mocha-framework": "^0.8.3",
+    "stryker-mocha-runner": "^0.10.5"
   }
 }
