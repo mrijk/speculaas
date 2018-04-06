@@ -1,11 +1,7 @@
 module.exports = config => {
     config.set({
-        files: [
-            { pattern: 'lib/*.js', mutated: true, included: false},
-            { pattern: 'specs/*.js', mutated: false, included: false},
-            { pattern: 'lib/util/*.js', mutated: true, included: false},
-            { pattern: 'lib/test/*.js', mutated: false, included: false},
-            'test/**/*.js'
+        mutate: [
+            'lib/**/*.js'
         ],
         testRunner: 'mocha',
         testFramework: 'mocha',
