@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "coveralls": "^3.0.0",
+    "coveralls": "^3.0.1",
     "eslint": "^4.19.1",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-lodash": "^2.7.0",
@@ -52,12 +52,12 @@
     "istanbul": "^0.4.5",
     "mocha": "^5.1.1",
     "pre-commit": "^1.2.2",
-    "sinon": "^4.5.0",
-    "stryker": "^0.22.4",
-    "stryker-api": "^0.16.1",
-    "stryker-html-reporter": "^0.13.3",
-    "stryker-javascript-mutator": "^0.6.3",
-    "stryker-mocha-framework": "^0.9.2",
-    "stryker-mocha-runner": "^0.11.2"
+    "sinon": "^5.0.3",
+    "stryker": "^0.23.0",
+    "stryker-api": "^0.17.0",
+    "stryker-html-reporter": "^0.14.0",
+    "stryker-javascript-mutator": "^0.7.0",
+    "stryker-mocha-framework": "^0.10.0",
+    "stryker-mocha-runner": "^0.12.0"
   }
 }
