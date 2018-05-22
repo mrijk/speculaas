@@ -50,14 +50,14 @@
     "gh-pages": "^1.1.0",
     "gitbook-cli": "^2.3.2",
     "istanbul": "^0.4.5",
-    "mocha": "^5.1.1",
+    "mocha": "^5.2.0",
     "pre-commit": "^1.2.2",
     "sinon": "^5.0.7",
-    "stryker": "^0.23.0",
-    "stryker-api": "^0.17.0",
-    "stryker-html-reporter": "^0.14.0",
-    "stryker-javascript-mutator": "^0.7.0",
-    "stryker-mocha-framework": "^0.10.0",
-    "stryker-mocha-runner": "^0.12.0"
+    "stryker": "^0.24.0",
+    "stryker-api": "^0.17.1",
+    "stryker-html-reporter": "^0.14.1",
+    "stryker-javascript-mutator": "^0.7.1",
+    "stryker-mocha-framework": "^0.10.1",
+    "stryker-mocha-runner": "^0.12.1"
   }
 }
