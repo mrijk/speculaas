@@ -47,17 +47,17 @@
     "eslint-plugin-lodash": "^2.7.0",
     "eslint-plugin-node": "^6.0.1",
     "genfun": "^5.0.0",
-    "gh-pages": "^1.1.0",
+    "gh-pages": "^1.2.0",
     "gitbook-cli": "^2.3.2",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "pre-commit": "^1.2.2",
     "sinon": "^5.0.10",
-    "stryker": "^0.24.0",
-    "stryker-api": "^0.17.1",
-    "stryker-html-reporter": "^0.14.1",
-    "stryker-javascript-mutator": "^0.7.1",
-    "stryker-mocha-framework": "^0.10.1",
-    "stryker-mocha-runner": "^0.12.1"
+    "stryker": "^0.24.1",
+    "stryker-api": "^0.17.2",
+    "stryker-html-reporter": "^0.14.2",
+    "stryker-javascript-mutator": "^0.7.2",
+    "stryker-mocha-framework": "^0.10.2",
+    "stryker-mocha-runner": "^0.12.2"
   }
 }
