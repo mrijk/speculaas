@@ -52,7 +52,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "pre-commit": "^1.2.2",
-    "sinon": "^5.1.0",
+    "sinon": "^6.0.0",
     "stryker": "^0.24.1",
     "stryker-api": "^0.17.2",
     "stryker-html-reporter": "^0.14.2",
