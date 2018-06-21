@@ -1,4 +1,4 @@
-const _ = require('lodash');
+const {every} = require('lodash');
 
 const {expect} = require('chai');;
 
@@ -46,7 +46,7 @@ describe('Test the cat function', () => {
             expect(s.isValid('::ingredient', [2, 13])).to.be.false;
         });
 
-        xit('should fail when no predicate supplied', () => {
+        it('should fail when no predicate supplied', () => {
             expect(s.isValid(s.cat(), [1])).to.be.false;
         });
         
@@ -107,7 +107,7 @@ describe('Test the cat function', () => {
         s.def('::ingredient2', s.cat(':quantity', isInteger, ':unit', isString));
 
         expect(s.exercise('::ingredient2', 7)).to.have.length(7)
-            .to.satisfy(sample => _.every(sample, ([[v1, v2]]) => isInteger(v1) || isString(v2)));
+            .to.satisfy(sample => every(sample, ([[v1, v2]]) => isInteger(v1) || isString(v2)));
     });
 
     it('should implement describe', () => {

@@ -1,7 +1,8 @@
-const _ = require('lodash');
+const {every} = require('lodash');
 
 const {expect} = require('chai');;
 
+const gen = require('../lib/gen');
 const s = require('../lib/spec');
 
 const {exerciseFunc, idemPotent} = require('./utils');
@@ -65,9 +66,15 @@ describe('Test the or function', () => {
         expect(() => s.unform('::name-or-id', [':ID', 13])).to.throw(Error, 'Key :ID does not exist in spec');
     });
 
-    it('should implement a generator', () => {
-        expect(s.exercise('::name-or-id', 7)).to.have.length(7)
-            .to.satisfy(sample => _.every(sample, ([v]) => isInteger(v) || isString(v)));
+    describe('should implement a generator', () => {
+	it('output nothing on spec with zero predicates', () => {
+	    expect(() => s.exercise(s.or(), 10)).to.throw(Error, /sampleFromSpec failed.*/);
+	});
+	
+	it('output values if the generator is valid', () => {
+            expect(s.exercise('::name-or-id', 7)).to.have.length(7)
+		.to.satisfy(sample => every(sample, ([v]) => isInteger(v) || isString(v)));
+	});
     });
 
     it('should implement describe', () => {

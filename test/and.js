@@ -1,4 +1,4 @@
-const _ = require('lodash');
+const {every} = require('lodash');
 
 const {expect} = require('chai');
 
@@ -54,7 +54,7 @@ describe('Test the and function', () => {
 
     it('should implement a generator', () => {
         expect(s.exercise('::even?', 7)).to.have.length(7)
-            .to.satisfy(sample => _.every(sample, ([v]) => isInteger(v) && isEven(v)));
+            .to.satisfy(sample => every(sample, ([v]) => isInteger(v) && isEven(v)));
     });
 
     it('should implement describe', () => {
