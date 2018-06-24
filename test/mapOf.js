@@ -74,7 +74,7 @@ describe('Test the mapOf function', () => {
         expect(idemPotent('::scores', {'Sally': 1000, 'Joe': 500})).to.be.true;
     });
 
-    xit('should implement a generator', () => {
+    it('should implement a generator', () => {
         expect(s.exercise('::scores2to3')).to.have.length(10)
             .to.satisfy(sample => _.every(sample, v => _.isArray(v) && v.length === 2));
     });
