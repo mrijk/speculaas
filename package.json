@@ -10,7 +10,7 @@
   "scripts": {
     "test": "mocha --recursive -R spec",
     "cover": "istanbul cover _mocha -- -R spec",
-    "lint": "eslint lib samples",
+    "lint": "eslint lib examples",
     "stryker": "stryker run stryker.conf.js",
     "docs:prepare": "gitbook install",
     "docs:watch": "npm run docs:prepare && gitbook serve",
@@ -42,7 +42,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "coveralls": "^3.0.1",
-    "eslint": "^4.19.1",
+    "eslint": "^5.0.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-lodash": "^2.7.0",
     "eslint-plugin-node": "^6.0.1",
