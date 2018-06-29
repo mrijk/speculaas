@@ -28,7 +28,7 @@ s.def('::set',
           uniqueOrDistinct('::shading')));
 
 function deal() {
-    return _.first([...gen.sample(s.gen('::deck'), 1)]);
+    return _.head([...gen.sample(s.gen('::deck'), 1)]);
 }
 
 function* sets(deck) {

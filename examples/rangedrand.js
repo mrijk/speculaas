@@ -3,7 +3,7 @@
 const s = require('../lib/spec');
 const stest = require('../lib/test');
 
-const {isInt, isString} = s.utils;
+const {isInt} = s.utils;
 
 // Returns random int in range start <= rand < end
 
