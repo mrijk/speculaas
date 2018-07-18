@@ -2,7 +2,8 @@
 // of https://gist.github.com/cgrand/4985a7ef80c8c85291213437d06d9169
 // by Christophe Grand
 
-const _ = require('lodash');
+const {flow, head, map, size, uniq} = require('lodash');
+const debug = require('debug')('setgame');
 
 const gen = require('../lib/gen');
 const s = require('../lib/spec');
@@ -16,7 +17,7 @@ s.def('::card', s.keys({req: ['::shape', '::color', '::value', '::shading']}));
 s.def('::deck', s.collOf('::card', {distinct: true, maxCount: 12, minCount: 12}));
 
 function uniqueOrDistinct(feature) {
-    return x => _(x).map(feature).uniq().size() !== 2;
+    return x => flow(map(feature), uniq, size)(x) !== 2;
 }
 
 s.def('::set',
@@ -28,7 +29,7 @@ s.def('::set',
           uniqueOrDistinct('::shading')));
 
 function deal() {
-    return _.head([...gen.sample(s.gen('::deck'), 1)]);
+    return head([...gen.sample(s.gen('::deck'), 1)]);
 }
 
 function* sets(deck) {
@@ -43,4 +44,4 @@ function* sets(deck) {
     }
 }
 
-console.log([...sets(deal())]);
+debug([...sets(deal())]);
