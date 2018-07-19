@@ -3,6 +3,7 @@
 // Blog by Carin Meier
 
 const _ = require('lodash');
+const debug = require('debug')('onefishspecfish');
 
 const s = require('../lib/spec');
 const stest = require('../lib/test');
@@ -32,7 +33,7 @@ s.def('::first-line', s.and(s.cat('n1', '::fish-number', 'n2', '::fish-number', 
                             isOneBigger,
                             ({c1, c2}) => c1 !== c2));
 
-console.log(s.isValid('::first-line', [1, 2, 'Red', 'Blue']));
+debug(s.isValid('::first-line', [1, 2, 'Red', 'Blue']));
 
 s.conform('::first-line', [1, 2, 'Red', 'Blue']);
 
@@ -60,7 +61,7 @@ function fishLine(n1, n2, c1, c2) {
     return _([fishNumbers[n1], fishNumbers[n2], c1, c2]).map(x => x + ' Fish.').join(' ');
 }
 
-console.log(fishLine(1, 2, 'Red', 'Blue'));
+debug(fishLine(1, 2, 'Red', 'Blue'));
 
 s.fdef(fishLine, {
     args: '::first-line',

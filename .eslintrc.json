@@ -10,10 +10,6 @@
                 "plugin:lodash/recommended",
                 "plugin:node/recommended"],
     "rules": {
-        "indent": [
-            "error",
-            4
-        ],
         "linebreak-style": [
             "error",
             "unix"
