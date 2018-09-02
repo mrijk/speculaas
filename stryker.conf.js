@@ -6,7 +6,7 @@ module.exports = config => {
         testRunner: 'mocha',
         testFramework: 'mocha',
         coverageAnalysis: 'perTest',
-        reporter: ['html', 'progress'],
+        reporters: ['html', 'progress'],
         mutator: 'javascript'
     });
 }
