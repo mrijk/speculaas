@@ -36,13 +36,13 @@
   },
   "license": "MIT",
   "dependencies": {
-    "debug": "^3.1.0",
     "lodash": "^4.17.10",
     "testcheck": "^1.0.0-rc.2"
   },
   "devDependencies": {
     "chai": "^4.1.2",
     "coveralls": "^3.0.2",
+    "debug": "^4.0.1",
     "eslint": "^5.5.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-lodash": "^2.7.0",
