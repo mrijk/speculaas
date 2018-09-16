@@ -48,7 +48,7 @@
     "eslint-plugin-lodash": "^2.7.0",
     "eslint-plugin-node": "^7.0.1",
     "genfun": "^5.0.0",
-    "gh-pages": "^1.2.0",
+    "gh-pages": "^2.0.0",
     "gitbook-cli": "^2.3.2",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
