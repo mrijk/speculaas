@@ -67,7 +67,7 @@ A: [nodespec](https://www.npmjs.com/package/nodespec) and [node-spec](https://ww
 
 Q: any alternatives for your code?
 
-A: for an alternative look at [js.spec](http://js-spec.online)
+A: for an alternative look at [js.spec](https://prayerslayer.gitbooks.io/js-spec/content/)
 
 ## Contributing
 
