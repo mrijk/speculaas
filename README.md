@@ -32,7 +32,7 @@ s.def('phone', isString);
 // First name, last name and email are required. Phone number is optional
 s.def('person', s.keys({req: ['first-name', 'last-name', 'email'], opt: ['phone']}));
 
-s.isValid('::person',
+s.isValid('person',
 {
     'first-name': 'Elon',
     'last-name': 'Musk',
