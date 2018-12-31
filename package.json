@@ -36,14 +36,14 @@
   },
   "license": "MIT",
   "dependencies": {
+    "debug": "^4.1.1",
     "lodash": "^4.17.11",
     "testcheck": "^1.0.0-rc.2"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "coveralls": "^3.0.2",
-    "debug": "^4.1.0",
-    "eslint": "^5.10.0",
+    "eslint": "^5.11.1",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-lodash": "^5.1.0",
     "eslint-plugin-node": "^8.0.0",
@@ -54,11 +54,12 @@
     "mocha": "^5.2.0",
     "pre-commit": "^1.2.2",
     "sinon": "^7.2.2",
-    "stryker": "^0.33.2",
-    "stryker-api": "^0.22.1",
-    "stryker-html-reporter": "^0.16.10",
-    "stryker-javascript-mutator": "^0.12.2",
-    "stryker-mocha-framework": "^0.13.3",
-    "stryker-mocha-runner": "^0.15.3"
+    "stryker": "^0.34.0",
+    "stryker-api": "^0.23.0",
+    "stryker-html-reporter": "^0.17.0",
+    "stryker-javascript-mutator": "^0.13.0",
+    "stryker-mocha-framework": "^0.14.0",
+    "stryker-mocha-runner": "^0.16.0",
+    "uninstall": "0.0.0"
   }
 }
