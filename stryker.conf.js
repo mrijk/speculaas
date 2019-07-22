@@ -3,10 +3,15 @@ module.exports = config => {
         mutate: [
             'lib/**/*.js'
         ],
-        testRunner: 'mocha',
-        testFramework: 'mocha',
-        coverageAnalysis: 'perTest',
-        reporters: ['html', 'progress'],
-        mutator: 'javascript'
+        mutator: "javascript",
+        packageManager: "npm",
+        reporters: ["html", "clear-text", "progress"],
+        testRunner: "mocha",
+        transpilers: [],
+        testFramework: "mocha",
+        mochaOptions: {
+            files: [ 'test/**/*.js' ]
+        },
+        coverageAnalysis: "perTest"
     });
-}
+};

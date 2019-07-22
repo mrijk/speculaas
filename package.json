@@ -41,6 +41,11 @@
     "testcheck": "^1.0.0-rc.2"
   },
   "devDependencies": {
+    "@stryker-mutator/core": "^2.0.2",
+    "@stryker-mutator/html-reporter": "^2.0.2",
+    "@stryker-mutator/javascript-mutator": "^2.0.2",
+    "@stryker-mutator/mocha-framework": "^2.0.2",
+    "@stryker-mutator/mocha-runner": "^2.0.2",
     "chai": "^4.2.0",
     "coveralls": "^3.0.5",
     "eslint": "^6.1.0",
@@ -53,13 +58,6 @@
     "istanbul": "^0.4.5",
     "mocha": "^6.2.0",
     "pre-commit": "^1.2.2",
-    "sinon": "^7.3.2",
-    "stryker": "^0.35.1",
-    "stryker-api": "^0.24.1",
-    "stryker-html-reporter": "^0.18.1",
-    "stryker-javascript-mutator": "^0.14.1",
-    "stryker-mocha-framework": "^0.15.1",
-    "stryker-mocha-runner": "^0.17.1",
-    "uninstall": "0.0.0"
+    "sinon": "^7.3.2"
   }
 }
