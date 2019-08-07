@@ -47,7 +47,7 @@
     "@stryker-mutator/mocha-framework": "^2.0.2",
     "@stryker-mutator/mocha-runner": "^2.0.2",
     "chai": "^4.2.0",
-    "coveralls": "^3.0.5",
+    "coveralls": "^3.0.6",
     "eslint": "^6.1.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-lodash": "^5.1.0",
@@ -58,6 +58,6 @@
     "istanbul": "^0.4.5",
     "mocha": "^6.2.0",
     "pre-commit": "^1.2.2",
-    "sinon": "^7.3.2"
+    "sinon": "^7.4.1"
   }
 }
