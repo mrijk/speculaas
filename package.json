@@ -51,7 +51,7 @@
     "eslint": "^6.2.2",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-lodash": "^6.0.0",
-    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-node": "^9.2.0",
     "genfun": "^5.0.0",
     "gh-pages": "^2.1.1",
     "gitbook-cli": "^2.3.2",
