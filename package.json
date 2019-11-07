@@ -41,11 +41,11 @@
     "testcheck": "^1.0.0-rc.2"
   },
   "devDependencies": {
-    "@stryker-mutator/core": "^2.1.0",
-    "@stryker-mutator/html-reporter": "^2.1.0",
-    "@stryker-mutator/javascript-mutator": "^2.1.0",
-    "@stryker-mutator/mocha-framework": "^2.1.0",
-    "@stryker-mutator/mocha-runner": "^2.1.0",
+    "@stryker-mutator/core": "^2.2.1",
+    "@stryker-mutator/html-reporter": "^2.2.1",
+    "@stryker-mutator/javascript-mutator": "^2.2.1",
+    "@stryker-mutator/mocha-framework": "^2.2.1",
+    "@stryker-mutator/mocha-runner": "^2.2.1",
     "chai": "^4.2.0",
     "coveralls": "^3.0.7",
     "eslint": "^6.6.0",
